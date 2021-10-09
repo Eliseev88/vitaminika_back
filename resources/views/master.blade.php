@@ -155,6 +155,7 @@
         if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
         $('.basket-add').click(function (event) {
             event.preventDefault();
+            let amountId = $('input[name=amount]:checked').val();
             let productId = $(this).data('basket_add')
             let cart_id = $(this).data('cart_id')
             $.ajax({
@@ -166,10 +167,12 @@
                 data: {
                     productId: productId,
                     cart_id: cart_id,
+                    amountId: amountId,
                 },
                 success: (data) => {
-                    $('.quantity__box').css('visibility', 'visible');
-                    $('.quantity__box').text(data);
+                    console.log(data);
+                    // $('.quantity__box').css('visibility', 'visible');
+                    // $('.quantity__box').text(data);
                 }
             });
         });
@@ -265,52 +268,52 @@
     })
 })
 
-    function renderCart(object) {
-        let str = '';
-        let sum = 0;
-        jQuery.each( object, function(i, val) {
-            sum += val.price * val.quantity;
-            str += `
-                            <div class="cart__item" id="item_${i}">
-                                <div class="cart__left">
-                                    <div class="cart__image">
-                                        <img src="${val.attributes.img}" alt="image">
-                                    </div>
-                                    <div class="cart__product">
-                                        <div class="cart__name">${val.name}</div>
-                                        <div class="cart__amount">60 таб.</div>
-                                        <div class="number">
-                                            <button class="number-minus basket-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>
-                                            <input type="number" min="1" value="${val.quantity}" readonly>
-                                            <button class="number-plus basket-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cart__right">
-                                    <button class="cart__delete fas fa-trash basket-delete" data-cart_id="{{ $cart_id }}" data-productId="${val.id}"></button>
-                                    <div class="price__old">${val.price * val.quantity - 100}₽</div>
-                                    <div class="price">${val.price * val.quantity} <sup>₽</sup></div>
-                                </div>
-                            </div>`
-        })
-        let cartBottom = `<div class="cart__bottom">
-                    <div class="cart__line">
-                        <div class="cart__box">
-                            <span class="cart__text">Промокод:</span>
-                            <input type="text" class="cart__input" placeholder="Введите промокод">
-                        </div>
-                        <div class="cart__box cart__box_right">
-                            <span class="cart__text cart__text_sum">Итого:</span>
-                            <div class="price" id="sum">${sum}<sup>₽</sup></div>
-                        </div>
-                    </div>
-                    <div class="cart__line">
-                        <a href="{{ route('index') }}" class="cart__link">Продолжить покупки</a>
-                        <a href="#popup_order" class="button popup-link">Оформить заказ</a>
-                    </div>
-                </div>`
-        return $('.cart').html(str + cartBottom);
-    }
+    {{--function renderCart(object) {--}}
+    {{--    let str = '';--}}
+    {{--    let sum = 0;--}}
+    {{--    jQuery.each( object, function(i, val) {--}}
+    {{--        sum += val.price * val.quantity;--}}
+    {{--        str += `--}}
+    {{--                        <div class="cart__item" id="item_${i}">--}}
+    {{--                            <div class="cart__left">--}}
+    {{--                                <div class="cart__image">--}}
+    {{--                                    <img src="${val.attributes.img}" alt="image">--}}
+    {{--                                </div>--}}
+    {{--                                <div class="cart__product">--}}
+    {{--                                    <div class="cart__name">${val.name}</div>--}}
+    {{--                                    <div class="cart__amount">60 таб.</div>--}}
+    {{--                                    <div class="number">--}}
+    {{--                                        <button class="number-minus basket-minus" type="button" onclick="this.nextElementSibling.stepDown();">-</button>--}}
+    {{--                                        <input type="number" min="1" value="${val.quantity}" readonly>--}}
+    {{--                                        <button class="number-plus basket-plus" type="button" onclick="this.previousElementSibling.stepUp();">+</button>--}}
+    {{--                                    </div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                            <div class="cart__right">--}}
+    {{--                                <button class="cart__delete fas fa-trash basket-delete" data-cart_id="{{ $cart_id }}" data-productId="${val.id}"></button>--}}
+    {{--                                <div class="price__old">${val.price * val.quantity - 100}₽</div>--}}
+    {{--                                <div class="price">${val.price * val.quantity} <sup>₽</sup></div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>`--}}
+    {{--    })--}}
+    {{--    let cartBottom = `<div class="cart__bottom">--}}
+    {{--                <div class="cart__line">--}}
+    {{--                    <div class="cart__box">--}}
+    {{--                        <span class="cart__text">Промокод:</span>--}}
+    {{--                        <input type="text" class="cart__input" placeholder="Введите промокод">--}}
+    {{--                    </div>--}}
+    {{--                    <div class="cart__box cart__box_right">--}}
+    {{--                        <span class="cart__text cart__text_sum">Итого:</span>--}}
+    {{--                        <div class="price" id="sum">${sum}<sup>₽</sup></div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="cart__line">--}}
+    {{--                    <a href="{{ route('index') }}" class="cart__link">Продолжить покупки</a>--}}
+    {{--                    <a href="#popup_order" class="button popup-link">Оформить заказ</a>--}}
+    {{--                </div>--}}
+    {{--            </div>`--}}
+    {{--    return $('.cart').html(str + cartBottom);--}}
+    {{--}--}}
 
 </script>
 

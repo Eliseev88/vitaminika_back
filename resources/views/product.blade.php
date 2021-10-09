@@ -19,7 +19,7 @@
                         <div class="form__wrapper">
                             @foreach($currentProduct->amounts as $key => $amount)
                                 <div class='form__input-box'>
-                                    <input type="radio" class="form__radio" id="radio{{ $amount->id }}" name="amount" value="{{ $amount->name }}"
+                                    <input type="radio" class="form__radio" id="radio{{ $amount->id }}" name="amount" value="{{ $amount->id }}"
                                            @if ($key == count($currentProduct->amounts) - 1) checked @endif>
                                     <label for="radio{{ $amount->id }}">{{ $amount->name }}</label>
                                 </div>

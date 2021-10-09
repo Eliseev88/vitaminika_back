@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amount;
 use App\Models\Brand;
 use App\Models\Order;
 use App\Models\Product;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BasketController extends Controller
 {
@@ -25,17 +27,31 @@ class BasketController extends Controller
     public function basketAdd(Request $request)
     {
         $product = Product::where('id', $request->productId)->first();
+        $productPrice = $product->price;
+        $amountName = null;
+        if ($request->amountId) {
+            $arr = DB::table('amount_product')
+                ->where('amount_id', '=', $request->amountId)
+                ->where('product_id', '=', $request->productId)
+                ->get();
+            $productPrice = $arr[0]->price;
+
+            $amount = Amount::find($request->amountId);
+            $amountName = $amount->name;
+        }
 
         \Cart::session($request->cart_id);
         \Cart::add([
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price,
+            'price' => $productPrice,
             'quantity' => 1,
             'attributes' => [
                 'img' => $product->image,
+                'amount' => $amountName,
             ]
         ]);
+        return \Cart::session($request->cart_id)->getContent();
         return response()->json(\Cart::getTotalQuantity());
 //        $orderId = session('orderId');
 //        if (is_null($orderId)) {
