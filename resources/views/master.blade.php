@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+         
+        $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+        $('.scrollup').fadeIn();
+        } else {
+        $('.scrollup').fadeOut();
+        }
+        });
+         
+        $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+        });
+         
+        });
+        </script>
 </head>
 
 <body>
@@ -138,8 +159,11 @@
             </form>
         </div>
     </div>
+    
 </div>
-
+<button class="scrollup">
+        <i class="fas fa-angle-up"></i>
+</button>
 <script type="text/javascript" src="/js/popup.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -316,6 +340,8 @@
     {{--}--}}
 
 </script>
+
+<script src="js/buttonAdd.js"></script>
 
 </body>
 
