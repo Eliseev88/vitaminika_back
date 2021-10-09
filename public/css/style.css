@@ -803,8 +803,14 @@ body.lock {
   box-shadow: 0 0 1.5rem #EDEDED;
 }
 
+.prod-card__price {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .prod-card__descript {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 2.5rem 0;
   font-size: 2rem;
