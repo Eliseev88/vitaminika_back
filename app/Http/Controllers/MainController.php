@@ -56,11 +56,23 @@ class MainController extends Controller
 
     public function contacts()
     {
-        return view('contacts');
+        $cart_id = $_COOKIE['cart_id'];
+        $brands = Brand::all();
+
+        return view('contacts', [
+            'allBrands' => $brands,
+            'cart_id' => $cart_id,
+        ]);
     }
 
     public function delivery()
     {
-        return view('delivery');
+        $cart_id = $_COOKIE['cart_id'];
+        $brands = Brand::all();
+
+        return view('delivery', [
+            'allBrands' => $brands,
+            'cart_id' => $cart_id,
+        ]);
     }
 }
