@@ -785,9 +785,14 @@ body.lock {
   justify-content: flex-end;
   margin-right: 3rem;
 }
+.topcat__item {
+  height: 55rem;
+  padding: 2rem;
+}
 
 .prod-card {
   max-width: 29.1rem;
+  height: 50rem;
 }
 
 .prod-card__link {
