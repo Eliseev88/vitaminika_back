@@ -1,0 +1,19 @@
+.side-btn {
+    width: 6.7rem;
+    height: 6.7rem;
+    border: 1px solid $mainFontColor;
+    
+    &__center {
+        width: 1rem;
+        height: 1rem;
+        background-color: $mainFontColor;
+    }
+    
+    &__top {
+        background: url('../img/arrow-up.svg');
+    }
+    
+    &__down {
+        background: url('../img/arrow-down.svg');
+    }
+}

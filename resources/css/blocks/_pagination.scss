@@ -1,0 +1,135 @@
+.pagination {
+    display: flex;
+
+    &__pages {
+        display: flex;
+        align-content: center;
+
+        .active {
+            transform: translateY(-1rem);
+
+            .pagination__line {
+                height: 7.6rem;
+                background-color: $mainFontColor;
+            }
+
+            .pagination__number {
+                color: $mainFontColor;
+            }
+        }
+    }
+
+    &__button {
+        width: 6rem;
+        height: 6rem;
+        background-color: transparent;
+        border: 1px solid $mainFontColor;
+        cursor: pointer;
+
+
+    }
+
+    .next {
+        margin-left: 8rem;
+        position: relative;
+
+        &::before {
+            content: url('../img/arrow-right.svg');
+            width: 2.4rem;
+            height: 3rem;
+            background-color: white;
+            position: absolute;
+            bottom: 1rem;
+            right: 5.8rem;
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 6rem;
+            height: 6rem;
+            background-color: transparent;
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            z-index: -1;
+            transition: background-color .2s linear;
+        }
+
+        &:hover {
+            &::after {
+                background-color: $greyBg;
+            }
+        }
+    }
+
+    .prev {
+        margin-right: 8rem;
+        position: relative;
+
+        &::before {
+            content: url('../img/arrow-left.svg');
+            width: 2.4rem;
+            height: 3rem;
+            background-color: white;
+            position: absolute;
+            bottom: 1rem;
+            right: 5.8rem;
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 6rem;
+            height: 6rem;
+            background-color: transparent;
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            z-index: -1;
+            transition: background-color .2s linear;
+        }
+
+        &:hover {
+            &::after {
+                background-color: $greyBg;
+            }
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $grey;
+        transition: color .2s linear;
+        margin-right: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            color: darken($mainFontColor, .7);
+            
+            .pagination__line {
+                background-color: $mainFontColor;
+            }
+        }
+    }
+
+    &__line {
+        margin-bottom: .8rem;
+        width: 2px;
+        height: 4rem;
+        background-color: $grey;
+        transition: background-color .2s ease-in-out;
+    }
+
+    &__number {
+        font-size: 1.5rem;
+    }
+}

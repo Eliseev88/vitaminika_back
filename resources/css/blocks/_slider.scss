@@ -1,0 +1,13 @@
+.slider {
+    position: relative;
+    padding: 0 10rem;
+    margin-bottom: 10rem;
+
+    .details__header {
+        margin-bottom: 10rem;
+    }
+    
+    &__item {
+        margin: 2rem;
+    }
+}

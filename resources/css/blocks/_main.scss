@@ -1,0 +1,42 @@
+.main {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    padding-top: 15rem;
+    background: url(../../img/index/image.png) no-repeat;
+    background-size: 65%;
+    background-position: right;
+
+    &__title {
+        margin-bottom: 9rem;
+        text-transform: uppercase;
+        display: block;
+        max-width: 5.5rem;
+        width: 100%;
+        font-weight: 900;
+        font-size: 6rem;
+        color: $mainFontColor;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: .2rem;
+            height: 7rem;
+            position: absolute;
+            top: -10rem;
+            left: 6.5rem;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: 17rem;
+            height: .2rem;
+            position: absolute;
+            bottom: 4rem;
+            right: -40rem;
+        }
+    }
+}

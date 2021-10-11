@@ -1,0 +1,49 @@
+.order {
+    &__title {
+        text-transform: uppercase;
+        display: block;
+        font-weight: 900;
+        font-size: 4.5rem;
+        color: $mainFontColor;
+        text-align: center;
+    }
+
+    &__block {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__column {
+        width: 50%;
+        text-align: center;
+    }
+
+    &__info {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__input {
+        margin-bottom: 6.4rem;
+        padding: 2rem;
+        max-width: 28rem;
+        background-color: $greyBg;
+        border: none;
+
+        &:focus {
+            outline: 1px solid $grey;
+        }
+    }
+
+    .button::before {
+        content: '';
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}

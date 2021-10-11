@@ -1,0 +1,71 @@
+.common-cat {
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12rem;
+    }
+
+    &__title {
+        width: 60%;
+        display: block;
+        width: 100%;
+        font-weight: 900;
+        font-size: 6rem;
+        color: $mainFontColor;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: .2rem;
+            height: 7rem;
+            position: absolute;
+            top: -10rem;
+            left: 6.5rem;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: 6rem;
+            height: .2rem;
+            position: absolute;
+            bottom: 4rem;
+            right: 30rem;
+        }
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto;
+//        grid-template-rows: 1fr 1fr 1fr;
+        grid-column-gap: 5rem;
+        grid-row-gap: 5rem;
+    }
+
+    &__item {
+        display: flex;
+        text-decoration: none;
+        
+        &:hover {
+            outline: 1px solid #EDEDED;
+            > .common-cat__name {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__name {
+        margin: 3.5rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $mainFontColor;
+    }
+    
+    &__img {
+        width: 100%;
+    }
+}

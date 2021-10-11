@@ -1,0 +1,53 @@
+.product {
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5rem;
+    }
+
+    &__left {
+        width: 50%;
+        margin-right: 16.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__image {
+        max-width: 46.3rem;
+        border: 1px solid #DADADA;
+    }
+
+    &__code {
+        color: $grey;
+        margin-bottom: 3rem;
+    }
+
+    &__title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 4.5rem;
+    }
+
+    &__descript {
+        margin-bottom: 2rem;
+    }
+
+    &__question {
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        .button::before {
+            content: url('../img/cart.svg');
+            height: 2.5rem;
+            bottom: -1rem;
+        }
+    }
+}

@@ -51,7 +51,6 @@ class BasketController extends Controller
                 'amount' => $amountName,
             ]
         ]);
-        return \Cart::session($request->cart_id)->getContent();
         return response()->json(\Cart::getTotalQuantity());
 //        $orderId = session('orderId');
 //        if (is_null($orderId)) {

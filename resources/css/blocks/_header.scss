@@ -1,0 +1,91 @@
+.header {
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__block {
+        width: 33.3%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.left {
+            justify-content: flex-start;
+        }
+
+        &.right {
+            justify-content: flex-end;
+        }
+
+        .fa-phone {
+            margin-right: 2.5rem;
+        }
+
+    }
+
+    &__cart {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__link {
+        color: $mainFontColor;
+        opacity: 0.9;
+        font-size: 2rem;
+        transition: transform .2s linear, opacity .2s linear;
+
+        &:first-child {
+            margin-right: 3.6rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    }
+
+    &__icon {
+        border: none;
+        background-color: inherit;
+        font-size: inherit;
+        color: $mainFontColor;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .fa-search {
+            margin: 0 2rem 0 9.2rem;
+            opacity: .5;
+            color: $grey;
+            font-size: 2.5rem;
+            transition: transform .2s linear, opacity .2s linear;
+
+            &:hover {
+                transform: scale(1.1);
+                opacity: .7;
+            }
+        }
+    }
+    
+    &__input {
+        width: 100%;
+        max-width: 13.6rem;
+        border: none;
+        border-bottom: 1px solid $grey;
+        padding-right: .5rem;
+        
+        &:focus {
+            outline: none;
+        }
+        
+    }
+
+}

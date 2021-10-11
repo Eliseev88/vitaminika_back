@@ -1,0 +1,109 @@
+.topcat {
+    margin-bottom: 14.5rem;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10rem;
+    }
+
+    &__suptitle {
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        display: block;
+        width: 100%;
+        font-weight: 900;
+        font-size: 4.5rem;
+        color: $mainFontColor;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: .2rem;
+            height: 6.6rem;
+            position: absolute;
+            top: -8rem;
+            left: 8.5rem;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: .2rem;
+            height: 6.6rem;
+            position: absolute;
+            bottom: -7rem;
+            right: 4rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: 2rem;
+    }
+
+    &__box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__left {
+        width: 30%;
+        margin-right: 6rem;
+    }
+
+    &__category {
+        margin-bottom: 4rem;
+        background: linear-gradient(to right, rgba(242, 242, 242, .6), rgba(242, 242, 242, .6)), url('../img/index/top_category/Logo%202.png') no-repeat top left;
+        background-size: 40%;
+        position: relative;
+
+        &::before {
+            content: '';
+            width: 1px;
+            height: calc(90% + 7.5rem);
+            position: absolute;
+            left: -4rem;
+            bottom: -7.5rem;
+            z-index: 2;
+            background-color: $mainFontColor;
+        }
+
+        &::after {
+            content: '';
+            width: 11rem;
+            height: 1px;
+            position: absolute;
+            left: -4rem;
+            bottom: -7.5rem;
+            z-index: 2;
+            background-color: $mainFontColor;
+        }
+    }
+
+    &__right {
+        width: 70%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
+        grid-column-gap: 6rem;
+        grid-row-gap: 7rem;
+    }
+
+    &__catname {
+        display: inline-block;
+        margin: 3rem 0 0 3rem;
+        text-transform: uppercase;
+        font-size: 2.4rem;
+        font-weight: bold;
+    }
+
+    &__link {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 3rem;
+    }
+}

@@ -1,0 +1,124 @@
+/* SLICK SLIDER */
+
+/* Слайдер */
+.slick-slider {}
+
+/* Ограничивающая оболочка */
+.slick-list {
+    overflow: hidden;
+}
+
+/* Лента слайдов */
+.slick-track {
+    display: flex;
+
+}
+
+/* Слайд */
+.slick-slide {}
+
+/* Слайд активный */
+.slick-slide.slick-active {}
+
+/* Слайд основной */
+.slick-slide.slick-current {}
+
+/* Слайд по центру */
+.slick-slide.slick-center {}
+
+/* Стрелка */
+.slick-arrow {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-60%);
+
+    .next {
+        margin-left: 8rem;
+        position: relative;
+
+        &::before {
+            content: url('../img/arrow-right.svg');
+            width: 2.4rem;
+            height: 3rem;
+            background-color: white;
+            position: absolute;
+            bottom: 1rem;
+            right: 5.8rem;
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 6rem;
+            height: 6rem;
+            background-color: transparent;
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            z-index: -1;
+            transition: background-color .2s linear;
+        }
+
+        &:hover {
+            &::after {
+                background-color: $greyBg;
+            }
+        }
+    }
+
+    .prev {
+        margin-right: 8rem;
+        position: relative;
+
+        &::before {
+            content: url('../img/arrow-left.svg');
+            width: 2.4rem;
+            height: 3rem;
+            background-color: white;
+            position: absolute;
+            bottom: 1rem;
+            right: 5.8rem;
+            z-index: 1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 6rem;
+            height: 6rem;
+            background-color: transparent;
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            z-index: -1;
+            transition: background-color .2s linear;
+        }
+
+        &:hover {
+            &::after {
+                background-color: $greyBg;
+            }
+        }
+    }
+}
+
+/* Стрелка-влево */
+.slick-arrow.slick-prev {
+    left: 0;
+}
+
+/* Стрелка-вправо */
+.slick-arrow.slick-next {
+    right: 0;
+}
+
+/* Cтрелка не активная */
+.slick-arrow.slick-disabled {}
+
+/* Точки */
+.slick-dots {}
+
+.slick-dots-li {}
+
+.slick-dots-button {}

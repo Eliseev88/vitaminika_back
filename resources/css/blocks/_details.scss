@@ -1,0 +1,19 @@
+.details {
+    margin-bottom: 13rem;
+    
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 7rem;
+    }
+    
+    &__text {
+        margin-bottom: 7rem;
+        line-height: 3.9rem;
+    }
+    
+    &__consist {
+        margin-bottom: 7rem;
+    }
+}

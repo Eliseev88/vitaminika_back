@@ -1,0 +1,130 @@
+.footer {
+    flex-shrink: 0;
+    border-top: 1px solid #DEDEDE;
+    padding-top: 5rem;
+    
+    &__top {
+        padding-bottom: 6rem;
+        border-bottom: 1px solid #DEDEDE;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__left {
+        width: 30%;
+        margin-right: 14rem;
+    }
+
+    &__right {
+        width: 70%;
+    }
+
+    &__bottom {
+        margin: 3rem 0;
+    }
+
+    &__title {
+        font-size: 5rem;
+        font-weight: bold;
+        position: relative;
+
+        &::after {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: 6.6rem;
+            height: .2rem;
+            position: absolute;
+            top: 3.5rem;
+            left: 22rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: 2rem;
+        margin: 2rem 0;
+    }
+
+    &__social {
+        display: flex;
+
+        &_item {
+            width: 6.7rem;
+            height: 6.7rem;
+            border: 1px solid $mainFontColor;
+            position: relative;
+            color: $mainFontColor;
+            font-size: 3rem;
+            margin-right: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 2rem;
+                background-color: white;
+                position: absolute;
+                top: 5.5rem;
+                left: 2rem;
+                z-index: 2;
+            }
+
+            i {
+                transition: transform .2s linear;
+            }
+
+            &:hover {
+                i {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+
+    &__box {
+        margin-top: 2rem;
+    }
+
+    &__contacts {
+
+        &_title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 3.5rem;
+        }
+    }
+
+    &__items {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__element {
+        margin-bottom: 4.5rem;
+        text-decoration: none;
+        color: #969696;
+        transition: color .2s linear;
+
+        &:hover {
+            color: darken(#000, .2);
+        }
+    }
+
+    .fix {
+        margin-bottom: 0;
+        &:hover {
+            color: #969696;
+        }
+    }
+    
+    &__bottom {
+        display: flex;
+        justify-content: space-around;
+        
+        .footer__element {
+            margin-bottom: 0;
+        }
+    }
+}

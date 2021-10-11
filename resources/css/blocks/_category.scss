@@ -1,0 +1,67 @@
+@import '../vars';
+
+.category {
+    margin-bottom: 10rem;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15rem;
+    }
+
+    &__image {
+        width: 40%;
+        margin-right: 6rem;
+    }
+
+    &__content {
+        width: 60%;
+    }
+
+    &__slogan {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+    }
+
+    &__box {
+        background-color: $greyBg;
+        padding: 3rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__descript {
+        font-size: 2rem;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 8rem;
+    }
+
+    &__body {
+        margin-bottom: 13rem;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-column-gap: 5rem;
+        grid-row-gap: 5rem;
+    }
+
+    &__presentation {
+        margin-top: 5rem;
+        color: $mainFontColor;
+        font-style: italic;
+        display: block;
+        text-align: end;
+
+        i {
+            font-size: 3rem;
+            color: cornflowerblue;
+            margin-right: 2rem;
+        }
+    }
+}

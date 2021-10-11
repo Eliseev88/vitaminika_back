@@ -1,0 +1,145 @@
+.history {
+    margin: 14rem 0 11rem;
+    padding-top: 13rem;
+    background: url('../img/index/history.png') left no-repeat;
+    background-position: top left;
+    background-size: 60%;
+    position: relative;
+
+    &::before {
+        content: '';
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid $mainFontColor;
+        position: absolute;
+        top: -2rem;
+        left: calc(60% - 2rem);
+    }
+
+    &::after {
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        background-color: $mainFontColor;
+        position: absolute;
+        top: -.5rem;
+        left: calc(60% - .5rem);
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__box {
+        width: 70vw;
+        max-width: 95rem;
+        height: 55rem;
+        margin-top: 3.5rem;
+        background-color: white;
+        padding: 8rem 9rem 6rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .topic {
+        justify-content: flex-end;
+    }
+
+    &__decor {
+        width: 8rem;
+        height: 8rem;
+        background-color: $greyBg;
+        position: absolute;
+        top: 7.3rem;
+        left: 5.5rem;
+    }
+
+    &__title {
+        margin-bottom: 4rem;
+        text-transform: uppercase;
+        display: block;
+        width: 100%;
+        font-weight: 900;
+        font-size: 4.5rem;
+        color: $mainFontColor;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: .2rem;
+            height: 13rem;
+            position: absolute;
+            top: -15rem;
+            left: 6.5rem;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            background-color: $mainFontColor;
+            width: 6rem;
+            height: .2rem;
+            position: absolute;
+            bottom: 3rem;
+            right: 26rem;
+        }
+    }
+
+    &__content {
+        margin-left: 5rem;
+    }
+
+    &__text {
+        margin-bottom: 6rem;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__video {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    &__label {
+        cursor: pointer;
+    }
+
+    &__button {
+        margin-right: 7rem;
+        width: 6rem;
+        height: 6rem;
+        border: 1px solid $mainFontColor;
+        background-color: white;
+        cursor: pointer;
+        color: $mainFontColor;
+        position: relative;
+
+        i {
+            transition: transform .2s linear;
+        }
+
+        &:hover {
+            i {
+                transform: scale(1.2);
+            }
+        }
+
+        &::after {
+            content: '';
+            width: 4.7rem;
+            height: 1px;
+            background-color: $mainFontColor;
+            position: absolute;
+            right: -4rem;
+            top: calc(50% - 2px);
+            z-index: 3;
+        }
+    }
+}

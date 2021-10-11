@@ -1,0 +1,81 @@
+.nav {
+    background-color: #F2EFEB;
+
+    &__list {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__item {
+        position: relative;
+
+        &:hover {
+            .nav__link {
+                background-color: white;
+            }
+
+            .has-subnav::after {
+                transform: rotate(90deg);
+            }
+
+            > .nav__subnav {
+                display: block;
+                box-shadow: 0px 4px 24px 0px #0000001A;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        text-decoration: none;
+        color: $mainFontColor;
+        padding: 2rem;
+
+        transition: background-color .2s linear;
+
+        &.has-subnav {
+            position: relative;
+            padding-right: 4rem;
+            z-index: 2;
+
+            &::after {
+                position: absolute;
+                right: 1.5rem;
+                top: 50%;
+                content: '';
+                display: block;
+                width: 1.1rem;
+                height: .2rem;
+                background-color: $mainFontColor;
+                transform: translateY(-50%);
+                transition: transform .2s linear;
+
+            }
+        }
+    }
+
+    &__subnav {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        background-color: white;
+        padding: 4rem;
+    }
+
+    &__sublink {
+        display: block;
+        color: $mainFontColor;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 2rem 4rem;
+        transition: text-shadow .2s linear, background-color .2s linear;
+
+        &:hover {
+            text-shadow: 0 0 1px $mainFontColor, 0 0 1px $mainFontColor, 0 0 1px $mainFontColor;
+            background-color: $greyBg;
+        }
+    }
+}

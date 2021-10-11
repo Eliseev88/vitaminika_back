@@ -1,0 +1,33 @@
+.prod-card {
+    max-width: 29.1rem;
+    
+    &__link {
+        max-width: 29.1rem;
+    }
+
+    &__image {
+        outline: 1px solid #EDEDED;
+        transition: box-shadow .2s linear;
+
+        &:hover {
+            box-shadow: 0 0 1.5rem #EDEDED;
+        }
+    }
+
+    &__descript {
+        display: flex;
+        justify-content: space-between;
+        margin: 2.5rem 0;
+        font-size: 2rem;
+        max-width: 29.1rem;
+    }
+
+    .button {
+        &::before {
+            content: url('../img/cart.svg');
+            height: 2.5rem;
+            bottom: -1rem;
+        }
+    }
+
+}

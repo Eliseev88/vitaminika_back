@@ -12,7 +12,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-         
+
         $(window).scroll(function(){
         if ($(this).scrollTop() > 100) {
         $('.scrollup').fadeIn();
@@ -20,12 +20,12 @@
         $('.scrollup').fadeOut();
         }
         });
-         
+
         $('.scrollup').click(function(){
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
         });
-         
+
         });
         </script>
 </head>
@@ -159,7 +159,7 @@
             </form>
         </div>
     </div>
-    
+
 </div>
 <button class="scrollup">
         <i class="fas fa-angle-up"></i>
@@ -194,9 +194,8 @@
                     amountId: amountId,
                 },
                 success: (data) => {
-                    console.log(data);
-                    // $('.quantity__box').css('visibility', 'visible');
-                    // $('.quantity__box').text(data);
+                    $('.quantity__box').css('visibility', 'visible');
+                    $('.quantity__box').text(data);
                 }
             });
         });

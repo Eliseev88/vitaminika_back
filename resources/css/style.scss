@@ -1,0 +1,85 @@
+@import '_vars';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+
+@import '_reset';
+
+// Прижимаем  футер книзу
+html,
+body {
+    height: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    color: $mainFontColor;
+
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+// Общие стили
+.container {
+    max-width: 130rem;
+    margin: 0 auto;
+    padding: 0 5rem;
+}
+
+.error {
+    color: #FF4141;
+}
+
+
+/* BLOCKS */
+@import 'blocks/_header';
+@import 'blocks/_nav';
+@import 'blocks/_main';
+@import 'blocks/_button';
+@import 'blocks/_decor';
+@import 'blocks/_common-cat';
+@import 'blocks/_topic';
+@import 'blocks/_side-btn';
+@import 'blocks/_history';
+@import 'blocks/_topcat';
+@import 'blocks/_prod-card';
+@import 'blocks/_footer';
+@import 'blocks/_address';
+@import 'blocks/_contacts';
+@import 'blocks/_registerForm';
+@import 'blocks/_login';
+@import 'blocks/feedback';
+@import 'blocks/quantity';
+@import 'blocks/_scrollup';
+
+/* PAGE CATEGORY */
+@import 'blocks/_breadcrumbs';
+@import 'blocks/_category';
+@import 'blocks/_title';
+@import 'blocks/_pagination';
+
+/* PAGE PRODUCT */
+@import 'blocks/_product';
+@import 'blocks/_form';
+@import 'blocks/_price';
+@import 'blocks/_details';
+@import 'blocks/_slider';
+@import 'blocks/_slick-slider';
+@import 'blocks/_popup';
+@import 'blocks/_cart';
+@import 'blocks/_number';
+@import 'blocks/_order';
+@import '_slick';

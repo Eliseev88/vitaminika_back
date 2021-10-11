@@ -1,0 +1,29 @@
+.scrollup{
+    width:5rem;
+    height:5rem;
+    opacity:0.3;
+    position:fixed;
+    bottom:50px;
+    right:100px;
+    border:  0.2rem solid #111;
+    outline: none;
+ 
+    border-radius: 50%;
+    display:none;
+    //text-indent:-9999px;
+   // background: url('img/icons/caret-up-circle-solid-24.png') no-repeat;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & i {
+        font-size: 3rem;
+        border-radius: 50%;
+        color: black;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

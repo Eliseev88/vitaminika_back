@@ -1,0 +1,41 @@
+.topic {
+    display: flex;
+
+    &__number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $mainFontColor;
+        margin-right: 4rem;
+    }
+
+    &__name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $mainFontColor;
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: $greyBg;
+            bottom: -1.7rem;
+            left: -1.1rem;
+            width: 3.1rem;
+            height: 3.1rem;
+            z-index: -1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: $greyBg;
+            bottom: 0;
+            left: 1rem;
+            width: 6.1rem;
+            height: 6.1rem;
+            z-index: -1;
+        }
+    }
+}

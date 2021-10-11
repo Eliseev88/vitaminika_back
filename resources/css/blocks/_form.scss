@@ -1,0 +1,90 @@
+.form {
+    &__wrapper {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 5rem;
+    }
+
+    &__input-box {
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    label {
+        position: relative;
+        font-size: 1.5rem;
+        width: 10.7rem;
+        height: 5.2rem;
+        cursor: pointer;
+    }
+
+    &__radio {
+        // Скрываем дефолтный инпут
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        /* для элемента label связанного с инпутом */
+        & + label {
+            display: inline-flex;
+            align-items: center;
+            user-select: none;
+            justify-content: center;
+        }
+
+        // Создаем инпут
+        & + label::before {
+            content: url('../img/Rectangle.svg');
+            position: absolute;
+            bottom: 50%;
+            transform: translate(-50%, 50%);
+            left: 50%;
+            z-index: 1;
+        }
+
+        & + label::after {
+            content: '';
+            display: block;
+            width: 10.7rem;
+            height: 4.3rem;
+            background-color: transparent;
+            position: absolute;
+            top: .8rem;
+            left: .8rem;
+            z-index: -1;
+            transition: background-color .2s linear;
+        }
+
+        /* стили при наведении курсора на радио */
+        &:not(:disabled):not(:checked) + label:hover::after {
+            background-color: $greyBg;
+        }
+
+        /* стили для активной радиокнопки (при нажатии на неё) */
+        &:not(:disabled):active + label::after {
+            background-color: $greyBg;
+        }
+
+        /* стили для радиокнопки, находящейся в фокусе */
+        &:focus + label::before {
+            box-shadow: 0 0 0 0.2rem rgba(136, 136, 136, 0.25);
+        }
+
+        /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+        &:focus:not(:checked) + label::after {
+            outline: 1px solid $grey;
+        }
+
+        /* стили для радиокнопки, находящейся в состоянии checked */
+        &:checked + label::after {
+                background-color: $greyBg;
+        }
+
+        /* стили для радиокнопки, находящейся в состоянии disabled */
+        &:disabled + label::before {
+            background-color: #e9ecef;
+        }
+    }
+}
