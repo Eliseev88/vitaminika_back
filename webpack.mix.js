@@ -18,5 +18,5 @@ mix.options({
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/css/style.scss', 'public/css', [
         //
-    ])
+    ]);
 

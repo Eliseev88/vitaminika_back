@@ -9,8 +9,12 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'status', 'name', 'surname', 'phone', 'email', 'address', 'created_at', 'updated_at', 'delivery', 'sum',
+    ];
+
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('count');
     }
 }

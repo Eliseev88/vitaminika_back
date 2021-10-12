@@ -28,17 +28,6 @@ class BasketController extends Controller
     {
         $product = Product::where('id', $request->productId)->first();
         $productPrice = $product->price;
-        $amountName = null;
-        if ($request->amountId) {
-            $arr = DB::table('amount_product')
-                ->where('amount_id', '=', $request->amountId)
-                ->where('product_id', '=', $request->productId)
-                ->get();
-            $productPrice = $arr[0]->price;
-
-            $amount = Amount::find($request->amountId);
-            $amountName = $amount->name;
-        }
 
         \Cart::session($request->cart_id);
         \Cart::add([
@@ -48,22 +37,10 @@ class BasketController extends Controller
             'quantity' => 1,
             'attributes' => [
                 'img' => $product->image,
-                'amount' => $amountName,
+                'amount' => $product->amount,
             ]
         ]);
         return response()->json(\Cart::getTotalQuantity());
-//        $orderId = session('orderId');
-//        if (is_null($orderId)) {
-//            $order = Order::create();
-//            session(['orderId' => $orderId]);
-//        } else {
-//            $order = Order::find($orderId);
-//        }
-//        $order->products()->attach($productId);
-//
-//        return view('basket', [
-//            'order' => $order,
-//        ])->render();
     }
 
     public function basketDelete(Request $request)

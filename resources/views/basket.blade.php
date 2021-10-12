@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="cart__product">
                                     <div class="cart__name">{{ $el->name }}</div>
-                                    <div class="cart__amount">60 таб.</div>
+                                    <div class="cart__amount">{{ $el->attributes->amount }}</div>
                                     <div class="number">
                                         <button class="number-minus" data-product_id="{{ $el->id }}" data-cart_id="{{ $cart_id }}">-</button>
                                         <input id="item-quantity_{{ $el->id }}" type="number" min="1" value="{{ $el->quantity }}" readonly>
@@ -31,10 +31,6 @@
                     @endforeach
                     <div class="cart__bottom">
                                 <div class="cart__line">
-                                    <div class="cart__box">
-                                        <span class="cart__text">Промокод:</span>
-                                        <input type="text" class="cart__input" placeholder="Введите промокод">
-                                    </div>
                                     <div class="cart__box cart__box_right">
                                         <span class="cart__text cart__text_sum">Итого:</span>
                                         <div class="price" id="sum">{{ \Cart::session($cart_id)->getTotal() }}<sup> ₽</sup></div>
@@ -42,7 +38,7 @@
                                 </div>
                                 <div class="cart__line">
                                     <a href="{{ route('index') }}" class="cart__link">Продолжить покупки</a>
-                                    <a href="#popup_order" class="button popup-link">Оформить заказ</a>
+                                    <a href="{{ route('order') }}" class="button">Оформить заказ</a>
                                 </div>
                             </div>
                 </div>
