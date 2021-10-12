@@ -19,8 +19,8 @@ class Product extends Model
         return Brand::find($this->brand_id);
     }
 
-    public function amounts()
+    public function orders()
     {
-        return $this->belongsToMany(Amount::class);
+        return $this->belongsToMany(Order::class)->withPivot('count');
     }
 }

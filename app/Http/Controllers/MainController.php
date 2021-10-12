@@ -6,6 +6,7 @@ use App\Models\Amount;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -16,6 +17,7 @@ class MainController extends Controller
 
         $brands = Brand::all();
         $topBrand = Brand::find(rand(1, 3));
+
         return view('index', [
             'allBrands' => $brands,
             'topBrand' => $topBrand,
@@ -56,6 +58,7 @@ class MainController extends Controller
 
     public function contacts()
     {
+        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
         $cart_id = $_COOKIE['cart_id'];
         $brands = Brand::all();
 
@@ -67,6 +70,7 @@ class MainController extends Controller
 
     public function delivery()
     {
+        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
         $cart_id = $_COOKIE['cart_id'];
         $brands = Brand::all();
 

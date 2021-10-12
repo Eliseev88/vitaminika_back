@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropPriceFieldProductsTable extends Migration
+class AddSumFieldOrderdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropPriceFieldProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function($table) {
-            $table->dropColumn('price');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->double('sum');
         });
     }
 
@@ -25,8 +25,8 @@ class DropPriceFieldProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function($table) {
-            $table->double('price')->default(0);
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('sum');
         });
     }
 }

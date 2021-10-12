@@ -4,6 +4,7 @@
 
 
 @section('content')
+    <x-breadcrumps brand="Контакты" />
         <section class="contacts">
             <div class="container">
                 <div class="contacts__info">
@@ -18,7 +19,7 @@
                         экстрактом фукуса пузырчатого, гидрогенизированным касторовым маслом и другими активными компонентами
                         прекрасно очищает и подсушивает эпидермис, способствует нормализации функций сальных желез, а также оказывае
                         противовоспалительное, дезинфицирующие и успокаивающее действия, устраняя ощущение дискомфорта.
-                    
+
                     </p>
                 </div>
             </div>
@@ -26,9 +27,9 @@
 
         <section class="feedback">
             <div class="container">
-                
+
                     <div class="feedback__title">
-                        Ваши предложения и пожелания 
+                        Ваши предложения и пожелания
                     </div>
 
                     <form id="feedback" class="feedback__form" action="">
@@ -41,7 +42,7 @@
                         <label for="feedback-phone">Телефон:
                             <input id="feedback-phone" type="number">
                         </label>
-                        <label for="feedback-message">Сообщение: 
+                        <label for="feedback-message">Сообщение:
                             <textarea rows="7" maxlength="1000" id="feedback-message" type="text"></textarea>
                         </label>
                         <label class="file-upload" for="feedback-file">Документ:
@@ -50,14 +51,14 @@
                         <label class='checkbox' for="feedback-checkbox">
                             <input id="feedback-checkbox" type="checkbox"> Согласен на обработку персональных данных
                         </label>
-                        
-                     
+
+
                         <p>Нажимая на кнопку "Отправить сооьщение", Вы даете согласие на обработку персональных данных.</p>
-                     
+
                         <button  class="button popup-link" type="submit">Отправить</button>
                     </form>
-                
-                
+
+
 
 
             </div>
@@ -78,24 +79,24 @@
                             <div class="details__icons">
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
-                            
+
                             <div class="info__text">Какая-то уточняющая информация</div>
-                        </div> 
+                        </div>
                         <div class="map__info-details">
                             <div class="details__icons">
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
-                            
+
                             <div class="info__text">Какая-то уточняющая информация</div>
-                        </div> 
+                        </div>
                         <div class="map__info-details">
                             <div class="details__icons">
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
-                            
+
                             <div class="info__text">Какая-то> Какая-то> Какая-то> Какая-то>Какая-то Какая-то> Какая-то> Какая-то> Какая-то>Какая-то Какая-то> Какая-то> Какая-то> Какая-то>Какая-то</div>
-                        </div> 
-                        
+                        </div>
+
                     </div>
                 </div>
             </div>

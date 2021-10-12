@@ -6,20 +6,29 @@
     }
 
     &__input-box {
-
+        cursor: pointer;
+        height: 3rem;
         &:last-child {
             margin-right: 0;
         }
     }
 
-    label {
-        position: relative;
-        font-size: 1.5rem;
-        width: 10.7rem;
-        height: 5.2rem;
+    &__label {
         cursor: pointer;
     }
 
+    &__address {
+        border: none;
+        background-color: $greyBg;
+        padding: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s linear;
+
+        &:focus-visible {
+            outline: 1px solid $grey;
+        }
+    }
     &__radio {
         // Скрываем дефолтный инпут
         position: absolute;
