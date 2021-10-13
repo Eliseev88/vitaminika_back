@@ -1,0 +1,28 @@
+.sidebar.active {
+    width: 70px;
+
+    & .sidebar-brand,
+    & .sidebar-menu ul li {
+        padding-left: 1rem;
+        text-align: center;
+    }
+
+    & .sidebar-menu ul li a {
+        padding-left: 0rem;
+    }
+
+    &~.main-content {
+        margin-left: 70px;
+        transition: margin-left 300ms;
+    }
+
+    &~.main-content header {
+        width: calc(100% - 70px);
+        left: 70px;
+    }
+
+    & .sidebar-brand h2 span:last-child,
+    & .sidebar-menu ul li a span:last-child {
+        display: none;
+    }
+}
