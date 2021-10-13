@@ -13,9 +13,14 @@
         padding: 1rem 0rem 1rem 2rem;
         color: #fff;
 
-        span {
+        & h2 {
+            display: flex;
+        }
+
+        & span {
             display: inline;
             padding-right: 1rem;
+            margin-left: 0.6rem;
         }
     }
 
@@ -26,17 +31,18 @@
             width: 100%;
             margin-bottom: 1.7rem;
             padding-left: 1rem;
-        }
 
-        & a {
-            padding-left: 1rem;
-            display: block;
-            color: #fff;
-            font-size: 1.1rem;
+            & a {
+                padding-left: 1rem;
+                color: #fff;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
 
-            & span:first-child {
-                font-size: 1.5rem;
-                padding-right: 1rem;
+                & span:first-child {
+                    font-size: 1.5rem;
+                    padding: 0.2rem 1rem;
+                }
             }
         }
 
@@ -50,193 +56,3 @@
     }
 
 }
-
-
-
-
-
-@media only screen and (max-width: 1200px) {
-    .sidebar {
-        width: 70px;
-
-        &-brand, & li {
-            padding-left: 1rem;
-            text-align: center;
-        }
-
-        & li a {
-             padding-left: 0rem;
-        }
-    }
-
-    .sidebar .sidebar-brand h2 span:last-child,
-    .sidebar .sidebar-menu li a span:last-child {
-        display: none;
-    }
-
-    .main-content {
-        margin-left: 70px;
-        transition: margin-left 300ms;
-
-        & header {
-             width: calc(100% - 70px);
-        left: 70px;
-        }
-    }
-//
-    .sidebar:hover {
-        width: 345px;
-        z-index: 200;
-
-    }
-
-    .sidebar:hover .sidebar-brand,
-    .sidebar:hover li {
-        padding-left: 2rem;
-        text-align: left;
-    }
-
-    .sidebar:hover li a {
-        padding-left: 1rem;
-    }
-
-    .sidebar:hover .sidebar-brand h2 span:last-child,
-    .sidebar:hover .sidebar-menu li a span:last-child {
-        display: inline;
-    }
-
-
-    .sidebar .sidebar-brand,
-    .sidebar li {
-        padding-left: 1rem;
-        text-align: center;
-    }
-
-    .sidebar li a {
-        padding-left: 0rem;
-    }
-
-    .sidebar .sidebar-brand h2 span:last-child,
-    .sidebar .sidebar-menu li a span:last-child {
-        display: none;
-    }
-}
-
-
-@media only screen and (max-width:960px) {
-    .main-content {
-        & main {
-            & .cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            & .recent-grid {
-                grid-template-columns: repeat(60% 40%);
-            }
-        }
-    }
-}
-
-@media only screen and (max-width:768px) {
-    .sidebar {
-        left: -100% !important;
-    }
-
-    .main-content {
-        width: 100% !important;
-        margin-left: 0 !important;
-
-        header {
-            font-size: 1.1rem;
-            width: 100% !important;
-            left: 0 !important;
-
-            & h2 {
-                display: flex;
-                align-items: center;
-                font-size: 1.1rem;
-
-                & label {
-                    background: var(--main-color);
-
-                    margin-right: 1rem;
-                    height: 40px;
-                    width: 40px;
-                    border-radius: 50%;
-                    color: #fff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center !important;
-
-                    & span {
-                        text-align: center;
-                        padding-right: 0;
-                    }
-                }
-            }
-
-            & .search-wrapper {
-                display: none;
-            }
-        }
-
-        main {
-            & .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            & .recent-grid {
-                grid-template-columns: 100%;
-            }
-        }
-    }
-
-    #nav-toggle:checked+.sidebar {
-        left: 0 !important;
-        z-index: 100;
-        width: 345px;
-    }
-
-
-    #nav-toggle:checked+.sidebar .sidebar-brand,
-    #nav-toggle:checked+.sidebar li {
-        padding-left: 2rem;
-        text-align: left;
-    }
-
-    #nav-toggle:checked+.sidebar li a {
-        padding-left: 1rem;
-    }
-
-    #nav-toggle:checked+.sidebar .sidebar-brand h2 span:last-child,
-    #nav-toggle:checked+.sidebar .sidebar-menu li a span:last-child {
-        display: inline;
-    }
-
-    #nav-toggle:checked~.main-content {
-        margin-left: 0rem !important;
-    }
-
-}
-
-@media only screen and (max-width:568px) {
-    .main-content {
-        width: 100%;
-
-        & main {
-            width: 100%;
-            margin-left: 0;
-            padding: 1rem;
-
-            & .cards {
-                grid-template-columns: 100%;
-            }
-
-        }
-    }
-
-}
-
-
-
-

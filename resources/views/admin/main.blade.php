@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <input type="checkbox" id="nav-toggle">
+
     <div class="sidebar">
         <div class="sidebar-brand">
             <h2>
@@ -62,7 +62,7 @@
                 </li>
                 -->
 
-                
+
             </ul>
         </div>
 
@@ -72,9 +72,9 @@
 
         <header>
             <h2>
-                <label for="nav-toggle">
+                <button id="sidebar-open">
                     <span class="las la-bars"></span>
-                </label>
+                </button>
 
                 Главная
             </h2>
@@ -101,6 +101,22 @@
 
 
     </div>
+
+    <script>
+        const btnSidebarOpen = document.querySelector('#sidebar-open')
+        const sidebar = document.querySelector('.sidebar')
+
+        console.log(sidebar.classList.contains)
+
+        btnSidebarOpen.addEventListener('click', (event) => {
+            if(!sidebar.classList.contains('active')) {
+                sidebar.classList.add('active')
+            } else {
+                 sidebar.classList.remove('active')
+            }
+        })
+
+    </script>
 
 </body>
 
