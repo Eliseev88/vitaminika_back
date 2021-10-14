@@ -23,13 +23,13 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="#" class="active">
+                    <a href="/admin">
                         <span class="las la-igloo"></span>
                         <span>Главная</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/admin/orders">
                         <span class="las la-shopping-bag"></span>
                         <span>Заказы</span>
                     </a>
@@ -115,6 +115,13 @@
                  sidebar.classList.remove('active')
             }
         })
+
+        const curpath = document.location.pathname;
+        const link = curpath && document.querySelector('li a[href="' + curpath + '"]');
+        
+        if (link) {
+            link.className += 'link-active';
+        }
 
     </script>
 
