@@ -6,6 +6,11 @@
 <main>
     <div class="recent-grid">
         <div class="projects">
+            @if(session('success'))
+                <div class="success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header">
                     <h3>Заказы</h3>
@@ -22,27 +27,33 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($orders as $order)
                             <tr>
-                                <td><a href="/admin/order_1">12456</a></td>
-                                <td>Самовывоз</td>
-                                <td class="td-status">
-                                    <span class="status purple"></span>
-                                    Новый
+                                <td><a href="{{ route('admin.order', ['order' => $order]) }}">{{ $order->id }}</a></td>
+                                <td>
+                                    @if ($order->delivery == 'yes') Доставка
+                                    @else Самовывоз
+                                    @endif
                                 </td>
-                                <td>12.10.2021</br>12:00</td>
-                                <td>12.10.2021<br>13:00</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/admin/order_1">12456</a></td>
-                                <td>Доставка</td>
                                 <td class="td-status">
-                                    <span class="status purple"></span>
-                                    новый
+                                    @if($order->status == 0)
+                                        <span class="status purple"></span>
+                                        новый
+                                    @elseif($order->status == 2)
+                                        <span class="status orange"></span>
+                                        завершен
+                                    @elseif($order->status == 1)
+                                        <span class="status pink"></span>
+                                        в процессе
+                                    @else
+                                        <span class="status orange"></span>
+                                        отменен
+                                    @endif
                                 </td>
-                                <td>12.10.2021</br>12:00</td>
-                                <td>12.10.2021<br>13:00</td>
-
+                                <td>{{ $order->created_at }}</td>
+                                <td>{{ $order->updated_at }}</td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

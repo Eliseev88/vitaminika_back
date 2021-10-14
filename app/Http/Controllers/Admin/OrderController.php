@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin/orders');
+        $orders = Order::orderBy('updated_at')->get();
+        return view('admin/orders', [
+            'orders' => $orders,
+        ]);
     }
 
     /**
@@ -38,15 +40,12 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(/*$id*/)
+
+    public function show(Order $order)
     {
-        return view('admin/orderDetails');
+        return view('admin/orderDetails', [
+            'order' => $order,
+        ]);
     }
 
     /**
@@ -60,26 +59,54 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        $fields = $request->only('address', 'comment', 'delivery', 'status',);
+        $fields['updated_at'] = Carbon::now();
+        $order = $order->fill($fields)->save();
+
+        if ($order) {
+            return redirect()->route('admin.orders')
+                ->with('success', 'Заказ успешно обновлен');
+        }
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function updateProduct(Request $request)
     {
-        //
+        $order = Order::find($request->orderId);
+        $product = Product::find($request->productId);
+
+        if ($order && $product) {
+            $order->products()->updateExistingPivot($product->id, [
+                'count' => $request->productCount
+            ]);
+
+            $order->sum = 0;
+
+            foreach($order->products as $el) {
+                $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+            }
+
+            $order->save();
+
+            return $order->sum;
+        }
+
+        return false;
+    }
+
+    public function destroy(Request $request)
+    {
+        $order = Order::find($request->orderId);
+        $product = Product::find($request->productId);
+        if ($order->products()->detach($request->productId)) {
+            $order->sum = $order->sum - $product->price;
+            $order->save();
+
+            return $order->sum;
+        }
+        return false;
     }
 }

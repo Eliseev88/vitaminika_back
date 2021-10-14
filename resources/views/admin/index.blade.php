@@ -9,8 +9,8 @@
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>54</h1>
-                        <span>customers</span>
+                        <h1>{{ $usersCount }}</h1>
+                        <span>Зарегестрированных пользователей</span>
                     </div>
                     <div>
                         <span class="las la-users"></span>
@@ -19,18 +19,8 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>79</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="las la-clipboard"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>124</h1>
-                        <span>Orders</span>
+                        <h1>{{ $newOrders }}</h1>
+                        <span>Новых заказов</span>
                     </div>
                     <div>
                         <span class="las la-shopping-bag"></span>
@@ -39,11 +29,21 @@
 
                 <div class="card-single">
                     <div>
-                        <h1>$6k</h1>
-                        <span>income</span>
+                        <h1>{{ $inProgressOrders }}</h1>
+                        <span>Заказа в обработке</span>
                     </div>
                     <div>
-                        <span class="lab la-google-wallet"></span>
+                        <span class="las la-shopping-bag"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1>{{ $completedOrders }}</h1>
+                        <span>Завершенных заказов</span>
+                    </div>
+                    <div>
+                        <span class="lab la-shopping-bag"></span>
                     </div>
                 </div>
             </div>
@@ -53,10 +53,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Последние заказы</h3>
-                            <button>
+                            <a href="{{ route('admin.orders') }}">
                                  Смотреть все
                                 <span class="las la-arrow-right"></span>
-                            </button>
+                            </a>
                         </div>
                         <div class="card-body">
                             <table width="100%">
@@ -68,153 +68,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($lastOrders as $order)
                                     <tr>
-                                        <td><a href="">12456</a></td>
-                                        <td>10.10.10</td>
+                                        <td><a href="{{ route('admin.order', ['order' => $order]) }}">{{ $order->id }}</a></td>
+                                        <td>{{ $order->created_at }}</td>
                                         <td class="td-status">
+                                            @if($order->status == 0)
                                             <span class="status purple"></span>
                                             новый
+                                            @elseif($order->status == 2)
+                                                <span class="status orange"></span>
+                                                завершен
+                                            @elseif($order->status == 1)
+                                                <span class="status pink"></span>
+                                                в процессе
+                                            @else
+                                                <span class="status orange"></span>
+                                                отменен
+                                            @endif
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td  class="td-status">
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td class="td-status">
-                                            <span class="status orange"></span>
-                                            pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>UI/UX Design</td>
-                                        <td>UI Team</td>
-                                        <td class="td-status">
-                                            <span class="status purple"></span>
-                                            review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td class="td-status">
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td class="td-status">
-                                            <span class="status orange">
-                                            </span>
-                                            pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>UI/UX Design</td>
-                                        <td>UI Team</td>
-                                        <td class="td-status">
-                                            <span class="status purple"></span>
-                                            review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td class="td-status">
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td class="td-status">
-                                            <span class="status orange"></span>
-                                            pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>UI/UX Design</td>
-                                        <td>UI Team</td>
-                                        <td>
-                                            <span class="status purple"></span>
-                                            review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td>
-                                            <span class="status orange">
-                                            </span>
-                                            pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>UI/UX Design</td>
-                                        <td>UI Team</td>
-                                        <td>
-                                            <span class="status purple"></span>
-                                            review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td>
-                                            <span class="status orange"></span>
-                                            pending
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>UI/UX Design</td>
-                                        <td>UI Team</td>
-                                        <td>
-                                            <span class="status purple"></span>
-                                            review
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Web Dev</td>
-                                        <td>Frontend</td>
-                                        <td>
-                                            <span class="status pink"></span>
-                                            in progress
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ushp app</td>
-                                        <td>Mobile Team</td>
-                                        <td>
-                                            <span class="status orange">
-                                            </span>
-                                            pending
-                                        </td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

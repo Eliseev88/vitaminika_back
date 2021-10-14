@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/adminStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
@@ -23,32 +24,32 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="/admin">
+                    <a href="{{ route('admin') }}">
                         <span class="las la-igloo"></span>
                         <span>Главная</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/orders">
+                    <a href="{{ route('admin.orders') }}">
                         <span class="las la-shopping-bag"></span>
                         <span>Заказы</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="">
                         <span class="las la-clipboard-list"></span>
                         <span>Продукты</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="">
                         <span class="las la-receipt"></span>
                         <span>Бренды</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="">
                         <span class="las la-user-circle"></span>
                         <span>Пользователи</span>
                     </a>
@@ -88,7 +89,7 @@
             </div>
 
             <div class="user-wrapper">
-                <img src="/img/main-logo.png" alt="" width="30px" height="30px" alt="">
+                <img src="/img/main-logo.png" alt="" width="30px" height="30px">
                 <div>
                     <h4>John Doe</h4>
                     <small>Super Admin</small>
@@ -118,12 +119,15 @@
 
         const curpath = document.location.pathname;
         const link = curpath && document.querySelector('li a[href="' + curpath + '"]');
-        
+
         if (link) {
             link.className += 'link-active';
         }
 
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    @stack('js')
 
 </body>
 
