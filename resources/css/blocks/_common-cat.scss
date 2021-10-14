@@ -1,9 +1,11 @@
 .common-cat {
+    padding-bottom: 5rem;
+    border-bottom: 1px solid #ccc;
 
     &__inner {
         display: flex;
         align-items: center;
-        margin-bottom: 12rem;
+        margin-bottom: 3rem;
     }
 
     &__title {
@@ -14,34 +16,11 @@
         font-size: 6rem;
         color: $mainFontColor;
         position: relative;
-
-        &::before {
-            content: '';
-            display: block;
-            background-color: $mainFontColor;
-            width: .2rem;
-            height: 7rem;
-            position: absolute;
-            top: -10rem;
-            left: 6.5rem;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            background-color: $mainFontColor;
-            width: 6rem;
-            height: .2rem;
-            position: absolute;
-            bottom: 4rem;
-            right: 30rem;
-        }
     }
 
     &__wrapper {
         display: grid;
-        grid-template-columns: auto auto auto;
-//        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 25% auto auto;
         grid-column-gap: 5rem;
         grid-row-gap: 5rem;
     }
@@ -49,10 +28,11 @@
     &__item {
         display: flex;
         text-decoration: none;
-        
+
         &:hover {
             outline: 1px solid #EDEDED;
-            > .common-cat__name {
+
+            >.common-cat__name {
                 text-decoration: underline;
             }
         }
@@ -64,8 +44,39 @@
         font-weight: 700;
         color: $mainFontColor;
     }
-    
+
     &__img {
         width: 100%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .common-cat {
+        &__title {
+            font-size: 4rem;
+            color: $mainFontColor;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    @media only screen and (max-width:568px) {
+        .common-cat {
+            &__title {
+                display: block;
+                width: 100%;
+                font-weight: 900;
+                font-size: 2.5rem;
+                color: $mainFontColor;
+            }
+
+            &__wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     }
 }
