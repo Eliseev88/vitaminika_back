@@ -4,7 +4,7 @@
 
 @section('content')
     <x-breadcrumps brand="Оформление заказа" />
-        <div class="popup__body">
+        <div class="popup__body container">
             <div class="popup__content">
                 <div class="order__title">
                     @if (session('success'))
