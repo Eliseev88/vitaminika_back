@@ -2,7 +2,7 @@
 
 @section('content')
     <x-breadcrumps brand="Корзина" />
-        <div class="popup__body">
+        <div class="popup__body container">
             <div class="popup__content">
                 <div class="cart__title">Корзина</div>
                 <div class="cart" id="#cart">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="cart__right">
                                 <button class="cart__delete fas fa-trash" data-item_id="{{ $key }}" data-cart_id="{{$cart_id}}" data-product_id="{{ $el->id }}"></button>
-                                <div class="price__old">{{ $el->price * $el->quantity - 100 }}₽</div>
+                                <!--<div class="price__old">{{ $el->price * $el->quantity - 100 }}₽</div>-->
                                 <div class="price" id="item-price_{{ $el->id }}">{{ $el->price * $el->quantity }} <sup>₽</sup></div>
                             </div>
                         </div>
