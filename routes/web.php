@@ -19,6 +19,10 @@ Route::get('/order', [\App\Http\Controllers\OrderController::class, 'order'])->n
 Route::get('/contacts', [\App\Http\Controllers\MainController::class, 'contacts'])->name('contacts');
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery'])->name('delivery');
 Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
+Route::get('/admin/order_1', [\App\Http\Controllers\Admin\OrderController::class, 'show']);
+Route::get('/admin/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index']);
+
+
 Route::get('/basket', [\App\Http\Controllers\BasketController::class, 'basket'])->name('basket');
 
 

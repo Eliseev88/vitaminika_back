@@ -71,7 +71,7 @@
                                     <tr>
                                         <td><a href="">12456</a></td>
                                         <td>10.10.10</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status purple"></span>
                                             новый
                                         </td>
@@ -79,7 +79,7 @@
                                     <tr>
                                         <td>Web Dev</td>
                                         <td>Frontend</td>
-                                        <td>
+                                        <td  class="td-status">
                                             <span class="status pink"></span>
                                             in progress
                                         </td>
@@ -87,7 +87,7 @@
                                     <tr>
                                         <td>Ushp app</td>
                                         <td>Mobile Team</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status orange"></span>
                                             pending
                                         </td>
@@ -95,7 +95,7 @@
                                     <tr>
                                         <td>UI/UX Design</td>
                                         <td>UI Team</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status purple"></span>
                                             review
                                         </td>
@@ -103,7 +103,7 @@
                                     <tr>
                                         <td>Web Dev</td>
                                         <td>Frontend</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status pink"></span>
                                             in progress
                                         </td>
@@ -111,7 +111,7 @@
                                     <tr>
                                         <td>Ushp app</td>
                                         <td>Mobile Team</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status orange">
                                             </span>
                                             pending
@@ -120,7 +120,7 @@
                                     <tr>
                                         <td>UI/UX Design</td>
                                         <td>UI Team</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status purple"></span>
                                             review
                                         </td>
@@ -128,7 +128,7 @@
                                     <tr>
                                         <td>Web Dev</td>
                                         <td>Frontend</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status pink"></span>
                                             in progress
                                         </td>
@@ -136,7 +136,7 @@
                                     <tr>
                                         <td>Ushp app</td>
                                         <td>Mobile Team</td>
-                                        <td>
+                                        <td class="td-status">
                                             <span class="status orange"></span>
                                             pending
                                         </td>

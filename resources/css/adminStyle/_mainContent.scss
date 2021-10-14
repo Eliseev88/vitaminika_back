@@ -126,6 +126,7 @@
             grid-gap: 2rem;
             // grid-template-columns: 67% auto;
             grid-template-columns: auto;
+            overflow-y: auto;
 
             & .card {
                 background: #fff;
@@ -153,6 +154,7 @@
                 }
 
                 &-body {
+                    overflow-y: auto;
 
                     & table {
                         border-collapse: collapse;
@@ -180,9 +182,10 @@
                                 }
                             }
 
-                            tr td:last-child {
+                            & .td-status {
                                 display: flex;
                                 align-items: center;
+                                padding: 1rem 1rem;
                             }
 
                             td .status {
