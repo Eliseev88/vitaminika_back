@@ -15,7 +15,7 @@
                 </div>
                 @if (session('success'))
                     Ваш заказ №{{ session('orderId') }} на сумму {{ session('sum') }} рублей оформлен.
-                    Информация по вашему заказу выслална на {{ session('email') }}
+                    Информация по вашему заказу выслана на {{ session('email') }}
                     Наши менеджеры свяжутся с вами в ближайшее время.
                 @else
                     <form action="{{ route('order.add') }}" method="POST" class="order">

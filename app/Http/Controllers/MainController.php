@@ -47,7 +47,7 @@ class MainController extends Controller
         $cart_id = $_COOKIE['cart_id'];
 
         $brands = Brand::all();
-        $currentProduct = Product::with('brand', 'amounts')->where('name', $productName)->first();
+        $currentProduct = Product::with('brand')->where('name', $productName)->first();
         return view('product', [
             'allBrands' => $brands,
             'currentProduct' => $currentProduct,
