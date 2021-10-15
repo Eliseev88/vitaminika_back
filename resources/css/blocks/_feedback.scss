@@ -1,5 +1,5 @@
 .feedback {
-    margin-bottom: 15rem;
+    margin-bottom: 5rem;
         &__title {
             font-weight: 700;
             margin-bottom: 2rem;
@@ -9,7 +9,7 @@
             font-size: 2.5rem;
             color: $mainFontColor;
             position: relative;
-        
+
             &::before {
                 content: '';
                 display: block;
@@ -20,7 +20,7 @@
                 top: -8rem;
                 left: 8.5rem;
             }
-        
+
             &::after {
                 content: '';
                 display: block;
@@ -31,13 +31,13 @@
                 top: 1.5rem;
                 left: 54rem;
             }
-                
+
         }
 
-        &__form {  
+        &__form {
             display: flex;
             flex-direction: column;
-            
+
             & label {
                 margin-bottom: 1rem;
                 width: 30rem;
@@ -92,7 +92,7 @@
     .fedback {
         &__form {
             justify-content: center;
-            
+
             & label, & input, & textarea {
                 width: 85%;
             }
@@ -113,4 +113,3 @@
         }
     }
 }
-  

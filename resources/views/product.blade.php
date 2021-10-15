@@ -36,12 +36,10 @@
                             <span class="product__question">Страна производитель:</span>
                             <span class="product__answer">{{ $currentProduct->brand->country }}</span>
                         </div>
-                        <div class="price__old">{{ $currentProduct->price - 100 }}₽</div>
                         <div class="product__bottom">
                             <div class="price">{{ $currentProduct->price }} <sup>₽</sup></div>
                             <button class="button basket-add" type="submit" data-cart_id="{{ $cart_id }}" data-basket_add="{{ $currentProduct->id }}">В корзину</button>
                         </div>
-                        <span class="error">* Выберите, пожалуйста, емкости</span>
                     </form>
                 </div>
             </div>

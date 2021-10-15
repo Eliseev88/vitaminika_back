@@ -15,7 +15,6 @@
         padding: 2.4rem 0;
         display: flex;
         justify-content: space-between;
-        align-items: center;
 
         &:first-child {
             border-top: 1px solid #C8C8C8;
@@ -45,7 +44,10 @@
     }
 
     &__right {
-        text-align: end;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
     }
 
     &__delete {
@@ -111,6 +113,10 @@
         content: '';
         height: 1.5rem;
     }
+
+    .first {
+        justify-content: end;
+    }
 }
 
 @media only screen and (max-width:768px) {
@@ -120,21 +126,21 @@
             font-size: 3rem;
             margin-bottom: 3rem;
         }
-    
+
         &__left {
-            
+
         }
         &__image {
             width: 15rem;
             margin-right: 3rem;
-            
+
         }
-    
+
         &__name {
             font-size: 1.5rem;
         }
     }
-    
+
 }
 
 @media only screen and (max-width:568px) {
@@ -143,37 +149,37 @@
         .price {
             font-size: 1.5rem;
         }
-    
+
         &__title {
             font-size: 2.5rem;
             margin-bottom: 2.5rem;
         }
-    
+
         &__left {
-            
+
         }
         &__image {
             width: 12rem;
             margin-right: 1.5rem;
-            
+
         }
-    
+
         &__name {
             font-size: 1.3rem;
-           
+
         }
-    
-     
-    
+
+
+
         &__line {
             flex-wrap: wrap;
             justify-content: center;
             & a:first-child{
                 margin-bottom: 1.5rem;
             }
-          
+
         }
     }
-    
+
 }
 

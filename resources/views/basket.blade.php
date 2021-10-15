@@ -24,13 +24,12 @@
                             </div>
                             <div class="cart__right">
                                 <button class="cart__delete fas fa-trash" data-item_id="{{ $key }}" data-cart_id="{{$cart_id}}" data-product_id="{{ $el->id }}"></button>
-                                <!--<div class="price__old">{{ $el->price * $el->quantity - 100 }}₽</div>-->
-                                <div class="price" id="item-price_{{ $el->id }}">{{ $el->price * $el->quantity }} <sup>₽</sup></div>
+                                <div class="price" id="item-price_{{ $el->id }}">{{ $el->price * $el->quantity }}<sup>₽</sup></div>
                             </div>
                         </div>
                     @endforeach
                     <div class="cart__bottom">
-                                <div class="cart__line">
+                                <div class="cart__line first">
                                     <div class="cart__box cart__box_right">
                                         <span class="cart__text cart__text_sum">Итого:</span>
                                         <div class="price" id="sum">{{ \Cart::session($cart_id)->getTotal() }}<sup> ₽</sup></div>

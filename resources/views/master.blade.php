@@ -41,7 +41,7 @@
         <header class="header container">
             <div class="header__block left">
                 <div class="header__cart">
-                    <a href="#popup_favor" class="header__link popup-link"><i class="far fa-heart"></i></a>
+                    <a href="{{ route('admin') }}" class="header__link"><i class="far fa-user"></i></a>
                     <a href="{{ route('basket') }}" class="header__link quantity">
                         <div class="quantity__box">{{ \Cart::session($cart_id)->getTotalQuantity() }}</div>
                         <i class="fas fa-shopping-cart"></i>
@@ -96,10 +96,7 @@
             <div class="footer__top">
                 <div class="footer__left">
                     <img src="/img/logoVitv2.png" alt="">
-                    <h3 class="footer__title">Витаминика</h3>   
-                    <p class="footer__subtitle">Официальный
-                        представитель в России</p>
-                    
+                    <h3 class="footer__title">Витаминика</h3>
                 </div>
                 <div class="footer__right">
                     <nav class="footer__contacts">
@@ -117,7 +114,7 @@
                             <div class="footer__items">
                                 <span class="footer__element fix">T: 098 738 12 93</span>
                                 <span class="footer__element fix">T: 098 738 12 93</span>
-                                <span class="footer__element fix">Украина, г. Харьков, пл. Конституции, 31</span>
+                                <span class="footer__element fix">Россия, г. Москва, ул. Бакунинская, 84, 6 этаж, офис 619</span>
                             </div>
                             <div class="footer__social">
                                 <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
@@ -129,9 +126,7 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <span class="footer__element">Политика конфиденциальности</span>
-                <span class="footer__element">Договор оферты</span>
-                <span class="footer__element">Разработка сайта</span>
+                <span class="footer__element">Авторские права &copy; <?php echo date("Y");?> Витаминика</span>
             </div>
         </div>
     </footer>
