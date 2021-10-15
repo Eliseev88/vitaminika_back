@@ -1422,6 +1422,25 @@ body.lock {
   color: #372821;
 }
 
+@media only screen and (max-width: 1200px) {
+  .breadcrumps {
+    background-position: unset;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .breadcrumps {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .breadcrumps__element {
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .breadcrumps__link {
+    font-size: 2.5rem;
+  }
+}
 .category {
   margin-bottom: 10rem;
 }
