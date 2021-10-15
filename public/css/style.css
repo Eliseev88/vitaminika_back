@@ -1719,19 +1719,22 @@ body.lock {
   }
 }
 @media only screen and (max-width: 568px) {
+  .pagination__link {
+    margin-right: 1rem;
+  }
   .pagination .prev {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
   }
   .pagination .prev::before {
     bottom: 1rem;
     left: -1.8rem;
   }
   .pagination .next {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
   }
   .pagination .next::before {
     bottom: 1rem;
-    left: -1rem;
+    left: -1.3rem;
   }
 }
 /* PAGE PRODUCT */

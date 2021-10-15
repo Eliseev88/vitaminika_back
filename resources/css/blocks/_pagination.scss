@@ -157,8 +157,11 @@
 
 @media only screen and (max-width:568px) {
     .pagination {
+        &__link {
+            margin-right: 1rem;
+        }
         .prev {
-            margin-right: 2rem;
+            margin-right: 1.5rem;
 
             &::before {
                 bottom: 1rem;
@@ -167,11 +170,11 @@
         }
 
         & .next {
-            margin-left: 2rem;
+            margin-left: 1.5rem;
 
             &::before {
                 bottom: 1rem;
-                left: -1rem;
+                left: -1.3rem;
             }
         }
 
