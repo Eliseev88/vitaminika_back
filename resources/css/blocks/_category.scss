@@ -162,8 +162,10 @@
 
         &__body {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
+            justify-content: space-around;
         }
     }
 }
