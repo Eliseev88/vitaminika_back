@@ -18,7 +18,7 @@
                 transform: rotate(90deg);
             }
 
-            > .nav__subnav {
+            >.nav__subnav {
                 display: block;
                 box-shadow: 0px 4px 24px 0px #0000001A;
             }
@@ -76,5 +76,18 @@
             text-shadow: 0 0 1px $mainFontColor, 0 0 1px $mainFontColor, 0 0 1px $mainFontColor;
             background-color: $greyBg;
         }
+    }
+}
+
+
+@media only screen and (max-width:568px) {
+    .nav {
+        &__item {
+            font-size: 1.5rem;
+        }
+
+        &__link {
+                padding: 2rem 1rem;
+            }
     }
 }
