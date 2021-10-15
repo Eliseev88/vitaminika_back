@@ -773,7 +773,88 @@ body.lock {
   margin-top: 1rem;
   font-weight: bolder;
 }
+@media only screen and (max-width: 960px) {
+  .prod-card .main-content main .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .prod-card .main-content main .recent-grid {
+    grid-template-columns: repeat(60% 40%);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .prod-card .sidebar {
+    left: -100% !important;
+  }
+  .prod-card .sidebar.active {
+    left: 0 !important;
+    z-index: 100;
+    width: 345px !important;
+  }
+  .prod-card .sidebar.active .sidebar-brand, .prod-card .sidebar.active .sidebar-menu ul li {
+    padding-left: 2rem;
+    text-align: left;
+  }
+  .prod-card .sidebar.active .sidebar-menu ul li a {
+    padding-left: 1rem;
+  }
+  .prod-card .sidebar.active .sidebar-brand h2 span:last-child, .prod-card .sidebar.active .sidebar-menu ul li a span:last-child {
+    display: inline;
+  }
+  .prod-card .sidebar.active .sidebar-brand h2 span:last-child {
+    display: block;
+  }
+  .prod-card .main-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .prod-card .main-content header {
+    font-size: 1.1rem;
+    width: 100% !important;
+    left: 0 !important;
+  }
+  .prod-card .main-content header h2 {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+  }
+  .prod-card .main-content header h2 button {
+    background: var(--main-color);
+    margin-right: 1rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+  }
+  .prod-card .main-content header h2 button span {
+    text-align: center;
+    padding-right: 0;
+  }
+  .prod-card .main-content header .search-wrapper {
+    display: none;
+  }
+  .prod-card .main-content main .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .prod-card .main-content main .recent-grid {
+    grid-template-columns: 100%;
+  }
+  .prod-card .sidebar.active ~ .main-content {
+    margin-left: 0rem !important;
+  }
+}
 
+@media only screen and (max-width: 568px) {
+  .prod-card {
+    max-width: 20rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
 .footer {
   flex-shrink: 0;
   border-top: 1px solid #DEDEDE;
@@ -1389,6 +1470,71 @@ body.lock {
   margin-right: 2rem;
 }
 
+@media only screen and (max-width: 1200px) {
+  .category__inner h2 {
+    font-size: 3rem;
+  }
+  .category__inner h2::after, .category__inner h2::before {
+    display: none;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .category__inner h2 {
+    font-size: 2.5rem;
+  }
+  .category__body {
+    margin-bottom: 13rem;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .category__inner {
+    flex-direction: column;
+  }
+  .category__inner h2 {
+    margin: 2.5rem 0;
+    font-size: 2rem;
+  }
+  .category__wrapper {
+    flex-direction: column;
+  }
+  .category__image {
+    width: 40%;
+    margin: 1rem auto;
+  }
+  .category__content {
+    width: 100%;
+  }
+  .category__slogan {
+    font-size: 2.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .category__box {
+    padding: 1.5rem;
+  }
+  .category__descript {
+    font-size: 1.6rem;
+  }
+  .category__presentation {
+    margin-top: 3rem;
+  }
+  .category__inner {
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .category__inner h2 {
+    font-size: 1.5rem;
+  }
+  .category__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .title {
   text-transform: uppercase;
   display: block;
@@ -1427,6 +1573,9 @@ body.lock {
 }
 .pagination__pages .active {
   transform: translateY(-1rem);
+}
+.pagination__pages .active::after, .pagination__pages .active::before {
+  display: none;
 }
 .pagination__pages .active .pagination__line {
   height: 7.6rem;
@@ -1529,6 +1678,35 @@ body.lock {
   font-size: 1.5rem;
 }
 
+@media only screen and (max-width: 768px) {
+  .pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .pagination .prev {
+    margin-right: 3rem;
+  }
+  .pagination .next {
+    margin-left: 3rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .pagination .prev {
+    margin-right: 2rem;
+  }
+  .pagination .prev::before {
+    bottom: 1rem;
+    left: -1.8rem;
+  }
+  .pagination .next {
+    margin-left: 2rem;
+  }
+  .pagination .next::before {
+    bottom: 1rem;
+    left: -1rem;
+  }
+}
 /* PAGE PRODUCT */
 .product__wrapper {
   display: flex;
