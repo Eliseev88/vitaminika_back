@@ -10,7 +10,6 @@
         & p {
             margin-bottom: 5rem;
         }
-        
 
         & p::first-letter {
             margin-left: 3.5rem;
@@ -19,8 +18,7 @@
 }
 
 
-@media (max-width: 600px) {
-
+@media (max-width: 568px) {
     .contacts {
         margin-bottom: 15rem;
 
@@ -28,9 +26,7 @@
             & p {
                 margin-bottom: 5rem;
             }
-
         }
-
     }
 }
 
