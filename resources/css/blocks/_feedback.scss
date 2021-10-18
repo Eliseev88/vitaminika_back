@@ -38,6 +38,11 @@
             outline: none;
             border: 1px solid var($mainFontColor);
             border-radius: 5px;
+
+            &::placeholder {
+                font-style: italic;
+                font-size: 1.5rem;
+            }
         }
 
 
