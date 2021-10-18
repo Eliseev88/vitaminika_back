@@ -23,7 +23,7 @@
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
 
-                            <div class="info__text">Г. Москва, ул. Фридриха Энгельса 75, стр. 21</div>
+                            <div class="info__text">Россия, г. Москва, Ул. Фридриха Энгельса, 75, стр. 21, 6 этаж, офис 619</div>
                         </div>
                         <div class="map__info-details">
                             <div class="details__icons">
