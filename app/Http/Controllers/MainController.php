@@ -22,13 +22,15 @@ class MainController extends Controller
             'allBrands' => $brands,
             'topBrand' => $topBrand,
             'cart_id' => $cart_id,
-            'cart' => \Cart::session($cart_id)->getContent(),
+            'cart' => \Cart::session($_COOKIE['cart_id'])->getContent(),
         ]);
     }
 
     public function brand($brandName)
     {
-        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
+        if (!isset($_COOKIE['cart_id'])) {
+            setcookie('cart_id', uniqid());
+        }
         $cart_id = $_COOKIE['cart_id'];
 
         $brands = Brand::all();
@@ -43,9 +45,11 @@ class MainController extends Controller
 
     public function product($brandName, $productName)
     {
-        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
+        if (!isset($_COOKIE['cart_id'])) {
+            setcookie('cart_id', uniqid());
+            $cart_id = $_COOKIE['cart_id'];
+        }
         $cart_id = $_COOKIE['cart_id'];
-
         $brands = Brand::all();
         $currentProduct = Product::with('brand')->where('name', $productName)->first();
         return view('product', [
@@ -58,7 +62,10 @@ class MainController extends Controller
 
     public function contacts()
     {
-        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
+        if (!isset($_COOKIE['cart_id'])) {
+            setcookie('cart_id', uniqid());
+            $cart_id = $_COOKIE['cart_id'];
+        }
         $cart_id = $_COOKIE['cart_id'];
         $brands = Brand::all();
 
@@ -70,7 +77,10 @@ class MainController extends Controller
 
     public function delivery()
     {
-        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
+        if (!isset($_COOKIE['cart_id'])) {
+            setcookie('cart_id', uniqid());
+            $cart_id = $_COOKIE['cart_id'];
+        }
         $cart_id = $_COOKIE['cart_id'];
         $brands = Brand::all();
 

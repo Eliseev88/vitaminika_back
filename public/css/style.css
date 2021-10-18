@@ -266,7 +266,6 @@ body.lock {
   position: relative;
 }
 .main__title::before {
-  content: "";
   display: block;
   background-color: #372821;
   width: 0.2rem;
@@ -276,7 +275,6 @@ body.lock {
   left: 6.5rem;
 }
 .main__title::after {
-  content: "";
   display: block;
   background-color: #372821;
   width: 17rem;
