@@ -6,8 +6,8 @@
 
     <x-breadcrumps brand="{{ $currentProduct->brand->name }}" product="{{ $currentProduct->name }}" />
     <!-- PRODUCT -->
-    <main class="product">
-        <div class="container">
+    <main class="product container">
+        <div class="">
             <div class="product__wrapper">
                 <div class="product__left">
                     <img src="{{ $currentProduct->image }}" alt="image" class="product__image">

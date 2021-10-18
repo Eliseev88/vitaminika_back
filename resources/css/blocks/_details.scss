@@ -1,19 +1,47 @@
 .details {
-    margin-bottom: 13rem;
+    margin-bottom: 5rem;
     
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 7rem;
+        margin-bottom: 3rem;
     }
     
     &__text {
-        margin-bottom: 7rem;
+        margin-bottom: 5rem;
         line-height: 3.9rem;
+        text-align: justify;
     }
     
     &__consist {
-        margin-bottom: 7rem;
+        margin-bottom:3rem;
     }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .details {
+        &__header{
+            & .topic {
+                display: none;
+            }
+
+            & .title {
+                font-size: 1.8rem;
+            }
+        }   
+    } 
+}
+
+@media only screen and (max-width:960px) {
+    
+}
+
+@media only screen and (max-width:768px) {
+    
+}
+
+@media only screen and (max-width:568px) {
+ 
 }
