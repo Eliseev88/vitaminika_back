@@ -1131,7 +1131,7 @@ body.lock {
   align-items: center;
   justify-content: space-between;
   width: 38rem;
-  margin: 0 1rem;
+  margin: 1rem;
 }
 
 .details__icons {
@@ -1145,9 +1145,18 @@ body.lock {
   margin-right: 0.5rem;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
   .address__map {
     flex-direction: column;
+  }
+  .address__map .map {
+    margin-bottom: 3rem;
+  }
+  .address .map__info {
+    width: 50%;
+  }
+  .address .map__info-details {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
