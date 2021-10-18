@@ -926,6 +926,7 @@ body.lock {
   text-align: center;
   padding-top: 1rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 .footer__social_item::after {
   content: "";
@@ -962,8 +963,13 @@ body.lock {
 }
 .footer__items {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+}
+.footer__items-top {
+  display: flex;
+  flex-direction: column;
 }
 .footer__element {
   text-decoration: none;
@@ -972,14 +978,8 @@ body.lock {
   font-weight: 500;
   padding: 1rem 0;
 }
-.footer__element:hover {
-  color: black;
-}
 .footer .fix {
   margin-bottom: 0;
-}
-.footer .fix:hover {
-  color: #969696;
 }
 .footer__bottom {
   display: flex;
@@ -990,7 +990,15 @@ body.lock {
 }
 
 @media only screen and (max-width: 960px) {
+  .footer__left {
+    margin-right: 3rem;
+  }
+  .footer__left .footer__title {
+    font-size: 3rem;
+    text-align: center;
+  }
   .footer__left img {
+    margin: 0 auto;
     width: 100%;
   }
 }
@@ -1007,6 +1015,10 @@ body.lock {
   .footer__left {
     width: 100%;
     margin-right: 0;
+  }
+  .footer__left .footer__title {
+    font-size: 3rem;
+    text-align: start;
   }
   .footer__left img {
     display: none;
@@ -1030,8 +1042,6 @@ body.lock {
   }
   .footer__items {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     justify-content: space-between;
   }
   .footer__bottom {
@@ -1074,6 +1084,9 @@ body.lock {
   }
   .footer__element {
     margin-bottom: 0.5rem;
+  }
+  .footer__items {
+    flex-direction: column;
   }
   .footer__bottom {
     width: 100%;
@@ -1132,12 +1145,14 @@ body.lock {
   margin-right: 0.5rem;
 }
 
+@media only screen and (max-width: 1000px) {
+  .address__map {
+    flex-direction: column;
+  }
+}
 @media only screen and (max-width: 768px) {
   .address {
     margin-bottom: 5rem;
-  }
-  .address__map {
-    flex-direction: column;
   }
   .address .map__info {
     margin-top: 2rem;
@@ -1422,8 +1437,8 @@ body.lock {
   height: 5rem;
   opacity: 0.3;
   position: fixed;
-  bottom: 50px;
-  right: 100px;
+  bottom: 5rem;
+  right: 5rem;
   border: 0.2rem solid #111;
   outline: none;
   border-radius: 50%;
