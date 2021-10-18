@@ -112,21 +112,14 @@
                         <div class="footer__box">
                             <div class="footer__contacts_title">Наши контакты</div>
                             <div class="footer__items">
-                                <div  class="footer__items-top">
-                                    <span class="footer__element fix">T: +7-985-047-00-44</span>
-                                    <span class="footer__element fix">T: +7-919-997-99-37</span>
-                                    <span class="footer__element fix">T: +7-905-709-85-22</span>
-                                </div>
-                                <div class="footer__social">
+                                <span class="footer__element fix">T: 098 738 12 93</span>
+                                <span class="footer__element fix">T: 098 738 12 93</span>
+                                <span class="footer__element fix">Россия, г. Москва, ул. Бакунинская, 84, 6 этаж, офис 619</span>
+                            </div>
+                            <div class="footer__social">
                                 <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
                                 <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
                                 <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
-                            </div>
-
-                            </div>
-                            <div class="footer__items-bottom">
-                                <div class="footer__contacts_title">Наш адрес</div>
-                                <span class="footer__element fix">Россия, г. Москва, Ул. Фридриха Энгельса, 75, стр. 21, 6 этаж, офис 619</span>
                             </div>
                         </div>
                     </nav>
