@@ -5,13 +5,7 @@
 
 @section('content')
     <x-breadcrumps brand="Контакты" />
-        <section class="contacts">
-            <div class="container">
-                <div class="contacts__info">
-                </div>
-            </div>
-        </section>
-
+        
         <section class="address">
             <div class="container">
                 <div class="address__title">
