@@ -1841,9 +1841,7 @@ body.lock {
   border: none;
   background-color: #F2F2F2;
   padding: 2rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s linear;
+  display: none;
 }
 .form__address:focus-visible {
   outline: 1px solid #888888;

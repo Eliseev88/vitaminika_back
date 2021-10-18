@@ -17,8 +17,8 @@ class Breadcrumps extends Component
 
     public function __construct($brand, $product = null)
     {
-        $this->brand = str_replace("&#039;", "'", $brand);
-        $this->product = str_replace('&amp;', '&', $product);
+        $this->brand = str_replace(["&#039;", '&amp;', '&quot;',], ["'", '&', '"',], $brand);
+        $this->product = str_replace(["&#039;", '&amp;', '&quot;',], ["'", '&', '"',], $product);
     }
 
     /**

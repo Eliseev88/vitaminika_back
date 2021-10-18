@@ -69,13 +69,11 @@
                 let delivery = $('input[name=delivery]:checked').val();
                 if (delivery == 'yes') {
                     $('.form__address').css({
-                        'opacity' : 1,
-                        'visibility' : 'visible',
+                        'display' : 'block',
                     });
                 } else {
                     $('.form__address').css({
-                        'opacity' : 0,
-                        'visibility' : 'hidden',
+                        'display': 'none',
                     });
                 }
             })

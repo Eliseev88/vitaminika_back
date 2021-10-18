@@ -50,7 +50,7 @@
                         <ul class="nav__subnav">
                             @foreach($allBrands as $brand)
                             <li class="nav__subitem">
-                                <a href="{{ route('brand', ['brand' => $brand->name]) }}" class="nav__sublink">{{ $brand->name }}</a>
+                                <a href="{{ route('brand', ['brand' => $brand]) }}" class="nav__sublink">{{ $brand->name }}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -203,7 +203,7 @@
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
-                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + ' <sup>₽</sup>')
+                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
 
                     }
@@ -230,7 +230,7 @@
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
-                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + ' <sup>₽</sup>')
+                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
                     }
                 })
@@ -239,7 +239,6 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 100) {
                     $('.scrollup').fadeIn();

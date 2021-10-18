@@ -79,7 +79,7 @@
             @foreach($currentProduct->getBrand()->products as $product)
             <div class="slider__item">
                 <div class="prod-card">
-                    <a href="{{ route('product', ['brand' => $currentProduct->brand->name, 'product' => $product->name]) }}" class="prod-card__link">
+                    <a href="{{ route('product', ['brand' => $currentProduct->brand, 'product' => $product]) }}" class="prod-card__link">
                         <img src="{{ $product->image }}" alt="image" class="prod-card__image">
                     </a>
                     <div class="prod-card__descript">

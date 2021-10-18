@@ -34,6 +34,8 @@ Route::get('/contacts', [\App\Http\Controllers\MainController::class, 'contacts'
     ->name('contacts');
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery'])
     ->name('delivery');
+Route::get('pagination/fetch_data', [\App\Http\Controllers\MainController::class, 'pagination'])
+    ->name('pagination');
 
 // ADMIN
 Route::group(['prefix' => 'admin'], function () {
