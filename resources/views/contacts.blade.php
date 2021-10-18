@@ -20,7 +20,7 @@
 
                 <div class="address__map">
                     <div class="map">
-                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aed87b71df77436a36f6787081f19128ca224bf7861a638e33e376616f477dc0a&amp;width=740&amp;height=342&amp;lang=ru_RU&amp;scroll=true"></script>
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad496605a8b39fd0f139d8cece2a1c5eafc8dba0b864038dee0286afbd2fb8ff0&amp;width=100%&amp;height=450&amp;lang=ru_RU&amp;scroll=true"></script>
                     </div>
 
                     <div class="map__info">
@@ -36,14 +36,33 @@
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
 
-                            <div class="info__text">Время работы офиса с 10:00 до 17:00</div>
+                            <div class="info__text">
+                                Время работы офиса: <br>
+                                пн-пт с 10:00 до 17:00
+                            </div>
                         </div>
                         <div class="map__info-details">
                             <div class="details__icons">
                                 <img src="img/contacts/watch.svg" alt="watch-icon">
                             </div>
 
-                            <div class="info__text">Время приемов заказов по телефону с 8:00 до 20:00 </div>
+                            <div class="info__text">
+                            Актуальные номера телефонов: <br> 
+                            +7-985-047-00-44, <br> 
+                            +7-919-997-99-37, <br> 
+                            +7-905-709-85-22
+                            </div>
+                        </div>
+                        <div class="map__info-details">
+                            <div class="details__icons">
+                                <img src="img/contacts/watch.svg" alt="watch-icon">
+                            </div>
+
+                            <div class="info__text">
+                                Время приемов заказов по телефону: <br>
+                                пн-пт с 8:00 до 20:00 <br>
+                                сб-вск с 10:00 до 20:00
+                            </div>
                         </div>
                     </div>
                 </div>
