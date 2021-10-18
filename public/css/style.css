@@ -180,6 +180,14 @@ body.lock {
   outline: none;
 }
 
+@media only screen and (max-width: 768px) {
+  .header {
+    margin: 1.5rem auto;
+  }
+  .header__block a img {
+    max-width: 75%;
+  }
+}
 .nav {
   background-color: #F2EFEB;
 }

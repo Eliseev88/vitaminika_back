@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="header__block">
-                <a href="{{ route('index') }}"><img src="/img/main_logo2.png" alt="logo"></a>
+                <a href="{{ route('index') }}"><img src="/img/logoVit-v2.png" alt="logo"></a>
             </div>
             <div class="header__block right">
                 <i class="fas fa-phone"></i>
