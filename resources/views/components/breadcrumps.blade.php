@@ -7,7 +7,7 @@
             </li>
             @if(!empty($product))
                 <li class="breadcrumps__element">
-                    <a href="{{ route('brand', ['brand' => $brand]) }}" style="text-decoration: none; color:#372821;">{{ $brand }}</a>
+                    <a href="{{ route('brand', ['brand' => $brandId]) }}" style="text-decoration: none; color:#372821;">{{ $brand }}</a>
                 </li>
                 <li class="breadcrumps__element">
                     {{ $product }}

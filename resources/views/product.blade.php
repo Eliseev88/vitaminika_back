@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <x-breadcrumps brand="{{ $currentProduct->brand->name }}" product="{{ $currentProduct->name }}" />
+    <x-breadcrumps brand="{{ $currentProduct->brand->name }}"
+                   brandId="{{ $currentProduct->brand->id }}"
+                   product="{{ $currentProduct->name }}" />
     <!-- PRODUCT -->
     <main class="product container">
         <div class="">

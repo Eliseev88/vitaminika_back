@@ -33,11 +33,11 @@
                 </div>
             </div>
             <div class="header__block">
-                <a href="{{ route('index') }}"><img src="/img/logoVit-v2.png" alt="logo"></a>
+                <a href="{{ route('index') }}"><img src="/img/main_logo3.png" height="90" alt="logo"></a>
             </div>
             <div class="header__block right">
                 <i class="fas fa-phone"></i>
-                <span class="header__phone">+38 099 947 19 23</span>
+                <span class="header__phone">+7-985-047-00-44</span>
             </div>
         </header>
 
