@@ -55,20 +55,14 @@
     margin-right: 0.5rem;
 }
 
-
-@media only screen and (max-width:1000px) {
+@media only screen and (max-width:768px) {
     .address {
+        margin-bottom: 5rem;
 
         &__map {
             flex-direction: column;
         }
-    }
-}
 
-
-@media only screen and (max-width:768px) {
-    .address {
-        margin-bottom: 5rem;
 
         .map__info {
             margin-top: 2rem;
