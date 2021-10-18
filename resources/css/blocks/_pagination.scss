@@ -8,6 +8,11 @@
         .active {
             transform: translateY(-1rem);
 
+            &::after,
+            &::before {
+                display: none;
+            }
+
             .pagination__line {
                 height: 7.6rem;
                 background-color: $mainFontColor;
@@ -25,8 +30,6 @@
         background-color: transparent;
         border: 1px solid $mainFontColor;
         cursor: pointer;
-
-
     }
 
     .next {
@@ -114,7 +117,7 @@
 
         &:hover {
             color: darken($mainFontColor, .7);
-            
+
             .pagination__line {
                 background-color: $mainFontColor;
             }
@@ -131,5 +134,49 @@
 
     &__number {
         font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width:960px) {}
+
+@media only screen and (max-width:768px) {
+    .pagination {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        & .prev {
+            margin-right: 3rem;
+        }
+
+        & .next {
+            margin-left: 3rem;
+        }
+    }
+}
+
+@media only screen and (max-width:568px) {
+    .pagination {
+        &__link {
+            margin-right: 1rem;
+        }
+        .prev {
+            margin-right: 1.5rem;
+
+            &::before {
+                bottom: 1rem;
+                left: -1.8rem;
+            }
+        }
+
+        & .next {
+            margin-left: 1.5rem;
+
+            &::before {
+                bottom: 1rem;
+                left: -1.3rem;
+            }
+        }
+
     }
 }

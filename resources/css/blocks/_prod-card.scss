@@ -40,4 +40,119 @@
         font-weight: bolder;
     }
 
+    @media only screen and (max-width:960px) {
+        .main-content {
+            & main {
+                & .cards {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                & .recent-grid {
+                    grid-template-columns: repeat(60% 40%);
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width:768px) {
+        .sidebar {
+            left: -100% !important;
+        }
+
+        .sidebar.active {
+            left: 0 !important;
+            z-index: 100;
+            width: 345px !important;
+
+            & .sidebar-brand,
+            & .sidebar-menu ul li {
+                padding-left: 2rem;
+                text-align: left;
+            }
+
+            & .sidebar-menu ul li a {
+                padding-left: 1rem;
+            }
+
+            & .sidebar-brand h2 span:last-child,
+            & .sidebar-menu ul li a span:last-child {
+                display: inline;
+
+            }
+
+            & .sidebar-brand h2 span:last-child {
+                display: block;
+            }
+        }
+
+        .main-content {
+            width: 100% !important;
+            margin-left: 0 !important;
+
+            & header {
+                font-size: 1.1rem;
+                width: 100% !important;
+                left: 0 !important;
+
+                & h2 {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.1rem;
+
+                    & button {
+                        background: var(--main-color);
+                        margin-right: 1rem;
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                        color: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center !important;
+
+                        & span {
+                            text-align: center;
+                            padding-right: 0;
+                        }
+                    }
+                }
+
+                & .search-wrapper {
+                    display: none;
+                }
+            }
+
+            & main {
+                & .cards {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                & .recent-grid {
+                    grid-template-columns: 100%;
+                }
+            }
+        }
+
+        .sidebar.active~.main-content {
+            margin-left: 0rem !important;
+        }
+    }
+
+
+
+}
+
+@media only screen and (max-width:568px) {
+    .prod-card {
+        max-width: 20rem;
+        height: 45rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        & button {
+            width: 100%;
+        }
+    }
 }

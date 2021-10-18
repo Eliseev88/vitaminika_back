@@ -128,9 +128,10 @@
 
         &__box {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-around;
         }
 
         &__left {
@@ -140,7 +141,7 @@
 
         &__item {
             height: 100%;
-            width: 100%;
+            width: fit-content;
             grid-column-start: auto;
             grid-column-end: auto;
             grid-row-start: auto;

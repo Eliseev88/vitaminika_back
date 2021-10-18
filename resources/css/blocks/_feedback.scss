@@ -1,114 +1,112 @@
 .feedback {
     margin-bottom: 5rem;
-        &__title {
-            font-weight: 700;
+
+    &__title {
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        display: block;
+        width: 100%;
+        font-size: 2.5rem;
+        color: $mainFontColor;
+        position: relative;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        & label {
+            margin-bottom: 1rem;
+            width: 30rem;
+        }
+
+        & input {
+            width: 50rem;
+        }
+
+        & textarea {
+            width: 50rem;
+            height: fit-content;
+        }
+
+        & input,
+        & textarea {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            padding: 1rem 1.5rem;
+            outline: none;
+            border: 1px solid var($mainFontColor);
+            border-radius: 5px;
+        }
+
+
+        .checkbox {
+            display: flex;
+            width: 50rem;
             margin-bottom: 2rem;
-            text-transform: uppercase;
-            display: block;
-            width: 100%;
-            font-size: 2.5rem;
-            color: $mainFontColor;
-            position: relative;
 
-            &::before {
+            & input {
                 content: '';
-                display: block;
-                background-color: $mainFontColor;
-                width: .2rem;
-                height: 6.6rem;
-                position: absolute;
-                top: -8rem;
-                left: 8.5rem;
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                flex-shrink: 0;
+                flex-grow: 0;
+                border: 1px solid #adb5bd;
+                border-radius: 0.25em;
+                margin-right: 0.5em;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 50% 50%;
             }
+        }
 
-            &::after {
-                content: '';
-                display: block;
-                background-color: $mainFontColor;
-                width: 6.7rem;
-                height: .2rem;
-                position: absolute;
-                top: 1.5rem;
-                left: 54rem;
-            }
+        & P {
+            margin-bottom: 5rem;
+        }
+    }
+}
 
+@media only screen and (max-width: 568px) {
+
+    .feedback {
+        margin-bottom: 5rem;
+
+        &__title {
+            font-size: 2rem;
         }
 
         &__form {
-            display: flex;
-            flex-direction: column;
+            align-items: center;
 
             & label {
                 margin-bottom: 1rem;
-                width: 30rem;
+                width: 100%;
+                padding: 1rem 0.5rem;
             }
 
-
             & input {
-                width: 50rem;
+                width: 100%;
             }
 
             & textarea {
-                width: 50rem;
+                width: 100%;
                 height: fit-content;
             }
-            & input, & textarea {
-               padding: 1rem 1.5rem;
+
+            & input,
+            & textarea {
+                padding: 1rem 1.5rem;
+                margin: 1rem 0;
             }
 
-
             .checkbox {
-                display: flex;
-                width: 50rem;
-                margin-bottom: 2rem;
-
-                & input {
-                    content: '';
-                    display: inline-block;
-                    width: 2rem;
-                    height: 2rem;
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    border: 1px solid #adb5bd;
-                    border-radius: 0.25em;
-                    margin-right: 0.5em;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-size: 50% 50%;
-                }
+                width: 100%;
             }
 
             & P {
                 margin-bottom: 5rem;
-            }
-
-
-        }
-}
-
-
-@media (max-width: 600px) {
-
-    .fedback {
-        &__form {
-            justify-content: center;
-
-            & label, & input, & textarea {
-                width: 85%;
-            }
-
-            & label {
-                margin-bottom: 5rem;
-            }
-        }
-    }
-}
-@media (min-width: 601px) {
-    .login {
-
-        &__form {
-            & label, & input {
-                width: 50rem;
             }
         }
     }
