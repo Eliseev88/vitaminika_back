@@ -6,8 +6,8 @@
     }
 
     &__left {
-        width: 50%;
-        margin-right: 16.5rem;
+        width: 40%;
+        margin-right: 5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -24,9 +24,9 @@
     }
 
     &__title {
-        font-size: 3.5rem;
+        font-size: 2rem;
         font-weight: bold;
-        margin-bottom: 4.5rem;
+        margin-bottom: 2rem;
     }
 
     &__descript {
@@ -49,5 +49,69 @@
             height: 2.5rem;
             bottom: -1rem;
         }
+
+        & .price {
+            font-size: 3.5rem;
+        }
     }
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .product {
+        &__left {
+            width: 40%;
+        }
+
+        &__right {
+            width: 55%;
+        }
+
+        &__image {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width:960px) {
+    .product {
+        &__left {
+            width: 35%;
+        }
+
+        &__right {
+            width: 60%;
+        }
+
+        &__image {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .product {
+        &__wrapper {
+            flex-direction: column;
+        }
+
+        &__left {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        &__right {
+            width: 100%;
+        }
+         &__bottom {
+            display: flex;
+            flex-direction: column;
+
+            & .price {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}
+
+
