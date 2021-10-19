@@ -20,84 +20,71 @@
                     </div>
                 </div>
             </div>
-            <div class="category__inner">
-                <h2 class="title">{{ $currentBrand->name }}</h2>
-                <div class="pagination">
-                    <button class="pagination__button prev"></button>
-                    <div class="pagination__pages">
-                        <a href="#" class="pagination__link">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">01</span>
-                        </a>
-                        <a href="#" class="pagination__link active">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">02</span>
-                        </a>
-                        <a href="#" class="pagination__link">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">03</span>
-                        </a>
-                        <a href="#" class="pagination__link">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">04</span>
-                        </a>
-                        <a href="#" class="pagination__link">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">05</span>
-                        </a>
-                        <a href="#" class="pagination__link">
-                            <div class="pagination__line"></div>
-                            <span class="pagination__number">06</span>
-                        </a>
-                    </div>
-                    <button class="pagination__button next"></button>
-                </div>
-            </div>
-            <div class="category__body">
-                @foreach($currentBrand->products as $product)
-                    <div class="prod-card">
-                        <a href="{{ route('product', ['brand' => $currentBrand->name, 'product' => $product->name]) }}" class="prod-card__link">
-                            <img src="{{ $product->image }}" alt="image" class="prod-card__image">
-                        </a>
-                        <div class="prod-card__descript">
-                            <span class="prod-card__name">{{ $product->name }}</span>
-                            <span class="prod-card__price">{{ $product->price }}₽</span>
-                        </div>
-                        <button class="button basket-add" data-cart_id="{{ $cart_id }}" data-basket_add="{{ $product->id }}">В корзину</button>
-                    </div>
-                @endforeach
-            </div>
-            <div class="pagination">
-                <button class="pagination__button prev"></button>
-                <div class="pagination__pages">
-                    <a href="#" class="pagination__link">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">01</span>
-                    </a>
-                    <a href="#" class="pagination__link active">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">02</span>
-                    </a>
-                    <a href="#" class="pagination__link">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">03</span>
-                    </a>
-                    <a href="#" class="pagination__link">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">04</span>
-                    </a>
-                    <a href="#" class="pagination__link">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">05</span>
-                    </a>
-                    <a href="#" class="pagination__link">
-                        <div class="pagination__line"></div>
-                        <span class="pagination__number">06</span>
-                    </a>
-                </div>
-                <button class="pagination__button next"></button>
+            <div id="pagination">
+                @include('vendor.pagination.data')
             </div>
         </div>
     </section>
 
 @endsection
+
+@push('js')
+    <script>
+        // PAGINATION
+        $(document).ready(function(){
+            $(document).on('click', '.pagination a', function(event){
+                event.preventDefault();
+                let page = $(this).attr('href').split('page=')[1];
+                fetch_data(page);
+            });
+
+            function fetch_data(page)
+            {
+                $.ajax({
+                    url:"/pagination/fetch_data?page="+page,
+                    method: "GET",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        brandId: {{ $currentBrand->id }},
+                    },
+                    success:function(data)
+                    {
+                        $('#pagination').html(data);
+                    }
+                });
+            }
+        });
+
+        // ADD TO BASKET
+        function addToBasket(product) {
+            // animation
+            product.classList.add('active')
+            setTimeout(function() {
+                product.classList.remove('active')
+            } , 800)
+
+            // Add to basket
+            let totalQuantity = parseInt($('.quantity__box').text());
+            if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
+                let productId = product.getAttribute('data-basket_add')
+                let cart_id = product.getAttribute('data-cart_id')
+                $.ajax({
+                    url: "{{ route('basket.add') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        productId: productId,
+                        cart_id: cart_id,
+                    },
+                    success: (data) => {
+                        $('.quantity__box').css('visibility', 'visible');
+                        $('.quantity__box').text(data);
+                    }
+                });
+        }
+    </script>
+@endpush

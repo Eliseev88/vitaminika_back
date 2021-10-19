@@ -9,28 +9,6 @@
     <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 100) {
-                    $('.scrollup').fadeIn();
-                } else {
-                    $('.scrollup').fadeOut();
-                }
-            });
-
-            $('.scrollup').click(function() {
-                $("html, body").animate({
-                    scrollTop: 0
-                }, 600);
-                return false;
-            });
-
-        });
-    </script>
 </head>
 
 <body>
@@ -63,7 +41,7 @@
             </div>
             <div class="header__block right">
                 <i class="fas fa-phone"></i>
-                <span class="header__phone">+38 099 947 19 23</span>
+                <span class="header__phone">+7-985-047-00-44</span>
             </div>
         </header>
 
@@ -76,7 +54,7 @@
                         <ul class="nav__subnav">
                             @foreach($allBrands as $brand)
                             <li class="nav__subitem">
-                                <a href="{{ route('brand', ['brand' => $brand->name]) }}" class="nav__sublink">{{ $brand->name }}</a>
+                                <a href="{{ route('brand', ['brand' => $brand]) }}" class="nav__sublink">{{ $brand->name }}</a>
                             </li>
                             @endforeach
                         </ul>
@@ -236,7 +214,7 @@
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
-                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + ' <sup>₽</sup>')
+                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
 
                     }
@@ -263,16 +241,33 @@
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
-                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + ' <sup>₽</sup>')
+                        $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
                     }
                 })
             })
         })
     </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollup').fadeIn();
+                } else {
+                    $('.scrollup').fadeOut();
+                }
+            });
 
-    <script src="js/buttonAdd.js"></script>
+            $('.scrollup').click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
 
+        });
+    </script>
+    <script src="/js/buttonAdd.js"></script>
 </body>
 
 </html>

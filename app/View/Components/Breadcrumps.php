@@ -14,11 +14,13 @@ class Breadcrumps extends Component
 
     public $brand;
     public $product;
+    public $brandId;
 
-    public function __construct($brand, $product = null)
+    public function __construct($brand, $brandId = null, $product = null)
     {
-        $this->brand = str_replace("&#039;", "'", $brand);
-        $this->product = str_replace('&amp;', '&', $product);
+        $this->brand = str_replace(["&#039;", '&amp;', '&quot;',], ["'", '&', '"',], $brand);
+        $this->brandId = $brandId;
+        $this->product = str_replace(["&#039;", '&amp;', '&quot;',], ["'", '&', '"',], $product);
     }
 
     /**

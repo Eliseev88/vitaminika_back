@@ -21,9 +21,7 @@
         border: none;
         background-color: $greyBg;
         padding: 2rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .3s linear;
+        display: none;
 
         &:focus-visible {
             outline: 1px solid $grey;
@@ -115,5 +113,5 @@
             height: 10rem;
         }
     }
-    
+
 }

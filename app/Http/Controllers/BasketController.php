@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\DB;
 class BasketController extends Controller
 {
     public function basket(Request $request) {
-        if (!isset($_COOKIE['cart_id'])) setcookie('cart_id', uniqid());
+        if (!isset($_COOKIE['cart_id'])) {
+            setcookie('cart_id', uniqid());
+        }
         $cart_id = $_COOKIE['cart_id'];
         $brands = Brand::all();
 

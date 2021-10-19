@@ -4,7 +4,9 @@
 
 @section('content')
 
-    <x-breadcrumps brand="{{ $currentProduct->brand->name }}" product="{{ $currentProduct->name }}" />
+    <x-breadcrumps brand="{{ $currentProduct->brand->name }}"
+                   brandId="{{ $currentProduct->brand->id }}"
+                   product="{{ $currentProduct->name }}" />
     <!-- PRODUCT -->
     <main class="product container">
         <div class="">
@@ -79,7 +81,7 @@
             @foreach($currentProduct->getBrand()->products as $product)
             <div class="slider__item">
                 <div class="prod-card">
-                    <a href="{{ route('product', ['brand' => $currentProduct->brand->name, 'product' => $product->name]) }}" class="prod-card__link">
+                    <a href="{{ route('product', ['brand' => $currentProduct->brand, 'product' => $product]) }}" class="prod-card__link">
                         <img src="{{ $product->image }}" alt="image" class="prod-card__image">
                     </a>
                     <div class="prod-card__descript">
