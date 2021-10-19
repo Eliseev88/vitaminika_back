@@ -33,7 +33,11 @@
                 </div>
             </div>
             <div class="header__block">
-                <a href="{{ route('index') }}"><img src="/img/main_logo3.png" height="90" alt="logo"></a>
+                <a href="{{ route('index') }}">
+                    <img src="/img/logoVitv1.png" alt="logo">
+                    
+                    <img src="/img/logoVit-v2.png" alt="logo">
+                </a>
             </div>
             <div class="header__block right">
                 <i class="fas fa-phone"></i>

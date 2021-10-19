@@ -38,6 +38,19 @@
     }
 }
 
+@media only screen and (max-width:960px) { 
+    .breadcrumps {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .breadcrumps {
+        display: none;
+        margin: 1rem 0;
+    }
+}
+
 @media only screen and (max-width:568px) {
     .breadcrumps {
         height: 8rem;
