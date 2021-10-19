@@ -134,8 +134,9 @@
     ADD PRODUCT
  */
         $(document).ready(function() {
-            let totalQuantity = parseInt($('.quantity__box').text());
-            if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
+            let totalQuantity = $('.quantity__box').text();
+            if (+totalQuantity != 0 || totalQuantity != '') $('.quantity__box').css('visibility', 'visible');
+            if (totalQuantity == 0) $('.quantity__box').css('visibility', 'hidden');
             $('.basket-add').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('basket_add')

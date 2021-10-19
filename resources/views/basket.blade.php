@@ -6,7 +6,7 @@
             <div class="popup__content">
                 <div class="cart__title">Корзина</div>
                 <div class="cart" id="cart">
-                    @if(Cart::session($_COOKIE['cart_id'])->isEmpty())
+                    @if($isEmpty)
                         <div class="cart__empty">Вы не добавили ни одного товара</div>
                     @else
                         @foreach($cart as $key => $el)
@@ -35,7 +35,7 @@
                             <div class="cart__line first">
                                 <div class="cart__box cart__box_right">
                                     <span class="cart__text cart__text_sum">Итого:</span>
-                                    <div class="price" id="sum">{{ \Cart::session($_COOKIE['cart_id'])->getTotal() }}<sup> ₽</sup></div>
+                                    <div class="price" id="sum">{{ $sum }}<sup> ₽</sup></div>
                                 </div>
                             </div>
                             <div class="cart__line">

@@ -22,6 +22,8 @@ class BasketController extends Controller
             'allBrands' => $brands,
             'cart' => $basket['cart'],
             'quantity' => $basket['quantity'],
+            'isEmpty' => $basket['isEmpty'],
+            'sum' => $basket['sum'],
         ]);
     }
 
