@@ -22,6 +22,14 @@
             margin-right: 2.5rem;
         }
 
+        & a {
+            padding: 1rem;
+            & img {
+                &:last-child{
+                    display: none;
+                }
+            }
+        }
     }
 
     &__cart {
@@ -96,8 +104,22 @@
         margin: 1.5rem auto;
 
 
-        &__block a img {
-            max-width: 75%;
+        &__block {
+        
+        & a {
+            padding: 1rem;
+            & img {
+                max-width: 75%;
+                &:first-child{
+                    display: none;
+                }
+                &:last-child{
+                    display: block;
+                }
+
+            }
         }
+        }
+
     }
 }

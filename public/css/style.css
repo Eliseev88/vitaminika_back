@@ -127,6 +127,12 @@ body.lock {
 .header__block .fa-phone {
   margin-right: 2.5rem;
 }
+.header__block a {
+  padding: 1rem;
+}
+.header__block a img:last-child {
+  display: none;
+}
 .header__cart {
   display: flex;
   justify-content: space-between;
@@ -184,8 +190,17 @@ body.lock {
   .header {
     margin: 1.5rem auto;
   }
+  .header__block a {
+    padding: 1rem;
+  }
   .header__block a img {
     max-width: 75%;
+  }
+  .header__block a img:first-child {
+    display: none;
+  }
+  .header__block a img:last-child {
+    display: block;
   }
 }
 .nav {
