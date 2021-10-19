@@ -40,7 +40,7 @@
                         </div>
                         <div class="product__bottom">
                             <div class="price">{{ $currentProduct->price }} <sup>₽</sup></div>
-                            <button class="button basket-add" type="submit" data-cart_id="{{ $cart_id }}" data-basket_add="{{ $currentProduct->id }}">В корзину</button>
+                            <button class="button basket-add" type="submit" data-basket_add="{{ $currentProduct->id }}">В корзину</button>
                         </div>
                     </form>
                 </div>
@@ -88,7 +88,7 @@
                         <span class="prod-card__name">{{ $product->name }}</span>
                         <span class="prod-card__price">{{ $product->price }}₽</span>
                     </div>
-                    <button class="button basket-add" data-cart_id="{{ $cart_id }}" data-basket_add="{{ $product->id }}">В корзину</button>
+                    <button class="button basket-add" data-basket_add="{{ $product->id }}">В корзину</button>
                 </div>
             </div>
             @endforeach

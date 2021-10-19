@@ -14,7 +14,6 @@
             </div>
             <button onclick="addToBasket(this)"
                     class="button basket-add"
-                    data-cart_id="{{ $cart_id }}"
                     data-basket_add="{{ $product->id }}">В корзину</button>
         </div>
     @endforeach

@@ -21,7 +21,7 @@
                 <div class="header__cart">
                     <a href="{{ route('admin') }}" class="header__link"><i class="far fa-user"></i></a>
                     <a href="{{ route('basket') }}" class="header__link quantity">
-                        <div class="quantity__box">{{ \Cart::session($cart_id)->getTotalQuantity() }}</div>
+                        <div class="quantity__box">{{ $quantity }}</div>
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </div>
@@ -135,7 +135,6 @@
             $('.basket-add').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('basket_add')
-                let cart_id = $(this).data('cart_id')
                 $.ajax({
                     url: "{{ route('basket.add') }}",
                     method: "POST",
@@ -144,7 +143,6 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('.quantity__box').css('visibility', 'visible');
@@ -197,7 +195,6 @@
             $('.number-minus').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('product_id');
-                let cart_id = $(this).data('cart_id');
                 $.ajax({
                     url: "{{ route('basket.update') }}",
                     method: "PATCH",
@@ -206,13 +203,12 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
                         $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
-
+                        $('.quantity__box').text(data.totalQuantity);
                     }
                 })
             })
@@ -223,7 +219,6 @@
             $('.number-plus').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('product_id');
-                let cart_id = $(this).data('cart_id');
                 $.ajax({
                     url: "{{ route('basket.update') }}",
                     method: "PATCH",
@@ -232,13 +227,13 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                         positive: true,
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
                         $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
+                        $('.quantity__box').text(data.totalQuantity);
                     }
                 })
             })

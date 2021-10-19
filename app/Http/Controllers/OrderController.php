@@ -6,27 +6,27 @@ use App\Http\Requests\OrderAddRequest;
 use App\Mail\OrderCreated;
 use App\Models\Brand;
 use App\Models\Order;
+use App\Services\CookieCartService;
 use Illuminate\Http\Request;
 use Darryldecode\Cart\Cart;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    public function order()
+    public function order(CookieCartService $cookieCartService)
     {
+        $basket = $cookieCartService->check();
         $brands = Brand::all();
-        $cart_id = $_COOKIE['cart_id'];
 
         return view('order', [
             'allBrands' => $brands,
-            'cart_id' => $cart_id,
+            'quantity' => $basket['quantity'],
         ]);
     }
 
     public function orderAdd(OrderAddRequest $request)
     {
-        $cart_id = $_COOKIE['cart_id'];
-        \Cart::session($cart_id);
+        \Cart::session($_COOKIE['cart_id']);
 
         $fields = $request->only(['name', 'surname', 'phone', 'email', 'address', 'delivery']);
         $fields['sum'] = \Cart::getTotal();

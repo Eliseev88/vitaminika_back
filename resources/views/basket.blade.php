@@ -16,14 +16,14 @@
                                     <div class="cart__name">{{ $el->name }}</div>
                                     <div class="cart__amount">{{ $el->attributes->amount }}</div>
                                     <div class="number">
-                                        <button class="number-minus" data-product_id="{{ $el->id }}" data-cart_id="{{ $cart_id }}">-</button>
+                                        <button class="number-minus" data-product_id="{{ $el->id }}">-</button>
                                         <input id="item-quantity_{{ $el->id }}" type="number" min="1" value="{{ $el->quantity }}" readonly>
-                                        <button class="number-plus" data-product_id="{{ $el->id }}" data-cart_id="{{ $cart_id }}">+</button>
+                                        <button class="number-plus" data-product_id="{{ $el->id }}">+</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="cart__right">
-                                <button class="cart__delete fas fa-trash" data-item_id="{{ $key }}" data-cart_id="{{$cart_id}}" data-product_id="{{ $el->id }}"></button>
+                                <button class="cart__delete fas fa-trash" data-item_id="{{ $key }}" data-product_id="{{ $el->id }}"></button>
                                 <div class="price" id="item-price_{{ $el->id }}">{{ $el->price * $el->quantity }}<sup>₽</sup></div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                 <div class="cart__line first">
                                     <div class="cart__box cart__box_right">
                                         <span class="cart__text cart__text_sum">Итого:</span>
-                                        <div class="price" id="sum">{{ \Cart::session($cart_id)->getTotal() }}<sup> ₽</sup></div>
+                                        <div class="price" id="sum">{{ \Cart::session($_COOKIE['cart_id'])->getTotal() }}<sup> ₽</sup></div>
                                     </div>
                                 </div>
                                 <div class="cart__line">

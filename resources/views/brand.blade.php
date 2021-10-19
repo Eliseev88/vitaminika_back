@@ -69,7 +69,6 @@
             let totalQuantity = parseInt($('.quantity__box').text());
             if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
                 let productId = product.getAttribute('data-basket_add')
-                let cart_id = product.getAttribute('data-cart_id')
                 $.ajax({
                     url: "{{ route('basket.add') }}",
                     method: "POST",
@@ -78,7 +77,6 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('.quantity__box').css('visibility', 'visible');

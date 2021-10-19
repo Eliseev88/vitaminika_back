@@ -140,7 +140,7 @@
                     },
                     success: (data) => {
                         $('#item_' + itemId).remove();
-                        $('#sum').text(data);
+                        $('#sum').text(data + ' руб.');
                     }
                 })
             })
@@ -163,8 +163,7 @@
                         productCount: productCount,
                     },
                     success: (data) => {
-                        console.log(data)
-                        $('#sum').text(data);
+                        $('#sum').text(data + ' руб.');
                     }
                 })
             });
