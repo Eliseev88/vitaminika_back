@@ -505,7 +505,7 @@ body.lock {
 
 .button {
   padding: 1.8rem 0;
-  border: 1px solid #372821;
+  outline: 1px solid #372821;
   position: relative;
   text-decoration: none;
   color: #372821;
@@ -516,6 +516,8 @@ body.lock {
   max-height: 5.7rem;
   background-color: transparent;
   cursor: pointer;
+  z-index: 3;
+  border: none;
 }
 .button::before {
   content: url("../img/arrow-down.svg");
@@ -2501,6 +2503,9 @@ body.lock {
 .cart .first {
   justify-content: end;
 }
+.cart__empty {
+  text-align: center;
+}
 
 @media only screen and (max-width: 768px) {
   .cart {
@@ -2646,6 +2651,9 @@ body.lock {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.order__complete {
+  margin: 5rem 0;
 }
 
 @media only screen and (max-width: 768px) {

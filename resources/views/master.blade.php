@@ -17,8 +17,6 @@
 
         <!-- HEADER -->
         <header class="header container">
-
-
             <div class="header__logo">
                 <a href="{{ route('index') }}">
                     <img src="/img/logoVitv1.png" alt="logo">
@@ -150,16 +148,16 @@
 
     <!-- Basket -->
     <script>
-        /*
+/*
     ADD PRODUCT
  */
         $(document).ready(function() {
-            let totalQuantity = parseInt($('.quantity__box').text());
-            if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
+            let totalQuantity = $('.quantity__box').text();
+            if (+totalQuantity != 0 || totalQuantity != '') $('.quantity__box').css('visibility', 'visible');
+            if (totalQuantity == 0) $('.quantity__box').css('visibility', 'hidden');
             $('.basket-add').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('basket_add')
-                let cart_id = $(this).data('cart_id')
                 $.ajax({
                     url: "{{ route('basket.add') }}",
                     method: "POST",
@@ -168,7 +166,6 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('.quantity__box').css('visibility', 'visible');
@@ -178,9 +175,9 @@
             });
         });
 
-        /*
-            DELETE PRODUCT
-        */
+/*
+    DELETE PRODUCT
+*/
         $(document).ready(function() {
             $('.cart').on('click', '.cart__delete', function(event) {
                 event.preventDefault();
@@ -206,22 +203,24 @@
                             qty += val.quantity;
                         });
                         $('#sum').html(sum + '<sup> ₽</sup>');
-                        if (qty == 0) $('.quantity__box').css('visibility', 'hidden');
+                        if (qty == 0) {
+                            $('.quantity__box').css('visibility', 'hidden');
+                            $('#cart').html('<div class="cart__empty">Вы не добавили ни одного товара</div>')
+                        }
                         $('.quantity__box').text(qty);
                     }
                 })
             })
         })
 
-        /*
-            UPDATE PRODUCT
-         */
+/*
+    UPDATE PRODUCT
+*/
         // MINUS
         $(document).ready(function() {
             $('.number-minus').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('product_id');
-                let cart_id = $(this).data('cart_id');
                 $.ajax({
                     url: "{{ route('basket.update') }}",
                     method: "PATCH",
@@ -230,13 +229,12 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
                         $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
-
+                        $('.quantity__box').text(data.totalQuantity);
                     }
                 })
             })
@@ -247,7 +245,6 @@
             $('.number-plus').click(function(event) {
                 event.preventDefault();
                 let productId = $(this).data('product_id');
-                let cart_id = $(this).data('cart_id');
                 $.ajax({
                     url: "{{ route('basket.update') }}",
                     method: "PATCH",
@@ -256,18 +253,20 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                         positive: true,
                     },
                     success: (data) => {
                         $('#item-quantity_' + productId).val(data.currentProduct.quantity);
                         $('#item-price_' + productId).html(data.currentProduct.quantity * data.currentProduct.price + '<sup>₽</sup>')
                         $('#sum').html(data.totalSum + '<sup> ₽</sup>');
+                        $('.quantity__box').text(data.totalQuantity);
                     }
                 })
             })
         })
     </script>
+
+{{--    SCROLL TOP--}}
     <script type="text/javascript">
         $(document).ready(function() {
             $(window).scroll(function() {
@@ -287,6 +286,8 @@
 
         });
     </script>
+
+{{--    // BASKET BUTTON ANIMATION--}}
     <script src="/js/buttonAdd.js"></script>
 
     <script>

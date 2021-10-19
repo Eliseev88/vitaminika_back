@@ -4,13 +4,6 @@
 
 @section('content')
 
-{{--    <main class="main">--}}
-{{--        <div class="container">--}}
-{{--            <div style="text-align: center"></div>--}}
-{{--            <h1 class="main__title">Компания Витаминика</h1>--}}
-{{--        </div>--}}
-{{--    </main>--}}
-
 <!-- TOPCAT -->
 <section class="topcat">
     <div class="container">
@@ -48,7 +41,6 @@
                             </div>
                             <button class="button basket-add"
                                     type="submit"
-                                    data-cart_id="{{ $cart_id }}"
                                     data-basket_add="{{ $product->id }}">В корзину</button>
                         </div>
                     </div>

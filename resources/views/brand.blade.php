@@ -21,7 +21,26 @@
                 </div>
             </div>
             <div id="pagination">
-                @include('vendor.pagination.data')
+                <div class="category__inner">
+                    <h2 class="title">{{ $currentBrand->name }}</h2>
+                    {{ $products->links('vendor.pagination.custom') }}
+                </div>
+                <div class="category__body">
+                    @foreach($products as $product)
+                        <div class="prod-card">
+                            <a href="{{ route('product', ['brand' => $currentBrand, 'product' => $product]) }}" class="prod-card__link">
+                                <img src="{{ $product->image }}" alt="image" class="prod-card__image">
+                            </a>
+                            <div class="prod-card__descript">
+                                <span class="prod-card__name">{{ $product->name }}</span>
+                                <span class="prod-card__price">{{ $product->price }}₽</span>
+                            </div>
+                            <button class="button basket-add"
+                                    data-basket_add="{{ $product->id }}">В корзину</button>
+                        </div>
+                    @endforeach
+                </div>
+                {{ $products->links('vendor.pagination.custom') }}
             </div>
         </div>
     </section>
@@ -69,7 +88,6 @@
             let totalQuantity = parseInt($('.quantity__box').text());
             if (totalQuantity != 0) $('.quantity__box').css('visibility', 'visible');
                 let productId = product.getAttribute('data-basket_add')
-                let cart_id = product.getAttribute('data-cart_id')
                 $.ajax({
                     url: "{{ route('basket.add') }}",
                     method: "POST",
@@ -78,7 +96,6 @@
                     },
                     data: {
                         productId: productId,
-                        cart_id: cart_id,
                     },
                     success: (data) => {
                         $('.quantity__box').css('visibility', 'visible');
