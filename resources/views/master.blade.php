@@ -17,32 +17,52 @@
 
         <!-- HEADER -->
         <header class="header container">
-            <div class="header__block left">
-                <div class="header__cart">
-                    <a href="{{ route('admin') }}" class="header__link"><i class="far fa-user"></i></a>
-                    <a href="{{ route('basket') }}" class="header__link quantity">
-                        <div class="quantity__box">{{ \Cart::session($cart_id)->getTotalQuantity() }}</div>
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </div>
-                <div class="header__search">
-                    <form action="" class="header__form">
-                        <input type="text" class="header__input" placeholder="Поиск">
-                        <button type="submit" class="header__icon fas fa-search"></button>
-                    </form>
-                </div>
-            </div>
-            <div class="header__block">
+
+
+            <div class="header__logo">
                 <a href="{{ route('index') }}">
                     <img src="/img/logoVitv1.png" alt="logo">
-                    
-                    <img src="/img/logoVit-v2.png" alt="logo">
                 </a>
             </div>
-            <div class="header__block right">
-                <i class="fas fa-phone"></i>
-                <span class="header__phone">+7-985-047-00-44</span>
+
+            <button id="burger-btn" class="fa fa-bars"></button>
+
+            <div id='burger-menu' class="header__menu">
+                <div class="header__search">
+                    <form action="" class="header__form">
+                        <input type="text" class="header__form-input" placeholder="Поиск...">
+                        <button type="submit" class="header__form-icon fas fa-search"></button>
+                    </form>
+                </div>
+
+                <div class="header__block-left">
+                    <div class="header__cart">
+                        <a href="{{ route('admin') }}" class="header__cart-link">
+                            <i class="far fa-user"></i>
+                            <span>Войти</span>
+                        </a>
+                        <a href="{{ route('basket') }}" class="header__cart-link quantity">
+                            <div class="quantity__box">{{ \Cart::session($cart_id)->getTotalQuantity() }}</div>
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Корзина</span>
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <div class="header__block-right">
+                    <i class="fas fa-phone"></i>
+                    <span class="header__phone">+7-985-047-00-44</span>
+                </div>
             </div>
+
+
+            <script>
+               
+           
+           </script>
+
         </header>
 
         <!-- NAV -->
@@ -94,16 +114,16 @@
                         <div class="footer__box">
                             <div class="footer__contacts_title">Наши контакты</div>
                             <div class="footer__items">
-                                <div  class="footer__items-top">
+                                <div class="footer__items-top">
                                     <span class="footer__element fix">T: +7-985-047-00-44</span>
                                     <span class="footer__element fix">T: +7-919-997-99-37</span>
                                     <span class="footer__element fix">T: +7-905-709-85-22</span>
                                 </div>
                                 <div class="footer__social">
-                                <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
-                                <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
-                                <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
-                            </div>
+                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
+                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
+                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
+                                </div>
 
                             </div>
                             <div class="footer__items-bottom">
@@ -115,7 +135,7 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <span class="footer__element">Авторские права &copy; <?php echo date("Y");?> Витаминика</span>
+                <span class="footer__element">Авторские права &copy; <?php echo date("Y"); ?> Витаминика</span>
             </div>
         </div>
     </footer>
@@ -263,11 +283,26 @@
                     scrollTop: 0
                 }, 600);
                 return false;
-            });
+            });open
 
         });
     </script>
     <script src="/js/buttonAdd.js"></script>
+
+    <script>
+        const btnBurger = document.querySelector('#burger-btn')
+        const menuBurger = document.querySelector('.header__menu')
+
+
+        btnBurger.addEventListener('click', (event) => {
+            
+            if(!menuBurger.classList.contains('open')) {
+                menuBurger.classList.add('open')
+            } else {
+                menuBurger.classList.remove('open')
+            }
+        })
+    </script>
 </body>
 
 </html>
