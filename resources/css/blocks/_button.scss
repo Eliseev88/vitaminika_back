@@ -1,7 +1,7 @@
 .button {
 //    padding: 1.8rem 6.4rem;
     padding: 1.8rem 0;
-    border: 1px solid $mainFontColor;
+    outline: 1px solid $mainFontColor;
     position: relative;
     text-decoration: none;
     color: $mainFontColor;
@@ -12,6 +12,8 @@
     max-height: 5.7rem;
     background-color: transparent;
     cursor: pointer;
+    z-index: 3;
+    border: none;
 
     &::before {
         content: url('../img/arrow-down.svg');

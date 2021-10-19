@@ -34,8 +34,8 @@
             </div>
             <div class="header__block">
                 <a href="{{ route('index') }}">
-                    <img src="/img/logoVitv1.png" alt="logo">
-                    
+                    <img src="/img/main_logo3.png" width="160" alt="logo">
+
                     <img src="/img/logoVit-v2.png" alt="logo">
                 </a>
             </div>
@@ -130,7 +130,7 @@
 
     <!-- Basket -->
     <script>
-        /*
+/*
     ADD PRODUCT
  */
         $(document).ready(function() {
@@ -156,9 +156,9 @@
             });
         });
 
-        /*
-            DELETE PRODUCT
-        */
+/*
+    DELETE PRODUCT
+*/
         $(document).ready(function() {
             $('.cart').on('click', '.cart__delete', function(event) {
                 event.preventDefault();
@@ -184,16 +184,19 @@
                             qty += val.quantity;
                         });
                         $('#sum').html(sum + '<sup> ₽</sup>');
-                        if (qty == 0) $('.quantity__box').css('visibility', 'hidden');
+                        if (qty == 0) {
+                            $('.quantity__box').css('visibility', 'hidden');
+                            $('#cart').html('<div class="cart__empty">Вы не добавили ни одного товара</div>')
+                        }
                         $('.quantity__box').text(qty);
                     }
                 })
             })
         })
 
-        /*
-            UPDATE PRODUCT
-         */
+/*
+    UPDATE PRODUCT
+*/
         // MINUS
         $(document).ready(function() {
             $('.number-minus').click(function(event) {
@@ -243,6 +246,8 @@
             })
         })
     </script>
+
+{{--    SCROLL TOP--}}
     <script type="text/javascript">
         $(document).ready(function() {
             $(window).scroll(function() {
@@ -262,6 +267,8 @@
 
         });
     </script>
+
+{{--    // BASKET BUTTON ANIMATION--}}
     <script src="/js/buttonAdd.js"></script>
 </body>
 
