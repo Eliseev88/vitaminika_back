@@ -40,7 +40,7 @@
                             <span>Войти</span>
                         </a>
                         <a href="{{ route('basket') }}" class="header__cart-link quantity">
-                            <div class="quantity__box">{{ \Cart::session($cart_id)->getTotalQuantity() }}</div>
+                        <div class="quantity__box">{{ $quantity }}</div>
                             <i class="fas fa-shopping-cart"></i>
                             <span>Корзина</span>
                         </a>
