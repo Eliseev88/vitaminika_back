@@ -524,6 +524,7 @@
   padding: 0.5rem 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #111;
 }
 .card__body {
   overflow-y: auto;
@@ -589,6 +590,118 @@
   cursor: pointer;
 }
 
+.brand {
+  font-size: 1rem;
+}
+.brand__header {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+.brand__form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+.brand__form div, .brand__form label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.brand__form div span, .brand__form label span {
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+.brand__form div:first-child {
+  font-weight: bolder;
+}
+.brand__form div span:last-child {
+  font-weight: normal;
+}
+.brand__form label textarea, .brand__form label input, .brand__form label select {
+  min-width: 60%;
+  width: 60%;
+  max-width: 60%;
+  border: 1px solid #111;
+  border-radius: 5px;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.brand__form label textarea {
+  height: 5rem;
+}
+.brand__form label select {
+  text-align: center;
+}
+.brand__form button {
+  width: 10rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bolder;
+  margin: 0.5rem auto;
+  outline: none;
+  border: 1px solid #111;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .brand__form {
+    width: 100%;
+  }
+  .brand__form label {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .brand__form label span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .brand__form label textarea {
+    height: 7rem;
+  }
+  .brand__form label textarea, .brand__form label input {
+    margin: 0.5rem 0;
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .brand {
+    width: 100%;
+  }
+  .brand-body {
+    width: 100%;
+  }
+  .brand-body label {
+    display: flex;
+  }
+  .brand-body label span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  .brand-body label select {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.4rem;
+    margin-left: 0.5rem;
+  }
+  .brand-body label textarea {
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .sidebar {
     width: 70px;

@@ -44,11 +44,18 @@ Route::group(['prefix' => 'admin'], function () {
         ->name('admin');
     Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
         ->name('admin.orders');
-        
+    Route::get('/brands', [\App\Http\Controllers\Admin\BrandController::class, 'index'])
+        ->name('admin.brands');
+    Route::get('/createBrand', [\App\Http\Controllers\Admin\BrandController::class, 'create'])
+        ->name('admin.createBrand'); 
+
     Route::get('/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])
         ->name('admin.products');
     Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
-    ->name('admin.createProduct');    
+    ->name('admin.createProduct'); 
+
+    Route::get('/{brand}', [\App\Http\Controllers\Admin\BrandController::class, 'show'])
+    ->name('admin.brand');
     Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
         ->name('admin.product');
 

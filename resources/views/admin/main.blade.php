@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/adminStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.brands') }}">
                         <span class="las la-receipt"></span>
                         <span>Бренды</span>
                     </a>
@@ -54,14 +55,14 @@
                         <span>Пользователи</span>
                     </a>
                 </li>
-                <!--
+                
                 <li>
-                    <a href="#">
-                        <span class="las la-clipboard-list"></span>
-                        <span>tasks</span>
+                    <a href="/">
+                        <span class="fas fa-sign-in-alt"></span>
+                        <span>Вернуться на сайт</span>
                     </a>
                 </li>
-                -->
+                
 
 
             </ul>
