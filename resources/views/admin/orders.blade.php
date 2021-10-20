@@ -12,10 +12,11 @@
                 </div>
             @endif
             <div class="card">
-                <div class="card-header">
+                <div class="card__header">
                     <h3>Заказы</h3>
+                    <a href="">Добавить заказ</a>
                 </div>
-                <div class="card-body">
+                <div class="card__body">
                     <table width="100%">
                         <thead>
                             <tr>
@@ -24,6 +25,7 @@
                                 <td>Статус заказа</td>
                                 <td>Дата заказа</td>
                                 <td>Дата обновления</td>
+                                <td>Действия</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,12 +54,16 @@
                                 </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->updated_at }}</td>
+                                
+                                <td class="card__body-action">
+                                    <a href="{{ route('admin.order', ['order' => $order]) }}">Ред.</a>
+                                    <!--<button>Уд.</button>-->
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>

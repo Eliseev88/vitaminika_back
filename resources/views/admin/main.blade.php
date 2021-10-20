@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.products') }}">
                         <span class="las la-clipboard-list"></span>
                         <span>Продукты</span>
                     </a>

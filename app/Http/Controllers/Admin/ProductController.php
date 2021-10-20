@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +16,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::orderBy('updated_at')->get();
+        
+
+        return view('admin/products', [
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -24,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/createProduct');
     }
 
     /**
@@ -44,9 +51,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+
+        return view('admin/editProduct', [
+            'product' => $product,
+        ]);
     }
 
     /**
