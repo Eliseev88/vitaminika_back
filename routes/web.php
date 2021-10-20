@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,14 +44,24 @@ Route::group(['prefix' => 'admin'], function () {
         ->name('admin');
     Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
         ->name('admin.orders');
+        
+    Route::get('/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])
+        ->name('admin.products');
+    Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
+    ->name('admin.createProduct');    
+    Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
+        ->name('admin.product');
+
     Route::get('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'show'])
-        ->name('admin.order');
+        ->name('admin.order');   
     Route::post('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'update'])
         ->name('admin.orderUpdate');
     Route::delete('/order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy'])
         ->name('admin.orderDelete');
     Route::patch('/order', [\App\Http\Controllers\Admin\OrderController::class, 'updateProduct'])
         ->name('admin.orderUpdateProduct');
+
+    
 
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
 });
