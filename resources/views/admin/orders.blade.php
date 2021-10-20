@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card__header">
                     <h3>Заказы</h3>
-                    <a href="">Добавить товар</a>
+                    <a href="">Добавить заказ</a>
                 </div>
                 <div class="card__body">
                     <table width="100%">
