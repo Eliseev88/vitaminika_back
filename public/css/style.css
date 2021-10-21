@@ -537,7 +537,7 @@ body.lock {
 .button::after {
   content: "";
   display: block;
-  width: 22.5rem;
+  width: inherit;
   height: 6rem;
   background-color: white;
   position: absolute;
@@ -553,32 +553,16 @@ body.lock {
 .button:hover::after {
   background-color: #F2F2F2;
 }
-
-.active::before {
+.button.active::before {
   content: url("../img/arrow-down.svg");
-  display: block;
-  width: 4rem;
-  height: 4.5rem;
-  background-color: white;
-  position: absolute;
   bottom: -1rem;
   left: 16rem;
-  z-index: 3;
-  text-align: center;
   transition: all 0.6s ease-in;
 }
-.active::after {
+.button.active::after {
   content: "";
-  display: block;
-  width: 22.5rem;
-  height: 6rem;
-  background-color: white;
-  position: absolute;
   bottom: -1rem;
   left: 1rem;
-  z-index: -1;
-  text-align: center;
-  transition: all 0.2s linear;
 }
 
 .decor__big-arrow {

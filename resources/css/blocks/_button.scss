@@ -1,5 +1,4 @@
 .button {
-//    padding: 1.8rem 6.4rem;
     padding: 1.8rem 0;
     outline: 1px solid $mainFontColor;
     position: relative;
@@ -32,7 +31,7 @@
     &::after {
         content: '';
         display: block;
-        width: 22.5rem;
+        width: inherit;
         height: 6rem;
         background-color: white;
         position: absolute;
@@ -50,37 +49,19 @@
     &:hover::after {
         background-color: $greyBg;
     }
-}
 
-.active {
+    &.active {
+        &::before {
+            content: url('../img/arrow-down.svg');
+            bottom: -1rem;
+            left: 16rem;
+            transition: all .6s ease-in;
+        }
 
-    &::before {
-        content: url('../img/arrow-down.svg');
-        display: block;
-        width: 4rem;
-        height: 4.5rem;
-        background-color: white;
-        position: absolute;
-        bottom: -1rem;
-        left: 16rem;
-        z-index: 3;
-        text-align: center;
-        transition: all .6s ease-in;
+        &::after {
+            content: '';
+            bottom: -1rem;
+            left: 1rem;      
+        }
     }
-
-    &::after {
-        content: '';
-        display: block;
-        width: 22.5rem;
-        height: 6rem;
-        background-color: white;
-        position: absolute;
-        bottom: -1rem;
-        left: 1rem;
-        z-index: -1;
-        text-align: center;
-        transition: all .2s linear;
-    }
-
-
 }
