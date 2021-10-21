@@ -81,6 +81,7 @@
                 Главная
             </h2>
 
+            <!--
             <div class="search-wrapper">
                 <span class="las la-search">
 
@@ -96,6 +97,7 @@
                     <small>Super Admin</small>
                 </div>
             </div>
+            -->
         </header>
 
 
