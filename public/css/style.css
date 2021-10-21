@@ -2416,6 +2416,9 @@ body.lock {
     padding: 1rem;
   }
 }
+.cart {
+  margin-bottom: 5rem;
+}
 .cart .price {
   font-size: 2.5rem;
 }
