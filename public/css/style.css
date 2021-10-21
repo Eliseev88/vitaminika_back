@@ -2523,11 +2523,25 @@ body.lock {
   .cart {
     padding: 1rem;
   }
+  .cart__item {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart__right {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
   .cart .price {
-    font-size: 1.5rem;
+    margin-right: 5rem;
+    line-height: 2rem;
+  }
+  .cart__delete, .cart .price {
+    font-size: 2rem;
   }
   .cart__title {
-    font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
   .cart__image {
@@ -2538,11 +2552,26 @@ body.lock {
     font-size: 1.3rem;
   }
   .cart__line {
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
     justify-content: center;
   }
-  .cart__line a:first-child {
-    margin-bottom: 1.5rem;
+  .cart__line a {
+    margin-bottom: 2.5rem;
+  }
+  .cart__text_sum {
+    margin-right: 3rem;
+  }
+  .cart__box {
+    width: 100%;
+  }
+  .cart__box .price {
+    font-size: 2rem;
+    margin-right: 0;
+    line-height: 2rem;
+  }
+  .cart__box .price #sum {
+    margin-right: 0;
   }
 }
 .number {
