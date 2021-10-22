@@ -2243,6 +2243,11 @@ body.lock {
   margin: 2rem;
 }
 
+@media only screen and (max-width: 568px) {
+  .slider {
+    padding: 0 4.5rem;
+  }
+}
 /* SLICK SLIDER */
 /* Слайдер */
 /* Ограничивающая оболочка */
@@ -2336,6 +2341,53 @@ body.lock {
 
 /* Cтрелка не активная */
 /* Точки */
+.slick-dots {
+  display: none !important;
+}
+
+.slider__item.slick-slide .prod-card {
+  height: 45rem;
+  margin: 0 auto;
+}
+.slider__item.slick-slide .prod-card .button.basket-add {
+  width: inherit;
+}
+
+@media only screen and (max-width: 768px) {
+  .slider__item.slick-slide .prod-card {
+    margin: 0 auto;
+  }
+
+  .slick-prev.slick-arrow .pagination__button::before {
+    right: 4.8rem;
+  }
+}
+@media only screen and (max-width: 568px) {
+  .slider__item.slick-slide .prod-card {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slick-next.slick-arrow .pagination__button {
+    width: 4rem;
+    height: 4rem;
+  }
+  .slick-next.slick-arrow .pagination__button::before {
+    bottom: 0.5rem;
+    right: 3.8rem;
+  }
+
+  .slick-prev.slick-arrow .pagination__button {
+    width: 4rem;
+    height: 4rem;
+  }
+  .slick-prev.slick-arrow .pagination__button::before {
+    right: 0.8rem;
+    bottom: 0.5rem;
+  }
+}
 .popup {
   position: fixed;
   width: 100%;
