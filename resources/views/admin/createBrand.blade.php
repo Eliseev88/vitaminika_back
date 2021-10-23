@@ -5,31 +5,31 @@
 @section('content')
 <main>
     <div class="brand">     
-        <form class="brand__form" method="POST" action="">
+        <form class="brand__form" method="POST" action="{{ route('admin.brand.create') }}">
             @csrf
             <label for="">
                 <span>Название бренда:</span>
-                <textarea></textarea>
+                <textarea name="name"></textarea>
             </label>
             <label for="">
                 <span>Слоган:</span>
-                <input type="number" value="">
+                <textarea name="title"></textarea>
             </label>
             <label for="">
                 <span>Описание</span>
-                <textarea></textarea>
+                <textarea name="description"></textarea>
             </label>
-            <label>
+           <!-- <label>
                 <span>Логотип бренда:</span>
-                <input type="file" value="">
+                <input name="image" type="file">
             </label>
             <label>
                 <span>Презентация бренда:</span>
-                <input type="file" value="">
-            </label>
+                <input name="presentation" type="file">
+            </label> -->
             <label>
                 <span>Страна</span>
-                <input type="text" value="">
+                <input name="country" type="text">
             </label>
             <button type="submit">Подтвердить</button>
         </form>

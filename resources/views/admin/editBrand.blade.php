@@ -8,31 +8,31 @@
         <div class="brand__header">
             Название бренда
         </div>
-        <form class="brand__form" method="POST" action="">
+        <form class="brand__form" method="POST" action="{{ route('admin.brand.update', ['brand' => $brand]) }}">
             @csrf
             <label for="">
                 <span>Название бренда:</span>
-                <textarea>{{ $brand->name }}</textarea>
+                <textarea name="name">{{ $brand->name }}</textarea>
             </label>
             <label for="">
                 <span>Слоган:</span>
-                <textarea>{{ $brand->title }}</textarea>
+                <textarea name="title">{{ $brand->title }}</textarea>
             </label>
             <label for="">
                 <span>Описание</span>
-                <textarea>{{ $brand->description }}</textarea>
+                <textarea name="description">{{ $brand->description }}</textarea>
             </label>
-            <label>
+            <!--<label>
                 <span>Логотип бренда:</span>
                 <input type="file" value="{{ $brand->image }}">
             </label>
             <label>
                 <span>Презентация бренда:</span>
                 <input type="file" value="{{ $brand->presentation }}">
-            </label>
+            </label>-->
             <label>
                 <span>Страна</span>
-                <input type="text" value="{{ $brand->country }}">
+                <input name="country" type="text" value="{{ $brand->country }}">
             </label>
             <button type="submit">Подтвердить</button>
         </form>
