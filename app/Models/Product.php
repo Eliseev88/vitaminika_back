@@ -20,6 +20,10 @@ class Product extends Model
         'form',
         'amount',
         'image',
+        'availability',
+        'created_at',
+        'updated_at',
+        'price',
 
     ];
 

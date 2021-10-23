@@ -17,7 +17,7 @@ class Brand extends Model
         'presentation',
         'country',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function products()
