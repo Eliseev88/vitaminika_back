@@ -51,14 +51,14 @@
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card__header">
                             <h3>Последние заказы</h3>
                             <a href="{{ route('admin.orders') }}">
                                  Смотреть все
                                 <span class="las la-arrow-right"></span>
                             </a>
                         </div>
-                        <div class="card-body">
+                        <div class="card__body">
                             <table width="100%">
                                 <thead>
                                     <tr>

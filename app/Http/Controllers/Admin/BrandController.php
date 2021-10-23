@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BrandAddRequest;
 use App\Models\Brand;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 
 class BrandController extends Controller
 {
@@ -15,7 +19,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderBy('updated_at')->get();
+        $brands = Brand::orderByDesc('updated_at')->get();
 
         return view('admin.brands', [
             'brands' => $brands
@@ -38,9 +42,18 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandAddRequest $request)
     {
-        //
+        $fields = $request->validated();
+        $fields['updated_at'] = Carbon::now();
+
+        $brand = Brand::create($fields);
+
+        if ($brand) {
+            return redirect()->route('admin.brand.all');
+        }
+
+        return back()->withInput();
     }
 
     /**
@@ -74,9 +87,18 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Brand $brand)
     {
-        //
+        $fields = $request->only('name', 'title', 'description', 'country');
+        $fields['updated_at'] = Carbon::now();
+
+        $brand = $brand->where('id', $request->brand)->update($fields);
+
+        if ($brand) {
+            return redirect()->route('admin.brand.all');
+        }
+
+        return back()->withInput();
     }
 
     /**
@@ -85,8 +107,14 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $brand = Brand::where('id', $request->brandId)->delete();;
+
+        if($brand) {
+            return true;
+        }
+        
+        return false;
     }
 }

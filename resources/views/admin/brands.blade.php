@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card__header">
                     <h3>Бренды</h3>
-                    <a href="{{ route('admin.createBrand')}}">Добавить товар</a>
+                    <a href="{{ route('admin.brand.new') }}">Добавить товар</a>
                 </div>
                 <div class="card__body">
                     <table width="100%">
@@ -22,17 +22,20 @@
                                 <td>Действия</td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="brand-table">
 
                             @foreach($brands as $brand)
-                            <tr>
-                                <td><a href="{{ route('admin.brand', ['brand' => $brand]) }}"> {{ $brand->name }}</a></td>
+                            <tr id="item_{{ $brand->id }}">
+                                <td><a href="{{ route('admin.brand', ['brand' => $brand]) }}"> {{ $brand->name }}</a></td> 
                                 <td>{{ $brand->country }}</td>
                                 <td>{{ $brand->updated_at }}</td>
 
                                 <td class="card__body-action">
                                     <a href="{{ route('admin.brand', ['brand' => $brand]) }}">Ред.</a>
-                                    <button>Уд.</button>
+                                    <button class="brand-delete"
+                                        data-item_id="{{$brand->id}}"
+                                        data-brand_id="{{$brand->id}}"
+                                    >Уд.</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -45,4 +48,32 @@
         </div>
     </div>
 </main>
+
+@push('js')
+<script>
+    $(document).ready(function () {
+            $('.card__body').on('click', '.brand-delete', function (event) {               
+                event.preventDefault();
+
+                let brandId = $(this).data('brand_id');
+                let itemId = $(this).data('item_id');
+
+                $.ajax({
+                    url: "{{ route('admin.brand.delete') }}",
+                    method: "DELETE",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        brandId: brandId
+                    },
+                    success: (data) => {
+                        $('#item_' + itemId).remove();
+                    }
+                })
+            })
+        })
+</script>
+
+@endpush
 @endsection

@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.brands') }}">
+                    <a href="{{ route('admin.brand.all') }}">
                         <span class="las la-receipt"></span>
                         <span>Бренды</span>
                     </a>
