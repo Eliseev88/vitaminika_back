@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // BASKET
 Route::group(['prefix' => 'basket'], function () {
     Route::get('/', [\App\Http\Controllers\BasketController::class, 'basket'])
@@ -44,31 +43,43 @@ Route::group(['prefix' => 'admin'], function () {
         ->name('admin');
     Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
         ->name('admin.orders');
-    Route::get('/brands', [\App\Http\Controllers\Admin\BrandController::class, 'index'])
-        ->name('admin.brands');
-    Route::get('/createBrand', [\App\Http\Controllers\Admin\BrandController::class, 'create'])
-        ->name('admin.createBrand'); 
 
-    Route::get('/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])
-        ->name('admin.products');
-    Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
-    ->name('admin.createProduct'); 
+    Route::group(['prefix' => 'brand'], function () {
+        Route::get('/all', [\App\Http\Controllers\Admin\BrandController::class, 'index'])
+            ->name('admin.brand.all');
+        Route::get('/new', [\App\Http\Controllers\Admin\BrandController::class, 'create'])
+            ->name('admin.brand.new');
+        Route::post('/create', [\App\Http\Controllers\Admin\BrandController::class, 'store'])
+            ->name('admin.brand.create');
+        Route::post('/update', [\App\Http\Controllers\Admin\BrandController::class, 'update'])
+            ->name('admin.brand.update');
+        Route::delete('/delete', [\App\Http\Controllers\Admin\BrandController::class, 'destroy'])
+            ->name('admin.brand.delete');
+        Route::get('/{brand}', [\App\Http\Controllers\Admin\BrandController::class, 'show'])
+            ->name('admin.brand');
+    });
 
-    Route::get('/{brand}', [\App\Http\Controllers\Admin\BrandController::class, 'show'])
-    ->name('admin.brand');
-    Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
-        ->name('admin.product');
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
+            ->name('admin.orders');
+        Route::get('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'show'])
+            ->name('admin.order');
+        Route::post('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'update'])
+            ->name('admin.orderUpdate');
+        Route::delete('/order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy'])
+            ->name('admin.orderDelete');
+        Route::patch('/order', [\App\Http\Controllers\Admin\OrderController::class, 'updateProduct'])
+            ->name('admin.orderUpdateProduct');
+    });
 
-    Route::get('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'show'])
-        ->name('admin.order');   
-    Route::post('/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'update'])
-        ->name('admin.orderUpdate');
-    Route::delete('/order', [\App\Http\Controllers\Admin\OrderController::class, 'destroy'])
-        ->name('admin.orderDelete');
-    Route::patch('/order', [\App\Http\Controllers\Admin\OrderController::class, 'updateProduct'])
-        ->name('admin.orderUpdateProduct');
-
-    
+    Route::prefix('products')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index'])
+            ->name('admin.products');
+        Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
+            ->name('admin.createProduct');
+        Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
+            ->name('admin.product');
+    });
 
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
 });
@@ -79,16 +90,8 @@ Route::get('/order', [\App\Http\Controllers\OrderController::class, 'order'])
 Route::post('order', [\App\Http\Controllers\OrderController::class, 'orderAdd'])
     ->name('order.add');
 
-
 // BRAND & PRODUCTS
 Route::get('/{brand}', [\App\Http\Controllers\MainController::class, 'brand'])
     ->name('brand');
 Route::get('/{brand}/{product}', [\App\Http\Controllers\MainController::class, 'product'])
     ->name('product');
-
-
-
-
-
-
-
