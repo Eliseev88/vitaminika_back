@@ -5,7 +5,7 @@
 @section('content')
 <main>
     <div class="brand">     
-        <form class="brand__form" method="POST" action="{{ route('admin.brand.create') }}">
+        <form class="brand__form"  enctype="multipart/form-data" method="POST" action="{{ route('admin.brand.create') }}">
             @csrf
             <label for="">
                 <span>Название бренда:</span>
@@ -19,14 +19,14 @@
                 <span>Описание</span>
                 <textarea name="description"></textarea>
             </label>
-           <!-- <label>
+            <label>
                 <span>Логотип бренда:</span>
-                <input name="image" type="file">
+                <input type="file" name="image" >
             </label>
             <label>
                 <span>Презентация бренда:</span>
                 <input name="presentation" type="file">
-            </label> -->
+            </label>
             <label>
                 <span>Страна</span>
                 <input name="country" type="text">

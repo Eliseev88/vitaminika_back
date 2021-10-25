@@ -8,7 +8,7 @@
         <div class="brand__header">
             Название бренда
         </div>
-        <form class="brand__form" method="POST" action="{{ route('admin.brand.update', ['brand' => $brand]) }}">
+        <form class="brand__form" enctype="multipart/form-data" method="POST" action="{{ route('admin.brand.update', ['brand' => $brand]) }}">
             @csrf
             <label for="">
                 <span>Название бренда:</span>
@@ -22,14 +22,14 @@
                 <span>Описание</span>
                 <textarea name="description">{{ $brand->description }}</textarea>
             </label>
-            <!--<label>
+            <label>
                 <span>Логотип бренда:</span>
-                <input type="file" value="{{ $brand->image }}">
+                <input type="file" name="image" value="{{ $brand->image }}">
             </label>
             <label>
                 <span>Презентация бренда:</span>
-                <input type="file" value="{{ $brand->presentation }}">
-            </label>-->
+                <input type="file" name="presentation" value="{{ $brand->presentation }}">
+            </label>
             <label>
                 <span>Страна</span>
                 <input name="country" type="text" value="{{ $brand->country }}">
