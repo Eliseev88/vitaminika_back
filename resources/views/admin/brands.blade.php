@@ -6,7 +6,11 @@
 <main>
     <div class="recent-grid">
         <div class="projects">
-
+            @if(session('success'))
+                <div class="success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card__header">
                     <h3>Бренды</h3>
