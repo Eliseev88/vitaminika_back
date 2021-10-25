@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandAddRequest;
 use App\Models\Brand;
-use App\Models\Order;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -42,15 +42,25 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandAddRequest $request)
+    public function store(BrandAddRequest $request, FileUploadService $uploadedService)
     {
         $fields = $request->validated();
         $fields['updated_at'] = Carbon::now();
+        $pathDir = '/img/brands/' . $fields['name'];
+
+        if ($request->hasFile('image')) {
+            $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
+        }
+
+        if ($request->hasFile('presentation')) {
+            $fields['presentation'] = $uploadedService->upload($request->file('presentation'), $pathDir);
+        }
 
         $brand = Brand::create($fields);
 
         if ($brand) {
-            return redirect()->route('admin.brand.all');
+            return redirect()->route('admin.brand.all')
+                ->with('success', 'Бренд успешно добавлен');
         }
 
         return back()->withInput();
@@ -87,15 +97,31 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(BrandAddRequest $request, Brand $brand, FileUploadService $uploadedService)
     {
-        $fields = $request->only('name', 'title', 'description', 'country');
+        $fields = $request->validated();
         $fields['updated_at'] = Carbon::now();
+        $pathDir = '/img/brands/' . $fields['name'];
+
+        if ($request->hasFile('image')) {
+            $brandFile = $brand->find($request->brand)->image;
+            Storage::disk('public')->delete($brandFile);
+
+            $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
+        }
+
+        if ($request->hasFile('presentation')) {
+            $brandFile = $brand->find($request->brand)->presentation;
+            Storage::disk('public')->delete($brandFile);
+
+            $fields['presentation'] = $uploadedService->upload($request->file('presentation'), $pathDir);
+        }
 
         $brand = $brand->where('id', $request->brand)->update($fields);
 
         if ($brand) {
-            return redirect()->route('admin.brand.all');
+            return redirect()->route('admin.brand.all')
+                ->with('success', 'Бренд успешно обновлен');
         }
 
         return back()->withInput();
@@ -109,12 +135,15 @@ class BrandController extends Controller
      */
     public function destroy(Request $request)
     {
+        $brandFile = Brand::find($request->brandId)->name;
+        Storage::disk('public')->deleteDirectory('/img/brands/' . $brandFile);
+
         $brand = Brand::where('id', $request->brandId)->delete();;
 
-        if($brand) {
+        if ($brand) {
             return true;
         }
-        
+
         return false;
     }
 }
