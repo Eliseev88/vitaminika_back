@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\CookieCartService;
+use App\Services\FileUploadService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(CookieCartService::class, CookieCartService::class);
+        $this->app->bind(FileUploadService::class, FileUploadService::class);
     }
 }
