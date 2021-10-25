@@ -27,8 +27,8 @@ class BrandAddRequest extends FormRequest
             'name' => ['required', 'string', ' min:1', 'max:200'],
             'title' => ['required', 'string', ' min:1', 'max:500'],
             'description' => ['required', 'string', ' min:1', 'max:500'],
-            //'image' => ['sometimes'],
-         //   'presentation' => ['sometimes'],
+            'image' => ['sometimes'],
+            'presentation' => ['sometimes'],
             'country' => ['required', 'string',' min:1', 'max:50']
         ];
     }
