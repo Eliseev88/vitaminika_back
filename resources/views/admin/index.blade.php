@@ -10,7 +10,7 @@
                 <div class="card-single">
                     <div>
                         <h1>{{ $usersCount }}</h1>
-                        <span>Зарегестрированных пользователей</span>
+                        <span>Обратная связь</span>
                     </div>
                     <div>
                         <span class="las la-users"></span>

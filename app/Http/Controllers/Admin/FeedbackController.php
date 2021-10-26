@@ -14,7 +14,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        
+
+        return view('admin.feedback');
     }
 
     /**
@@ -44,9 +46,9 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('admin.feedbackShow');
     }
 
     /**
