@@ -2231,6 +2231,11 @@ body.lock {
     font-size: 1.8rem;
   }
 }
+@media only screen and (max-width: 568px) {
+  .details__header {
+    margin-bottom: 0;
+  }
+}
 .slider {
   position: relative;
   padding: 0 10rem;
@@ -2287,8 +2292,8 @@ body.lock {
 .slick-arrow .next::after {
   content: "";
   display: block;
-  width: 6rem;
-  height: 6rem;
+  width: inherit;
+  height: inherit;
   background-color: transparent;
   position: absolute;
   top: 0.7rem;
@@ -2316,8 +2321,8 @@ body.lock {
 .slick-arrow .prev::after {
   content: "";
   display: block;
-  width: 6rem;
-  height: 6rem;
+  width: inherit;
+  height: inherit;
   background-color: transparent;
   position: absolute;
   top: 0.7rem;
@@ -2363,6 +2368,10 @@ body.lock {
   }
 }
 @media only screen and (max-width: 568px) {
+  .slider {
+    padding: 0;
+  }
+
   .slider__item.slick-slide .prod-card {
     width: 100%;
     margin: 0 auto;
@@ -2370,22 +2379,32 @@ body.lock {
     align-items: center;
   }
 
+  .slick-next.slick-arrow {
+    bottom: 0;
+    right: 15%;
+    top: 100%;
+  }
   .slick-next.slick-arrow .pagination__button {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
   }
   .slick-next.slick-arrow .pagination__button::before {
-    bottom: 0.5rem;
+    bottom: 1rem;
     right: 3.8rem;
   }
 
+  .slick-prev.slick-arrow {
+    bottom: 0;
+    left: 15%;
+    top: 100%;
+  }
   .slick-prev.slick-arrow .pagination__button {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
   }
   .slick-prev.slick-arrow .pagination__button::before {
-    right: 0.8rem;
-    bottom: 0.5rem;
+    right: 3.8rem;
+    bottom: 1rem;
   }
 }
 .popup {

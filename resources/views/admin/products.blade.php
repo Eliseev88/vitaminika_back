@@ -6,7 +6,11 @@
 <main>
     <div class="recent-grid">
         <div class="projects">
-
+            @if(session('success'))
+                <div class="success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card">
                 <div class="card__header">
                     <h3>Заказы</h3>
@@ -47,7 +51,10 @@
 
                                 <td class="card__body-action">
                                     <a href="{{ route('admin.product', ['product' => $product]) }}">Ред.</a>
-                                    <button>Уд.</button>
+                                    <button class="product-delete"
+                                        data-item_id="{{$product->id}}"
+                                        data-product_id="{{$product->id}}"
+                                    >Уд.</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -57,6 +64,34 @@
 
             </div>
         </div>
-    </div>
+    </div>   
 </main>
+
+@push('js')
+<script>
+    $(document).ready(function () {
+            $('.card__body').on('click', '.product-delete', function (event) {               
+                event.preventDefault();
+
+                let productId = $(this).data('product_id');
+                let itemId = $(this).data('item_id');
+
+                $.ajax({
+                    url: "{{ route('admin.productDelete') }}",
+                    method: "DELETE",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        productId: productId
+                    },
+                    success: (data) => {
+                        $('#item_' + itemId).remove();
+                    }
+                })
+            })
+        })
+</script>
+
+@endpush
 @endsection

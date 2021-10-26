@@ -13,7 +13,7 @@
             </div>
             <div class="topcat__title">
                 <h2 class="topcat__suptitle">Топ товары</h2>
-                <span class="topcat__subtitle">Бренда {{ $topBrand->name }}</span>
+                <span class="topcat__subtitle">Бренд {{ $topBrand->name }}</span>
             </div>
         </div>
         <div class="topcat__box">

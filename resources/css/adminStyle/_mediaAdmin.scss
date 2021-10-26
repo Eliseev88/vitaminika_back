@@ -49,6 +49,7 @@
         & li a {
             padding-left: 0rem;
         }
+
     }
 
     .main-content {
@@ -58,6 +59,11 @@
         & header {
             width: calc(100% - 70px);
             left: 70px;
+            & h2 {
+                & span {
+                    font-size: 1.2rem;
+                }
+            }
         }
     }
 }
@@ -81,7 +87,7 @@
         left: -100% !important;
     }
 
-    .sidebar.active {
+    .sidebar.sidebar_active {
         left: 0 !important;
         z-index: 100;
         width: 345px !important;
@@ -99,7 +105,6 @@
         & .sidebar-brand h2 span:last-child,
         & .sidebar-menu ul li a span:last-child {
             display: inline;
-
         }
 
         & .sidebar-brand h2 span:last-child {
@@ -163,6 +168,14 @@
 @media only screen and (max-width:568px) {
     .main-content {
         width: 100%;
+
+        & header {
+            & h2 {
+                & span {
+                    display: none;
+                }
+            }
+        }
 
         & main {
             width: 100%;
