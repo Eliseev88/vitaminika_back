@@ -339,6 +339,31 @@
   padding: 0.5rem;
 }
 
+.add-product {
+  margin-top: 2rem;
+  display: flex;
+  align-items: end;
+}
+.add-product__column {
+  margin-right: 2rem;
+}
+.add-product__title {
+  margin-bottom: 1rem;
+}
+.add-product input,
+.add-product select {
+  height: 2rem;
+}
+.add-product__button {
+  padding: 0 1rem;
+}
+.add-product__count {
+  width: 5rem;
+}
+.add-product select {
+  width: 100%;
+}
+
 @media only screen and (max-width: 768px) {
   .order-body {
     width: 100%;

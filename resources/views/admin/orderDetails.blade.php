@@ -103,6 +103,23 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="add-product">
+                <div class="add-product__column">
+                    <div class="add-product__title">Выберите товар</div>
+                    <p><select name="add-product">
+                            @foreach($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->amount }}</option>
+                            @endforeach
+                        </select></p>
+                </div>
+                <div class="add-product__column">
+                    <div class="add-product__title">Укажите количество</div>
+                    <input class="add-product__count" type="number" min="1" value="1">
+                </div>
+                <div class="add-product__column">
+                    <p><input class="add-product__button" type="submit" value="Добавить в заказ"></p>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -151,9 +168,18 @@
             $('input[name="count"]').on("input", function() {
                 let productCount = $(this).val();
                 let productId = $(this).data('product_id');
+                sendQuantityToBackEnd(productCount, productId)
+            });
+        })
+
+        // ADD PRODUCT
+        $(document).ready(function () {
+            $('.add-product__button').on("click", function() {
+                let productCount = $('.add-product__count').val();
+                let productId = $('select[name=add-product]').val();
                 $.ajax({
-                    url: "{{ route('admin.orderUpdateProduct') }}",
-                    method: "PATCH",
+                    url: "{{ route('admin.orderAddProduct') }}",
+                    method: "PUT",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -163,10 +189,53 @@
                         productCount: productCount,
                     },
                     success: (data) => {
-                        $('#sum').text(data + ' руб.');
+                        $('#sum').text(data.sum + ' руб.');
+                        $('#order_products').append(`
+                            <tr id="item_${data.product.id}">
+                        <td>${data.count}</td>
+                        <td>${data.product.name}</td>
+                        <td>${data.product.code}</td>
+                        <td>${data.product.amount}</td>
+                        <td> <input type="number"
+                                    name="count"
+                                    value="${data.count}"
+                                    style="width: 50px;"
+                                    min="1"
+                                    oninput="changeQuantity(this)"
+                                    data-product_id="${data.product.id}"></td>
+
+                        <td>
+                            <button class="product-delete"
+                                    data-item_id="${data.product.id}"
+                                    data-product_id="${data.product.id}">Удалить</button>
+                        </td>
+                    </tr>
+                        `)
                     }
                 })
             });
         })
+
+        function changeQuantity(product) {
+            console.log(product.dataset.product_id)
+            sendQuantityToBackEnd(product.value, product.dataset.product_id)
+        }
+        function sendQuantityToBackEnd(productCount, productId){
+            $.ajax({
+                url: "{{ route('admin.orderUpdateProduct') }}",
+                method: "PATCH",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    productId: productId,
+                    orderId: {{ $order->id }},
+                    productCount: productCount,
+                },
+                success: (data) => {
+                    $('#sum').text(data + ' руб.');
+                }
+            })
+        }
     </script>
 @endpush

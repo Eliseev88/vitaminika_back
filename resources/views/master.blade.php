@@ -26,6 +26,7 @@
             <button id="burger-btn" class="fa fa-bars"></button>
 
             <div id='burger-menu' class="header__menu">
+
                 <div class="header__search">
                     <form action="" class="header__form">
                         <input type="text" class="header__form-input" placeholder="Поиск...">
@@ -57,8 +58,8 @@
 
 
             <script>
-               
-           
+
+
            </script>
 
         </header>
@@ -296,7 +297,7 @@
 
 
         btnBurger.addEventListener('click', (event) => {
-            
+
             if(!menuBurger.classList.contains('open')) {
                 menuBurger.classList.add('open')
             } else {
