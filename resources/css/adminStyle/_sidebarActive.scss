@@ -1,5 +1,5 @@
-.sidebar.sidebar_active{
-    width: 70px;
+.sidebar.sidebar_active {
+    width: 345px;
 
     & .sidebar-brand,
     & .sidebar-menu ul li {
@@ -12,17 +12,20 @@
     }
 
     &~.main-content {
-        margin-left: 70px;
+        margin-left: 345px;
         transition: margin-left 300ms;
     }
 
     &~.main-content header {
-        width: calc(100% - 70px);
-        left: 70px;
+        width: calc(100% - 345px);
+        left: 345px;
     }
 
     & .sidebar-brand h2 span:last-child,
     & .sidebar-menu ul li a span:last-child {
-        display: none;
+        display: inline-block;
+        min-width: 10rem;
+        text-align: left;
+       
     }
 }

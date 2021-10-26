@@ -59,6 +59,11 @@
         & header {
             width: calc(100% - 70px);
             left: 70px;
+            & h2 {
+                & span {
+                    font-size: 1.2rem;
+                }
+            }
         }
     }
 }

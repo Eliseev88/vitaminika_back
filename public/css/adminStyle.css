@@ -15,7 +15,7 @@
 }
 
 .main-content {
-  margin-left: 345px;
+  margin-left: 70px;
   transition: margin-left 300ms;
 }
 .main-content .success {
@@ -30,8 +30,8 @@
   height: 90px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   position: fixed;
-  left: 345px;
-  width: calc(100% - 345px);
+  left: 70px;
+  width: calc(100% - 70px);
   top: 0;
   z-index: 100;
   transition: left 300ms;
@@ -155,7 +155,7 @@
 }
 
 .sidebar {
-  width: 345px;
+  width: 70px;
   position: fixed;
   left: 0;
   top: 0;
@@ -184,6 +184,8 @@
   width: 100%;
   margin-bottom: 1.7rem;
   padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
 }
 .sidebar-menu li a {
   padding-left: 1rem;
@@ -203,9 +205,53 @@
   color: var(--main-color);
   border-radius: 30px 0 0 30px;
 }
+.sidebar .sidebar-brand, .sidebar .sidebar-menu ul li {
+  padding-left: 1rem;
+  text-align: center;
+}
+.sidebar .sidebar-menu ul li a {
+  padding-left: 0rem;
+}
+.sidebar .sidebar-brand h2 span:last-child, .sidebar .sidebar-menu ul li a span:last-child {
+  display: none;
+}
+.sidebar:hover {
+  width: 345px;
+  z-index: 200;
+  transition: width 300ms;
+}
+.sidebar:hover .sidebar-brand, .sidebar:hover li {
+  padding-left: 2rem;
+  text-align: left;
+}
+.sidebar:hover .sidebar-brand a, .sidebar:hover li a {
+  padding-left: 1rem;
+}
+.sidebar:hover .sidebar-brand h2 span:last-child, .sidebar:hover .sidebar-menu li a span:last-child {
+  display: inline;
+  min-width: 10rem;
+  text-align: left;
+}
+.sidebar-brand, .sidebar li {
+  padding-left: 1rem;
+  text-align: center;
+}
+.sidebar li a {
+  padding-left: 0rem;
+}
+.sidebar-brand h2 span:last-child, .sidebar-menu li a span:last-child {
+  display: none;
+}
+.sidebar-brand, .sidebar li {
+  padding-left: 1rem;
+  text-align: center;
+}
+.sidebar li a {
+  padding-left: 0rem;
+}
 
 .sidebar.sidebar_active {
-  width: 70px;
+  width: 345px;
 }
 .sidebar.sidebar_active .sidebar-brand, .sidebar.sidebar_active .sidebar-menu ul li {
   padding-left: 1rem;
@@ -215,15 +261,17 @@
   padding-left: 0rem;
 }
 .sidebar.sidebar_active ~ .main-content {
-  margin-left: 70px;
+  margin-left: 345px;
   transition: margin-left 300ms;
 }
 .sidebar.sidebar_active ~ .main-content header {
-  width: calc(100% - 70px);
-  left: 70px;
+  width: calc(100% - 345px);
+  left: 345px;
 }
 .sidebar.sidebar_active .sidebar-brand h2 span:last-child, .sidebar.sidebar_active .sidebar-menu ul li a span:last-child {
-  display: none;
+  display: inline-block;
+  min-width: 10rem;
+  text-align: left;
 }
 
 .status.purple {
@@ -902,6 +950,9 @@
   .main-content header {
     width: calc(100% - 70px);
     left: 70px;
+  }
+  .main-content header h2 span {
+    font-size: 1.2rem;
   }
 }
 @media only screen and (max-width: 960px) {

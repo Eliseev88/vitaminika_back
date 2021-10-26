@@ -1,5 +1,5 @@
 .main-content {
-    margin-left: 345px;
+    margin-left: 70px;
     transition: margin-left 300ms;
 
     & .success {
@@ -15,8 +15,8 @@
         height: 90px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         position: fixed;
-        left: 345px;
-        width: calc(100% - 345px);
+        left: 70px;
+        width: calc(100% - 70px);
         top: 0;
         z-index: 100;
         transition: left 300ms;
