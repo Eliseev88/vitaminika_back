@@ -82,6 +82,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             ->name('admin.products');
         Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
             ->name('admin.createProduct');
+        Route::post('/productCreate', [\App\Http\Controllers\Admin\ProductController::class, 'store'])
+            ->name('admin.productCreate');
+        Route::post('/productUpdate', [\App\Http\Controllers\Admin\ProductController::class, 'update'])
+            ->name('admin.productUpdate');
+        Route::delete('/productDelete', [\App\Http\Controllers\Admin\OrderController::class, 'destroy'])
+            ->name('admin.productDelete');
         Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
             ->name('admin.product');
     });

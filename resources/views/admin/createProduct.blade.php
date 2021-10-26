@@ -8,54 +8,62 @@
         <div class="product__header">
             Код товара
         </div>
-        <form class="product__form" method="POST" action="">
+        <form class="product__form" enctype="multipart/form-data" method="POST" action="{{ route('admin.productCreate') }}">
             @csrf
-            <label for="">
-                <span>Наименование товара:</span>
-                <textarea></textarea>
+            <label>
+                <span>Наименование товара*:</span>
+                <textarea name="name"></textarea>
             </label>
-            <label for="">
-                <span>Код товара:</span>
-                <input type="number" value="">
+            <label>
+                <span>Бренд*</span>
+                <select name="brand_id" id="select_brand">
+                    @foreach($brands as $brand)
+                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                    @endforeach
+                </select>
+            </label>
+            <label>
+                <span>Код товара*:</span>
+                <input type="number" name="code">
             </label>
 
-            <label for="">
+            <label>
                 <span>Описание товара</span>
-                <textarea></textarea>
+                <textarea type="text" name="description"></textarea>
             </label>
-            <label for="">
+            <label>
                 <span>Состав</span>
-                <textarea></textarea>
+                <textarea type="text" name="details"></textarea>
             </label>
-            <label for="">
+            <label>
+                <span>Назначение: </span>
+                <textarea type="text" name="function"></textarea>
+            </label>
+            <label>
                 <span>Форма выпуска: </span>
-                <textarea></textarea>
+                <textarea type="text" name="form"></textarea>
             </label>
 
             <label>
                 <span>Количество в упаковке:</span>
-                <input type="text" value="">
+                <input type="text" name="amount">
+            </label>
+
+            <label>
+                <span>Изображение товара:</span>
+                <input type="file" name="image">
             </label>
             <label>
-                <span>В наличие:</span>
-                <select type="text" value="">
+                <span>В наличие*:</span>
+                <select type="text" name="availability">
                     <option value="1">Да</option>
                     <option value="0">Нет</option>
                 </select>
             </label>
             <label>
-                <span>Изображение товара:</span>
-                <input type="file" value="">
+                <span>Цена за упаковку*:</span>
+                <input type="number" name="price">
             </label>
-            <label>
-                <span>Цена за упаковку:</span>
-                <input type="number" value="">
-            </label>
-
-            <div>
-                <span>Дата обновления:</span>
-                <span></span>
-            </div>
 
             <button type="submit">Подтвердить</button>
         </form>

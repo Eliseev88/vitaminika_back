@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductAddRequest;
+use App\Services\FileUploadService;
 use App\Models\Brand;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -17,7 +22,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('updated_at')->get();
-        
+
 
         return view('admin/products', [
             'products' => $products,
@@ -31,7 +36,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin/createProduct');
+        $brands = Brand::orderBy('updated_at')->get();
+
+        return view('admin/createProduct', [
+            'brands' => $brands
+        ]);
     }
 
     /**
@@ -40,9 +49,25 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, FileUploadService $uploadedService)
     {
-        //
+        $fields = $request->all();
+
+        $fields['updated_at'] = Carbon::now();
+        $pathDir = '/img/products/' . $fields['name'];
+
+        if ($request->hasFile('image')) {
+            $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
+        }
+
+        $product = Product::create($fields);
+
+        if ($product) {
+            return redirect()->route('admin.products')
+                ->with('success', 'Товар успешно добавлен');
+        }
+
+        return back()->withInput();
     }
 
     /**
@@ -77,9 +102,40 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product, FileUploadService $uploadedService)
     {
-        //
+        $fields = $request->only(
+            'brand_id',
+            'name',
+            'code',
+            'description',
+            'details',
+            'function',
+            'form',
+            'amount',
+            'image',
+            'availability'
+        );
+        
+
+        $fields['updated_at'] = Carbon::now();
+        $pathDir = '/img/products/' . $fields['name'];
+
+        if ($request->hasFile('image')) {
+            $productFile = $product->find($request->product)->image;
+            Storage::disk('public')->delete($productFile);
+
+            $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
+        }
+
+        $product = $product->where('id', $request->product)->update($fields);
+
+        if ($product) {
+            return redirect()->route('admin.products')
+                ->with('success', 'Товар успешно добавлен');
+        }
+
+        return back()->withInput();
     }
 
     /**
@@ -88,8 +144,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $productFile = Brand::find($request->productId)->name;
+        Storage::disk('public')->deleteDirectory('/img/products/' . $productFile);
+
+        $product = Brand::where('id', $request->productId)->delete();;
+
+        if ($product) {
+            return true;
+        }
+
+        return false;
     }
 }

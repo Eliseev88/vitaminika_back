@@ -8,55 +8,48 @@
         <div class="product__header">
             Код товара {{ $product->code }}
         </div>
-        <form class="product__form" method="POST" action="">
+        <form class="product__form" enctype="multipart/form-data" method="POST" action="{{ route('admin.productUpdate', ['product' => $product]) }}">
             @csrf
             <label for="">
                 <span>Наименование товара:</span>
-                <textarea>{{ $product->name }}</textarea>
+                <textarea name="name">{{ $product->name }}</textarea>
             </label>
             <label for="">
                 <span>Код товара:</span>
-                <input type="number" value="{{ $product->code }}">
+                <input type="number" name="code" value="{{ $product->code }}">
             </label>
 
             <label for="">
                 <span>Описание товара</span>
-                <textarea>{{ $product->details }}</textarea>
+                <textarea name="details">{{ $product->details }}</textarea>
             </label>
             <label for="">
                 <span>Детали? </span>
-                <textarea>{{ $product->description }}</textarea>
+                <textarea name="description">{{ $product->description }}</textarea>
             </label>
             <label for="">
                 <span>Форма выпуска: </span>
-                <textarea> {{ $product->form }} </textarea>
+                <textarea name="form"> {{ $product->form }} </textarea>
             </label>
-
+            <label>
+                <span>Изображение товара:</span>
+                <input type="file" name="image">
+            </label>
             <label>
                 <span>Количество в упаковке:</span>
-                <input type="text" value="{{$product->amount}}">
+                <input type="text" name="amount" value="{{$product->amount}}">
             </label>
             <label>
                 <span>Цена за упаковку:</span>
-                <input type="number" value="{{ $product->price }}">
+                <input type="number" name="price" value="{{ $product->price }}">
             </label>
             <label>
                 <span>В наличие:</span>
-                <select type="text" value="{{$product->availability}}">
+                <select type="text"  name="availability"  value="{{$product->availability}}">
                     <option value="1">Да</option>
                     <option value="0">Нет</option>
                 </select>
             </label>
-
-            <div>
-                <span>Дата обновления:</span>
-                <span>{{$product->updated_at}}</span>
-            </div>
-            <div>
-                <span>Дата добавления:</span>
-                <span>{{$product->created_at}}</span>
-            </div>
-
             <button type="submit">Подтвердить</button>
         </form>
     </div>
