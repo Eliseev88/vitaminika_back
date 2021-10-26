@@ -164,6 +164,14 @@
     .main-content {
         width: 100%;
 
+        & header {
+            & h2 {
+                & span {
+                    display: none;
+                }
+
+            }
+        }
 
         & main {
             width: 100%;
