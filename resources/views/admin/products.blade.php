@@ -51,7 +51,10 @@
 
                                 <td class="card__body-action">
                                     <a href="{{ route('admin.product', ['product' => $product]) }}">Ред.</a>
-                                    <button>Уд.</button>
+                                    <button class="product-delete"
+                                        data-item_id="{{$product->id}}"
+                                        data-product_id="{{$product->id}}"
+                                    >Уд.</button>
                                 </td>
                             </tr>
                             @endforeach
