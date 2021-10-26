@@ -50,8 +50,8 @@
         &::after {
             content: '';
             display: block;
-            width: 6rem;
-            height: 6rem;
+            width: inherit;
+            height: inherit;
             background-color: transparent;
             position: absolute;
             top: .7rem;
@@ -85,8 +85,8 @@
         &::after {
             content: '';
             display: block;
-            width: 6rem;
-            height: 6rem;
+            width: inherit;
+            height: inherit;
             background-color: transparent;
             position: absolute;
             top: .7rem;
@@ -157,6 +157,9 @@
 }
 
 @media only screen and (max-width:568px) {
+    .slider {
+        padding: 0;
+    }
     .slider__item.slick-slide {
         & .prod-card {
             width: 100%;
@@ -167,27 +170,38 @@
     }
 
     .slick-next.slick-arrow {
+        bottom: 0;
+        right: 15%;
+        top: 100%;
+
         & .pagination__button {
 
-            width: 4rem;
-            height: 4rem;
+            width: 5rem;
+            height: 5rem;
 
             &::before {
-                bottom: 0.5rem;
+                bottom:1rem;
                 right: 3.8rem;
             }
         }
     }
 
     .slick-prev.slick-arrow {
+        bottom: 0;
+        left: 15%;
+        top: 100%;
+
         & .pagination__button {
-            width: 4rem;
-            height: 4rem;
+
+
+            width: 5rem;
+            height: 5rem;
 
             &::before {
-                right: 0.8rem;
-                bottom: 0.5rem;
+                right: 3.8rem;
+                bottom: 1rem;
             }
         }
     }
+
 }

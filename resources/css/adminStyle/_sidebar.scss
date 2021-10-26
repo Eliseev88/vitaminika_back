@@ -1,5 +1,5 @@
 .sidebar {
-    width: 345px;
+    width: 70px;
     position: fixed;
     left: 0;
     top: 0;
@@ -24,6 +24,7 @@
         }
     }
 
+    
     &-menu {
         margin-top: 1rem;
 
@@ -31,7 +32,8 @@
             width: 100%;
             margin-bottom: 1.7rem;
             padding-left: 1rem;
-
+            display: flex;
+            flex-direction: row;
             & a {
                 padding-left: 1rem;
                 color: #fff;
@@ -54,5 +56,68 @@
             border-radius: 30px 0 0 30px;
         }
     }
+    
+    & .sidebar-brand,
+    & .sidebar-menu ul li {
+        padding-left: 1rem;
+        text-align: center;
+    }
 
+    & .sidebar-menu ul li a {
+        padding-left: 0rem;
+    }
+    
+    & .sidebar-brand h2 span:last-child,
+    & .sidebar-menu ul li a span:last-child {
+        display: none;
+    }
+    &:hover {
+        width: 345px;
+        z-index: 200;
+        transition: width 300ms;
+
+        & .sidebar-brand,
+        & li {
+            padding-left: 2rem;
+            text-align: left;
+
+            & a {
+                padding-left: 1rem;
+            }
+        }
+
+        & .sidebar-brand h2 span:last-child,
+        & .sidebar-menu li a span:last-child {
+            display: inline;
+            min-width: 10rem;
+            text-align: left;
+        }
+    }
+
+    &-brand,
+    & li {
+        padding-left: 1rem;
+        text-align: center;
+    }
+
+    & li a {
+        padding-left: 0rem;
+    }
+
+
+    &-brand h2 span:last-child,
+    &-menu li a span:last-child {
+        display: none;
+    }
+
+
+    &-brand,
+    & li {
+        padding-left: 1rem;
+        text-align: center;
+    }
+
+    & li a {
+        padding-left: 0rem;
+    }
 }

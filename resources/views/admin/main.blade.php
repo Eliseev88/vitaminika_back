@@ -50,9 +50,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('admin.feedbacks') }}">
                         <span class="las la-user-circle"></span>
-                        <span>Пользователи</span>
+                        <span>Обратная связь</span>
                     </a>
                 </li>
 
@@ -74,11 +74,9 @@
 
         <header>
             <h2>
-                <button id="sidebar-open">
-                    <span class="las la-bars"></span>
-                </button>
+                <button id="sidebar-open" class="las la-bars"></button>
 
-                Панель администратора
+                <span>Панель администратора</span>
             </h2>
 
 
@@ -95,13 +93,19 @@
                 <div>
                     <h4>{{ Auth::user()->name }}</h4>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                        <a  class="dropdown-item" 
+                            href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"
+                        >
                             <small>{{ __('Выйти') }}</small>
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form   id="logout-form" 
+                                action="{{ route('logout') }}" 
+                                method="POST" 
+                                class="d-none"
+                        >
                             @csrf
                         </form>
                     </div>
@@ -123,10 +127,10 @@
         console.log(sidebar.classList.contains)
 
         btnSidebarOpen.addEventListener('click', (event) => {
-            if(!sidebar.classList.contains('active')) {
-                sidebar.classList.add('active')
+            if (!sidebar.classList.contains('sidebar_active')) {
+                sidebar.classList.add('sidebar_active')
             } else {
-                 sidebar.classList.remove('active')
+                sidebar.classList.remove('sidebar_active')
             }
         })
 
@@ -136,7 +140,6 @@
         if (link) {
             link.className += 'link-active';
         }
-
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

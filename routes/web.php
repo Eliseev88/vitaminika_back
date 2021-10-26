@@ -92,6 +92,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             ->name('admin.product');
     });
 
+    Route::prefix('feedbacks')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\FeedbackController::class, 'index'])
+            ->name('admin.feedbacks');
+
+            Route::get('/feedbackShow', [\App\Http\Controllers\Admin\FeedbackController::class, 'show'])
+            ->name('admin.feedbackShow');
+    });
+
+   
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
 });
 
