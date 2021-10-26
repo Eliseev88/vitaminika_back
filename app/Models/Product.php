@@ -20,7 +20,7 @@ class Product extends Model
         'form',
         'amount',
         'image',
-
+        'availability'
     ];
 
     public function brand()
