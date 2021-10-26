@@ -5,7 +5,19 @@
 
 @section('content')
     <x-breadcrumps brand="Контакты" />
-        
+
+    <div class="order__errors container">
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <div class="error">{{ $error }}</div>
+            @endforeach
+        @endif
+    </div>
+    @if (session('success'))
+        <div class="order__complete container" style="color: #2d995b;">
+            Ваш отзыв успешно отправлен. Спасибо за обратную связь!
+        </div>
+    @endif
         <section class="address">
             <div class="container">
                 <div class="address__title">
@@ -44,9 +56,9 @@
                             </div>
 
                             <div class="info__text">
-                            <b> Актуальные номера телефонов:</b> <br> 
-                            +7-985-047-00-44, <br> 
-                            +7-919-997-99-37, <br> 
+                            <b> Актуальные номера телефонов:</b> <br>
+                            +7-985-047-00-44, <br>
+                            +7-919-997-99-37, <br>
                             +7-905-709-85-22
                             </div>
                         </div>
@@ -72,31 +84,33 @@
                 Ваши предложения и пожелания
             </div>
 
-            <form id="feedback" class="feedback__form" action="">
+            <form id="feedback" class="feedback__form" method="POST" enctype="multipart/form-data" action="{{ route('review') }}">
+                @csrf
                 <label for="feedback-name">Ваше имя:
-                    <input id="feedback-name" type="text"  placeholder="Василий">
+                    <input required name="name" id="feedback-name" type="text"  placeholder="Василий" value="{{ old('name') }}">
                 </label>
-                <label for="feedback-name">Ваше фамилия:
-                    <input id="feedback-name" type="text" placeholder="Иванов">
+                <label for="feedback-name">Ваша фамилия:
+                    <input name="surname" id="feedback-name" type="text" placeholder="Иванов" value="{{ old('surname') }}">
                 </label>
                 <label for="feedback-email">Ваш E-mail:
-                    <input id="feedback-email" type="email" placeholder="mymail@mail.ru">
+                    <input required name="email" id="feedback-email" type="email" placeholder="mymail@mail.ru" value="{{ old('email') }}">
                 </label>
                 <label for="feedback-phone">Телефон:
-                    <input id="feedback-phone" type="number"  placeholder="8-999-999-00-00">
+                    <input name="phone" id="feedback-phone" type="text" placeholder="8-999-999-00-00" value="{{ old('phone') }}">
                 </label>
                 <label for="feedback-message">Сообщение:
-                    <textarea rows="7" maxlength="1000" id="feedback-message" type="text"  placeholder="Ваше сообщение"></textarea>
+                    <textarea required name="comment" rows="7" maxlength="1000" id="feedback-message"
+                              type="text"  placeholder="Ваше сообщение" value="{{ old('comment') }}"></textarea>
                 </label>
                 <label class="file-upload" for="feedback-file">Документ:
-                    <input id="feedback-file" type="file">
+                    <input name="file" id="feedback-file" type="file">
                 </label>
                 <label class='checkbox' for="feedback-checkbox">
-                    <input id="feedback-checkbox" type="checkbox"> Согласен на обработку персональных данных
+                    <input required name="checkbox" id="feedback-checkbox" type="checkbox"> Согласен на обработку персональных данных
                 </label>
 
 
-                <p>Нажимая на кнопку "Отправить сооьщение", Вы даете согласие на обработку персональных данных.</p>
+                <p>Нажимая на кнопку "Отправить соощение", Вы даете согласие на обработку персональных данных.</p>
 
                 <button  class="button popup-link" type="submit">Отправить</button>
             </form>

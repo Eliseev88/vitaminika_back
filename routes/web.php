@@ -38,7 +38,8 @@ Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery'
     ->name('delivery');
 Route::get('pagination/fetch_data', [\App\Http\Controllers\MainController::class, 'pagination'])
     ->name('pagination');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('review', [\App\Http\Controllers\ReviewController::class, 'store'])
+    ->name('review');
 
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {

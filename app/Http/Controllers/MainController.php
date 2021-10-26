@@ -44,10 +44,12 @@ class MainController extends Controller
     {
         $basket = $cookieCartService->check();
         $brands = Brand::all();
+        $products = Product::where('brand_id', $brand->id)->where('availability', 1)->get();
         return view('product', [
             'allBrands' => $brands,
             'currentProduct' => $product,
             'quantity' => $basket['quantity'],
+            'products' => $products,
         ]);
     }
 

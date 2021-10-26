@@ -69,7 +69,7 @@
             <div class="container">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="#common-cat" class="nav__link has-subnav">Продукция</a>
+                        <a href="" class="nav__link has-subnav">Продукция</a>
                         <ul class="nav__subnav">
                             @foreach($allBrands as $brand)
                             <li class="nav__subitem">
@@ -104,10 +104,9 @@
                         <div class="footer__box">
                             <div class="footer__contacts_title">Навигация по сайту</div>
                             <div class="footer__nav">
-                                <a href="#common-cat" class="footer__element">Продукция</a>
-                                <a href="/contacts" class="footer__element">Контакты</a>
-                                <a href="/delivery" class="footer__element">Доставка</a>
-                                <a href="/basket" class="footer__element">Корзина</a>
+                                <a href="{{ route('contacts') }}" class="footer__element">Контакты</a>
+                                <a href="{{ route('delivery') }}" class="footer__element">Доставка</a>
+                                <a href="{{ route('basket') }}" class="footer__element">Корзина</a>
                             </div>
                         </div>
                         <div class="footer__box">

@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="slider">
-            @foreach($currentProduct->getBrand()->products as $product)
+            @foreach($products as $product)
             <div class="slider__item">
                 <div class="prod-card">
                     <a href="{{ route('product', ['brand' => $currentProduct->brand, 'product' => $product]) }}" class="prod-card__link">

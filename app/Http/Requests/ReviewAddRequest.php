@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderAddRequest extends FormRequest
+class ReviewAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,20 @@ class OrderAddRequest extends FormRequest
     {
         return [
             'name' => ['required', 'alpha', 'max:30'],
-            'surname' => ['required', 'alpha', 'max:30'],
-            'phone' => ['required'],
+            'surname' => ['alpha', 'max:30'],
             'email' => ['required', 'email'],
-            'address' => ['sometimes'],
-            'delivery' => ['required']
+            'phone' => ['string'],
+            'comment' => ['string', 'min:5', 'max:5000'],
+            'file' => ['sometimes', 'max:100000'],
+            'checkbox' => ['required'],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'file' => 'файл',
+            'comment' => 'комментарии'
         ];
     }
 }
