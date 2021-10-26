@@ -81,7 +81,7 @@
         left: -100% !important;
     }
 
-    .sidebar.active {
+    .sidebar.sidebar_active {
         left: 0 !important;
         z-index: 100;
         width: 345px !important;
@@ -164,9 +164,6 @@
     .main-content {
         width: 100%;
 
-        & header h2 span{
-            display: none;
-        }
 
         & main {
             width: 100%;
