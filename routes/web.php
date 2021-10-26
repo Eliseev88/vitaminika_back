@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 // BASKET
 Route::group(['prefix' => 'basket'], function () {
     Route::get('/', [\App\Http\Controllers\BasketController::class, 'basket'])
@@ -36,9 +38,10 @@ Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery'
     ->name('delivery');
 Route::get('pagination/fetch_data', [\App\Http\Controllers\MainController::class, 'pagination'])
     ->name('pagination');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // ADMIN
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])
         ->name('admin');
     Route::get('/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])
@@ -70,6 +73,8 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('admin.orderDelete');
         Route::patch('/order', [\App\Http\Controllers\Admin\OrderController::class, 'updateProduct'])
             ->name('admin.orderUpdateProduct');
+        Route::put('/order', [\App\Http\Controllers\Admin\OrderController::class, 'addProduct'])
+            ->name('admin.orderAddProduct');
     });
 
     Route::prefix('products')->group(function () {
@@ -95,3 +100,4 @@ Route::get('/{brand}', [\App\Http\Controllers\MainController::class, 'brand'])
     ->name('brand');
 Route::get('/{brand}/{product}', [\App\Http\Controllers\MainController::class, 'product'])
     ->name('product');
+

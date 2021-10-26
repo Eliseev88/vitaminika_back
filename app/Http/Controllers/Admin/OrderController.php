@@ -8,12 +8,14 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function MongoDB\BSON\toJSON;
 
 class OrderController extends Controller
 {
     public function index()
     {
         $orders = Order::orderBy('updated_at')->get();
+
         return view('admin/orders', [
             'orders' => $orders,
         ]);
@@ -43,8 +45,11 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        $products = Product::where('availability', 1)->get();
+
         return view('admin/orderDetails', [
             'order' => $order,
+            'products' => $products,
         ]);
     }
 
@@ -76,10 +81,9 @@ class OrderController extends Controller
     public function updateProduct(Request $request)
     {
         $order = Order::find($request->orderId);
-        $product = Product::find($request->productId);
 
-        if ($order && $product) {
-            $order->products()->updateExistingPivot($product->id, [
+        if ($order) {
+            $order->products()->updateExistingPivot($request->productId, [
                 'count' => $request->productCount
             ]);
 
@@ -97,16 +101,60 @@ class OrderController extends Controller
         return false;
     }
 
+    public function addProduct(Request $request)
+    {
+        $order = Order::find($request->orderId);
+        $product = Product::find($request->productId);
+
+        if ($order && $product) {
+
+            $order->sum = 0;
+            $productAlreadyExist = false;
+
+            foreach($order->products as $el) {
+                if ($el->id == $product->id) {
+                    $productAlreadyExist = true;
+                }
+            }
+
+            if ($productAlreadyExist) {
+                $order->products()->updateExistingPivot($product->id, [
+                    'count' => $request->productCount,
+                ]);
+            } else $order->products()->attach($product->id, ['count' => $request->productCount]);
+
+            $order->save();
+
+            $order = Order::find($request->orderId);
+            if ($order) {
+                foreach($order->products as $el) {
+                    $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+                }
+
+                $order->save();
+
+                return [
+                    'product' => $product,
+                    'count' => $order->products()->where('product_id', $request->productId)->first()->pivot->count,
+                    'sum' => $order->sum,
+                    'quantity' => $order->products()->count(),
+                ];
+            }
+            return false;
+        }
+        return false;
+    }
+
     public function destroy(Request $request)
     {
         $order = Order::find($request->orderId);
         $product = Product::find($request->productId);
-        if ($order->products()->detach($request->productId)) {
-            $order->sum = $order->sum - $product->price;
-            $order->save();
+        $order->sum = $order->sum - $product->price
+            * $order->products()->where('product_id', $request->productId)->first()->pivot->count;
+        $order->products()->detach($request->productId);
+        $order->save();
 
-            return $order->sum;
-        }
-        return false;
+        return $order->sum;
+
     }
 }

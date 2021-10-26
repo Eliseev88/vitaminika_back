@@ -55,14 +55,14 @@
                         <span>Пользователи</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="/">
                         <span class="fas fa-sign-in-alt"></span>
                         <span>Вернуться на сайт</span>
                     </a>
                 </li>
-                
+
 
 
             </ul>
@@ -78,10 +78,10 @@
                     <span class="las la-bars"></span>
                 </button>
 
-                Главная
+                Панель администратора
             </h2>
 
-            <!--
+
             <div class="search-wrapper">
                 <span class="las la-search">
 
@@ -91,13 +91,23 @@
             </div>
 
             <div class="user-wrapper">
-                <img src="/img/main-logo.png" alt="" width="30px" height="30px">
+
                 <div>
-                    <h4>John Doe</h4>
-                    <small>Super Admin</small>
+                    <h4>{{ Auth::user()->name }}</h4>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <small>{{ __('Выйти') }}</small>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
                 </div>
             </div>
-            -->
+
         </header>
 
 

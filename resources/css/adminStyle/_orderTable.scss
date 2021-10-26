@@ -134,6 +134,36 @@
     }
 }
 
+.add-product {
+    margin-top: 2rem;
+    display: flex;
+    align-items: end;
+
+    &__column {
+        margin-right: 2rem;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    input,
+    select {
+        height: 2rem;
+    }
+
+    &__button {
+        padding: 0 1rem;
+    }
+
+    &__count {
+        width: 5rem;
+    }
+
+    select {
+        width: 100%;
+    }
+}
 
 @media only screen and (max-width:768px) {
     .order {
