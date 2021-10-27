@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,14 @@ Route::get('pagination/fetch_data', [\App\Http\Controllers\MainController::class
     ->name('pagination');
 Route::post('review', [\App\Http\Controllers\ReviewController::class, 'store'])
     ->name('review');
+
+
+Route::get('/search', [SearchController::class, 'index'])
+->name('search');
+
+Route::get('/search/query', [SearchController::class, 'searchProduct'])
+->name('search.query');
+
 
 // ADMIN
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
@@ -103,6 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
 
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
+
 });
 
 // ORDER

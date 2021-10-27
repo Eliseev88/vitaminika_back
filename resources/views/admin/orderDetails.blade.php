@@ -217,7 +217,6 @@
         })
 
         function changeQuantity(product) {
-            console.log(product.dataset.product_id)
             sendQuantityToBackEnd(product.value, product.dataset.product_id)
         }
         function sendQuantityToBackEnd(productCount, productId){

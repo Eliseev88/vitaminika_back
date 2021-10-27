@@ -51,6 +51,7 @@
     }
 
 
+        
     &__cart {
         display: flex;
         text-align: center;
@@ -74,6 +75,24 @@
 
     &__search {
         margin-left: 2rem;
+        position: relative;
+
+        & ul {
+            padding: 0.5rem 1rem;
+
+            & li {
+               
+                & a {
+                    padding: 1rem;
+                    text-decoration: none;
+                    color: #111;
+                    margin-bottom: 1rem !important;
+                    border-bottom: 1px solid #ccc;
+                    display: block;
+                
+                }
+            }
+        }
     }
 
 

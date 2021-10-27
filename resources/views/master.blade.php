@@ -6,9 +6,15 @@
     <title>Интернет магазин: @yield('title')</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+    
 </head>
 
 <body>
@@ -27,9 +33,9 @@
 
             <div id='burger-menu' class="header__menu">
 
-                <div class="header__search">
-                    <form action="" class="header__form">
-                        <input type="text" class="header__form-input" placeholder="Поиск...">
+                <div action="" class="header__search">
+                    <form class="header__form form-group">
+                        <input type="text" data-provide="typeahead" class="header__form-input form-control typeahead-input typeahead"  placeholder="Поиск...">
                         <button type="submit" class="header__form-icon fas fa-search"></button>
                     </form>
                 </div>
@@ -41,7 +47,7 @@
                             <span>Войти</span>
                         </a>
                         <a href="{{ route('basket') }}" class="header__cart-link quantity">
-                        <div class="quantity__box">{{ $quantity }}</div>
+                            <div class="quantity__box">{{ $quantity }}</div>
                             <i class="fas fa-shopping-cart"></i>
                             <span>Корзина</span>
                         </a>
@@ -55,13 +61,6 @@
                     <span class="header__phone">+7-985-047-00-44</span>
                 </div>
             </div>
-
-
-            <script>
-
-
-           </script>
-
         </header>
 
         <!-- NAV -->
@@ -141,16 +140,15 @@
     <button class="scrollup">
         <i class="fas fa-angle-up"></i>
     </button>
-    <script type="text/javascript" src="/js/popup.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
 
     @stack('js')
-
+    <script type="text/javascript" src="/js/popup.js"></script>
+    <script src="/js/buttonAdd.js"></script>
+    <script src="/js/bootstrap3-typeahead.js"></script>
     <!-- Basket -->
     <script>
-/*
-    ADD PRODUCT
- */
+        //ADD PRODUCT
         $(document).ready(function() {
             let totalQuantity = $('.quantity__box').text();
             if (+totalQuantity != 0 || totalQuantity != '') $('.quantity__box').css('visibility', 'visible');
@@ -175,9 +173,7 @@
             });
         });
 
-/*
-    DELETE PRODUCT
-*/
+        //   DELETE PRODUCT
         $(document).ready(function() {
             $('.cart').on('click', '.cart__delete', function(event) {
                 event.preventDefault();
@@ -213,9 +209,7 @@
             })
         })
 
-/*
-    UPDATE PRODUCT
-*/
+        //  UPDATE PRODUCT
         // MINUS
         $(document).ready(function() {
             $('.number-minus').click(function(event) {
@@ -266,7 +260,7 @@
         })
     </script>
 
-{{--    SCROLL TOP--}}
+    {{-- SCROLL TOP--}}
     <script type="text/javascript">
         $(document).ready(function() {
             $(window).scroll(function() {
@@ -282,13 +276,14 @@
                     scrollTop: 0
                 }, 600);
                 return false;
-            });open
+            });
+            open
 
         });
     </script>
 
-{{--    // BASKET BUTTON ANIMATION--}}
-    <script src="/js/buttonAdd.js"></script>
+    {{-- // BASKET BUTTON ANIMATION--}}
+    
 
     <script>
         const btnBurger = document.querySelector('#burger-btn')
@@ -297,13 +292,30 @@
 
         btnBurger.addEventListener('click', (event) => {
 
-            if(!menuBurger.classList.contains('open')) {
+            if (!menuBurger.classList.contains('open')) {
                 menuBurger.classList.add('open')
             } else {
                 menuBurger.classList.remove('open')
             }
         })
     </script>
+
+   
+    <script type="text/javascript">
+
+    const path = "{{ route('search.query') }}";
+    
+    $('input.typeahead').typeahead({
+        source: function (query, process) {
+            return $.get(path, {query: query}, function(data) {
+                return process(data);
+            });
+        }
+
+    });
+
+    </script>
+
 </body>
 
 </html>
