@@ -12,6 +12,7 @@
     &__image {
         outline: 1px solid #EDEDED;
         transition: box-shadow .2s linear;
+        max-height: 291px;
 
         &:hover {
             box-shadow: 0 0 1.5rem #EDEDED;
@@ -153,6 +154,10 @@
 
         & button {
             width: 100%;
+        }
+
+        .prod-card__image {
+            max-height: 200px;
         }
     }
 }

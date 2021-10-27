@@ -10,13 +10,13 @@
         <div class="container">
             <div class="category__wrapper">
                 <div class="category__image">
-                    <img src="{{ $currentBrand->image }}" alt="vitamins">
+                    <img src="/storage/{{ $currentBrand->image }}" alt="vitamins">
                 </div>
                 <div class="category__content">
                     <h1 class="category__slogan">{{ $currentBrand->title }}</h1>
                     <div class="category__box">
                         <p class="category__descript">{{ $currentBrand->description }}</p>
-                        <a href="{{ $currentBrand->presentation }}" class="category__presentation" target="_blank"><i class="far fa-file-alt"></i>Скачать презентацию</a>
+                        <a href="/storage/{{ $currentBrand->presentation }}" class="category__presentation" target="_blank"><i class="far fa-file-alt"></i>Скачать презентацию</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     @foreach($products as $product)
                         <div class="prod-card">
                             <a href="{{ route('product', ['brand' => $currentBrand, 'product' => $product]) }}" class="prod-card__link">
-                                <img src="{{ $product->image }}" alt="image" class="prod-card__image">
+                                <img src="/storage/{{ $product->image }}" alt="image" class="prod-card__image">
                             </a>
                             <div class="prod-card__descript">
                                 <span class="prod-card__name">{{ $product->name }}</span>

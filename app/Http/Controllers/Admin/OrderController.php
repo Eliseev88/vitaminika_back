@@ -14,7 +14,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::orderBy('updated_at')->get();
+        $orders = Order::orderBy('updated_at')->paginate(10);
 
         return view('admin/orders', [
             'orders' => $orders,

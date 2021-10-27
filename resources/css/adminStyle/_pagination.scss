@@ -1,0 +1,22 @@
+.pagination {
+    margin-top: 2rem;
+
+    &__list {
+        margin-top: 1.5rem;
+        display: flex;
+    }
+
+    li {
+        margin-right: 1rem;
+    }
+
+    a {
+        color: #222;
+        font-size: 1.2rem;
+    }
+
+    .active {
+        transform: translateY(-25%);
+        font-size: 2rem;
+    }
+}

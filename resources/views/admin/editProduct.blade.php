@@ -8,11 +8,29 @@
         <div class="product__header">
             Код товара {{ $product->code }}
         </div>
+        <div class="order__errors">
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div style="color: red;">{{ $error }}</div>
+                @endforeach
+            @endif
+        </div>
         <form class="product__form" enctype="multipart/form-data" method="POST" action="{{ route('admin.productUpdate', ['product' => $product]) }}">
             @csrf
             <label for="">
                 <span>Наименование товара:</span>
                 <textarea name="name">{{ $product->name }}</textarea>
+            </label>
+            <label>
+                <span>Бренд*</span>
+                <select name="brand_id" id="select_brand">
+                    @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}"
+                            @if($brand->id == $product->brand_id) selected @endif>
+                            {{ $brand->name }}
+                        </option>
+                    @endforeach
+                </select>
             </label>
             <label for="">
                 <span>Код товара:</span>
@@ -24,7 +42,7 @@
                 <textarea name="details">{{ $product->details }}</textarea>
             </label>
             <label for="">
-                <span>Детали? </span>
+                <span>Состав</span>
                 <textarea name="description">{{ $product->description }}</textarea>
             </label>
             <label for="">

@@ -19,7 +19,7 @@
         <div class="topcat__box">
             <div class="topcat__left">
                 <div class="topcat__category">
-                    <img src="{{ $topBrand->image }}" alt="image" class="topcat__cat-img">
+                    <img src="/storage/{{ $topBrand->image }}" alt="image" class="topcat__cat-img">
                 </div>
                 <div class="topcat__link">
                     <a href="{{ route('brand', ['brand' => $topBrand]) }}" class="button">Все товары</a>
@@ -33,7 +33,7 @@
                     <div class="topcat__item">
                         <div class="prod-card">
                             <a href="{{ route('product', ['brand' => $topBrand, 'product' => $product]) }}" class="prod-card__link">
-                                <img src="{{ $product->image }}" alt="image" class="prod-card__image">
+                                <img src="/storage/{{ $product->image }}" alt="image" class="prod-card__image">
                             </a>
                             <div class="prod-card__descript">
                                 <div class="prod-card__name">{{ $product->name }}</div>
@@ -61,7 +61,7 @@
         <div class="common-cat__wrapper">
             @foreach($allBrands as $brand)
             <a href="{{ route('brand', ['brand' => $brand]) }}" class="common-cat__item">
-                <img class="common-cat__img" src="{{ $brand->image }}" alt="category_picture">
+                <img class="common-cat__img" src="/storage/{{ $brand->image }}" alt="category_picture">
             </a>
             @endforeach
         </div>

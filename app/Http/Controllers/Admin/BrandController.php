@@ -46,7 +46,7 @@ class BrandController extends Controller
     {
         $fields = $request->validated();
         $fields['updated_at'] = Carbon::now();
-        $pathDir = '/img/brands/' . $fields['name'];
+        $pathDir = '/brands/' . $fields['name'];
 
         if ($request->hasFile('image')) {
             $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
@@ -101,7 +101,7 @@ class BrandController extends Controller
     {
         $fields = $request->validated();
         $fields['updated_at'] = Carbon::now();
-        $pathDir = '/img/brands/' . $fields['name'];
+        $pathDir = '/brands/' . $fields['name'];
 
         if ($request->hasFile('image')) {
             $brandFile = $brand->find($request->brand)->image;

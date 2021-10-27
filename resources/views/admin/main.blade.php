@@ -93,7 +93,7 @@
                 <div>
                     <h4>{{ Auth::user()->name }}</h4>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a  class="dropdown-item" 
+                        <a  class="dropdown-item"
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"
@@ -101,9 +101,9 @@
                             <small>{{ __('Выйти') }}</small>
                         </a>
 
-                        <form   id="logout-form" 
-                                action="{{ route('logout') }}" 
-                                method="POST" 
+                        <form   id="logout-form"
+                                action="{{ route('logout') }}"
+                                method="POST"
                                 class="d-none"
                         >
                             @csrf
@@ -123,8 +123,6 @@
     <script>
         const btnSidebarOpen = document.querySelector('#sidebar-open')
         const sidebar = document.querySelector('.sidebar')
-
-        console.log(sidebar.classList.contains)
 
         btnSidebarOpen.addEventListener('click', (event) => {
             if (!sidebar.classList.contains('sidebar_active')) {

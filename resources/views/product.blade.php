@@ -12,7 +12,7 @@
         <div class="">
             <div class="product__wrapper">
                 <div class="product__left">
-                    <img src="{{ $currentProduct->image }}" alt="image" class="product__image">
+                    <img src="/storage/{{ $currentProduct->image }}" alt="image" class="product__image">
                 </div>
                 <div class="product__right">
                     <div class="product__code">Код товара: {{ $currentProduct->code }}</div>
@@ -82,7 +82,7 @@
             <div class="slider__item">
                 <div class="prod-card">
                     <a href="{{ route('product', ['brand' => $currentProduct->brand, 'product' => $product]) }}" class="prod-card__link">
-                        <img src="{{ $product->image }}" alt="image" class="prod-card__image">
+                        <img src="/storage/{{ $product->image }}" alt="image" class="prod-card__image">
                     </a>
                     <div class="prod-card__descript">
                         <span class="prod-card__name">{{ $product->name }}</span>

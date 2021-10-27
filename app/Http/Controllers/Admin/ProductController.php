@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('updated_at')->get();
+        $products = Product::orderBy('updated_at')->paginate(10);
 
 
         return view('admin/products', [
@@ -29,32 +29,21 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $brands = Brand::orderBy('updated_at')->get();
+        $brands = Brand::all();
 
         return view('admin/createProduct', [
             'brands' => $brands
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, FileUploadService $uploadedService)
+    public function store(ProductAddRequest $request, FileUploadService $uploadedService)
     {
         $fields = $request->all();
 
         $fields['updated_at'] = Carbon::now();
-        $pathDir = '/img/products/' . $fields['name'];
+        $pathDir = '/products/' . $fields['name'];
 
         if ($request->hasFile('image')) {
             $fields['image'] = $uploadedService->upload($request->file('image'), $pathDir);
@@ -70,16 +59,13 @@ class ProductController extends Controller
         return back()->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Product $product)
     {
+        $brands = Brand::all();
 
         return view('admin/editProduct', [
+            'brands' => $brands,
             'product' => $product,
         ]);
     }
@@ -102,7 +88,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product, FileUploadService $uploadedService)
+    public function update(ProductAddRequest $request, Product $product, FileUploadService $uploadedService)
     {
         $fields = $request->only(
             'brand_id',
@@ -116,10 +102,10 @@ class ProductController extends Controller
             'image',
             'availability'
         );
-        
+
 
         $fields['updated_at'] = Carbon::now();
-        $pathDir = '/img/products/' . $fields['name'];
+        $pathDir = '/products/' . $fields['name'];
 
         if ($request->hasFile('image')) {
             $productFile = $product->find($request->product)->image;
@@ -132,29 +118,24 @@ class ProductController extends Controller
 
         if ($product) {
             return redirect()->route('admin.products')
-                ->with('success', 'Товар успешно добавлен');
+                ->with('success', 'Товар успешно обновлен');
         }
 
         return back()->withInput();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
-        $productFile = Brand::find($request->productId)->name;
-        Storage::disk('public')->deleteDirectory('/img/products/' . $productFile);
-
-        $product = Brand::where('id', $request->productId)->delete();;
+        $product = Product::find($request->productId)->first();
 
         if ($product) {
-            return true;
+            Storage::disk('public')->deleteDirectory('/products/' . $product->name);
+            $product = Product::where('id', $request->productId)->delete();
+            if ($product) {
+                return true;
+            }
+            return false;
         }
-
         return false;
     }
 }

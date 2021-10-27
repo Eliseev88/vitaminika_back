@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
     --main-color: #11bef3;
@@ -24,6 +23,7 @@
 @import 'adminStyle/card';
 @import 'adminStyle/brand';
 @import 'adminStyle/feedback';
+@import 'adminStyle/pagination';
 //Медиа запросы
 @import 'adminStyle/mediaAdmin';
 

@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        
+        $reviews = Review::all()->sortDesc();
 
-        return view('admin.feedback');
+        return view('admin.feedback', [
+            'reviews' => $reviews,
+        ]);
     }
 
     /**
@@ -40,15 +38,11 @@ class FeedbackController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
+    public function show(Review $review)
     {
-        return view('admin.feedbackShow');
+        return view('admin.feedbackShow', [
+            'review' => $review,
+        ]);
     }
 
     /**

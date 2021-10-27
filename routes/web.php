@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             ->name('admin.productCreate');
         Route::post('/productUpdate', [\App\Http\Controllers\Admin\ProductController::class, 'update'])
             ->name('admin.productUpdate');
-        Route::delete('/productDelete', [\App\Http\Controllers\Admin\OrderController::class, 'destroy'])
+        Route::delete('/productDelete', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])
             ->name('admin.productDelete');
         Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
             ->name('admin.product');
@@ -97,11 +97,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', [\App\Http\Controllers\Admin\FeedbackController::class, 'index'])
             ->name('admin.feedbacks');
 
-            Route::get('/feedbackShow', [\App\Http\Controllers\Admin\FeedbackController::class, 'show'])
+        Route::get('/{review}', [\App\Http\Controllers\Admin\FeedbackController::class, 'show'])
             ->name('admin.feedbackShow');
     });
 
-   
+
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
 });
 

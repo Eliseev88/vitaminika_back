@@ -16,6 +16,7 @@
     &__image {
         max-width: 46.3rem;
         border: 1px solid #DADADA;
+        max-height: 46.3rem;
     }
 
     &__code {
@@ -52,6 +53,7 @@
 
         & .price {
             font-size: 3.5rem;
+            margin-right: 10rem;
         }
     }
 }

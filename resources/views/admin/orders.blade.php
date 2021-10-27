@@ -14,7 +14,6 @@
             <div class="card">
                 <div class="card__header">
                     <h3>Заказы</h3>
-                    <a href="">Добавить заказ</a>
                 </div>
                 <div class="card__body">
                     <table width="100%">
@@ -54,7 +53,7 @@
                                 </td>
                                 <td>{{ $order->created_at }}</td>
                                 <td>{{ $order->updated_at }}</td>
-                                
+
                                 <td class="card__body-action">
                                     <a href="{{ route('admin.order', ['order' => $order]) }}">Ред.</a>
                                     <!--<button>Уд.</button>-->
@@ -63,6 +62,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{ $orders->links('vendor.pagination.default') }}
                 </div>
             </div>
         </div>

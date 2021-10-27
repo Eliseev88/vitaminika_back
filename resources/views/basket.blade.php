@@ -13,7 +13,7 @@
                             <div class="cart__item" id="item_{{ $key }}">
                                 <div class="cart__left">
                                     <div class="cart__image">
-                                        <img src="{{ $el->attributes->img }}" alt="image">
+                                        <img src="/storage/{{ $el->attributes->img }}" alt="image">
                                     </div>
                                     <div class="cart__product">
                                         <div class="cart__name">{{ $el->name }}</div>

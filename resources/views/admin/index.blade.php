@@ -9,8 +9,8 @@
             <div class="cards">
                 <div class="card-single">
                     <div>
-                        <h1>{{ $usersCount }}</h1>
-                        <span>Обратная связь</span>
+                        <h1>{{ $reviewsCount }}</h1>
+                        <span>Отставлено отзывов</span>
                     </div>
                     <div>
                         <span class="las la-users"></span>

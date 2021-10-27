@@ -4,35 +4,36 @@
 
 @section('content')
 <main>
-    <div class="feedback">     
-        <form class="feedback__form" method="POST" action="">
-            @csrf
+    <div class="feedback">
+        <div class="feedback__form">
             <div>
                 <span>№ обращения</span>
-                <span>1234</span>
+                <span>{{ $review->id }}</span>
             </div>
             <div>
-                <span>Фио клиента</span>
-                <span>Иванов Иван</span>
+                <span>Фио отправителя</span>
+                <span>{{ $review->name }} {{ $review->surname }}</span>
             </div>
             <div>
-                <span>Email клиета</span>
-                <span>ivan@mail.ru</span>
+                <span>Email отправителя</span>
+                <span>{{ $review->email }}</span>
             </div>
 
             <div>
-                <span>Телефон клиета</span>
-                <span>+7 999 999 99 99</span>
+                <span>Телефон отправителя</span>
+                <span>{{ $review->phone }}</span>
             </div>
             <div>
                 <span>Сообщение</span>
-                <span>Доброго времени суток.</span>
+                <span>{{ $review->comment }}</span>
             </div>
             <div>
                 <span>Приложение</span>
-                <a href="#" target="blank">Ссылка на приложение</a>
+                @if(!empty($review->file))
+                <a href="/storage/{{ $review->file }}" target="_blank">Открыть прикрепленный файл</a>
+                @endif
             </div>
-<!-- 
+<!--
             <label for="feedback-status">
                 <span>Статус:</span>
                 <select name="status" id="order-status">
@@ -53,7 +54,7 @@
             <button type="submit">Ответить</button> -->
 
             <div><a class="btn-link" href="{{route('admin.feedbacks')}}">Назад</a></div>
-        </form>
+        </div>
 
 
     </div>

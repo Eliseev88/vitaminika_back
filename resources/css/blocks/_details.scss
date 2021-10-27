@@ -43,5 +43,18 @@
         &__header {
             margin-bottom: 0;
         }
+
+        &__consist {
+            .topic {
+                display: block;
+
+                &__name:before {
+                    display: none;
+                }
+                &__name:after {
+                    display: none;
+                }
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@
             @endif
             <div class="card">
                 <div class="card__header">
-                    <h3>Заказы</h3>
+                    <h3>Товары</h3>
                     <a href="{{ route('admin.createProduct')}}">Добавить товар</a>
                 </div>
                 <div class="card__body">
@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             @foreach($products as $product)
-                            <tr>
+                            <tr id="item_{{$product->id}}">
                                 <td><a href="{{ route('admin.product', ['product' => $product]) }}"> {{ $product->name }}</a></td>
                                 <td>{{ $product->code }}</td>
                                 <td>{{ $product->form }}</td>
@@ -60,17 +60,18 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $products->links('vendor.pagination.default') }}
                 </div>
 
             </div>
         </div>
-    </div>   
+    </div>
 </main>
 
 @push('js')
 <script>
     $(document).ready(function () {
-            $('.card__body').on('click', '.product-delete', function (event) {               
+            $('.card__body').on('click', '.product-delete', function (event) {
                 event.preventDefault();
 
                 let productId = $(this).data('product_id');

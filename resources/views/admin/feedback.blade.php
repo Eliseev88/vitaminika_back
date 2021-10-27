@@ -7,12 +7,6 @@
     <div class="recent-grid">
         <div class="projects">
 
-            @if(session('success'))
-                <div class="success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <div class="card">
                 <div class="card__header">
                     <h3>Обратная связь</h3>
@@ -21,24 +15,19 @@
                     <table width="100%">
                         <thead>
                             <tr>
-                                <td>Номер заказа</td>
-                                <td>Статус заказа</td>
-                                <td>Дата заказа</td>
-                                <td>Дата обновления</td>
-                                <td>Действия</td>
+                                <td>Номер</td>
+                                <td>Имя отправителя</td>
+                                <td>Дата отправки</td>
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($reviews as $key => $review)
                             <tr>
-                                <td> <a href="{{ route('admin.feedbackShow' )}}">Номер заказа</a></td>
-                                <td class="td-status">
-                                    <span class="status purple"></span>
-                                     Статус заказа
-                                </td>
-                                <td>Дата заказа</td>
-                                <td>Дата обновления</td>
-                                <td>Действия</td>
+                                <td> <a href="{{ route('admin.feedbackShow', ['review' => $review] )}}">{{ $key + 1 }}</a></td>
+                                <td>{{ $review->name }} {{ $review->surname }}</td>
+                                <td>{{ $review->created_at }}</td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

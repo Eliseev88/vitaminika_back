@@ -965,6 +965,7 @@ body.lock {
 .prod-card__image {
   outline: 1px solid #EDEDED;
   transition: box-shadow 0.2s linear;
+  max-height: 291px;
 }
 .prod-card__image:hover {
   box-shadow: 0 0 1.5rem #EDEDED;
@@ -1070,6 +1071,9 @@ body.lock {
   }
   .prod-card button {
     width: 100%;
+  }
+  .prod-card .prod-card__image {
+    max-height: 200px;
   }
 }
 .footer {
@@ -2022,6 +2026,7 @@ body.lock {
 .product__image {
   max-width: 46.3rem;
   border: 1px solid #DADADA;
+  max-height: 46.3rem;
 }
 .product__code {
   color: #888888;
@@ -2052,6 +2057,7 @@ body.lock {
 }
 .product__bottom .price {
   font-size: 3.5rem;
+  margin-right: 10rem;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -2234,6 +2240,15 @@ body.lock {
 @media only screen and (max-width: 568px) {
   .details__header {
     margin-bottom: 0;
+  }
+  .details__consist .topic {
+    display: block;
+  }
+  .details__consist .topic__name:before {
+    display: none;
+  }
+  .details__consist .topic__name:after {
+    display: none;
   }
 }
 .slider {

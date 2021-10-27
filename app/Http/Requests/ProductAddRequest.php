@@ -28,15 +28,24 @@ class ProductAddRequest extends FormRequest
             'brand_id' => ['required', 'integer', 'max:20'],
             'code' => ['required', 'string', 'max:20'],
 
-            'description' => ['sometimes'],
-            'details' => ['sometimes'],
-            'function' => ['sometimes'],
-            'form' => ['sometimes'],
-            'amount' => ['sometimes'],
-            'image' => ['sometimes'],
+//            'description' => ['string'],
+//            'details' => ['string'],
+//            'function' => ['string'],
+//            'form' => ['string'],
+//            'amount' => ['string'],
+            'image' => ['sometimes', 'max:10000'],
 
             'price' => ['required', 'string', 'min:1', 'max:10'],
             'availability' => ['required', 'boolean'],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'code' => 'код товара',
+            'price' => 'цена',
+            'name' => 'наименование товара'
         ];
     }
 }
