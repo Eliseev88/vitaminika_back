@@ -124,8 +124,6 @@
         const btnSidebarOpen = document.querySelector('#sidebar-open')
         const sidebar = document.querySelector('.sidebar')
 
-        console.log(sidebar.classList.contains)
-
         btnSidebarOpen.addEventListener('click', (event) => {
             if (!sidebar.classList.contains('sidebar_active')) {
                 sidebar.classList.add('sidebar_active')
