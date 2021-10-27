@@ -356,6 +356,7 @@
             });
 
             items = $(data).map(function (i, item) {
+                
                     if ((item.__type || false) == 'category'){
                         return $(that.options.headerHtml || that.theme.headerHtml).text(item.name)[0];
                     }
@@ -388,8 +389,9 @@
             if (this.autoSelect && !activeFound) {
                 items.filter(':not(.dropdown-header)').first().addClass('active');
                 this.$element.data('active', items.first().data('value'));
+
                 let parent = document.querySelector('.header__form')
-                parent.action =  '/' + items.first().data('value')['brand_id'] + '/' +  items.first().data('value')['brand_id'] 
+                parent.action =  '/' + items.first().data('value')['brand_id'] + '/' +  items.first().data('value')['id'] 
             }
             this.$menu.html(items);
             return this;
@@ -411,7 +413,7 @@
             var active = this.$menu.find('.active').removeClass('active');
             var next = active.next();
             let parent = document.querySelector('.header__form')
-            
+
             if (!next.length) {
                 next = $(this.$menu.find($(this.options.item || this.theme.item).prop('tagName'))[0]);
             }
@@ -754,7 +756,7 @@
         },
         bootstrap4: {
             menu: '<div class="typeahead dropdown-menu" role="listbox"></div>',
-            item: '<button class="dropdown-item" role="option"></button>',
+            item: '<a  href="" class="dropdown-item" role="option"></a>',
             itemContentSelector: '.dropdown-item',
             headerHtml: '<h6 class="dropdown-header"></h6>',
             headerDivider: '<div class="dropdown-divider"></div>'

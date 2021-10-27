@@ -34,8 +34,8 @@
             <div id='burger-menu' class="header__menu">
 
                 <div action="" class="header__search">
-                    <form class="header__form">
-                        <input type="text" data-provide="typeahead" class="header__form-input typeahead"  placeholder="Поиск...">
+                    <form class="header__form form-group">
+                        <input type="text" data-provide="typeahead" class="header__form-input form-control typeahead-input typeahead"  placeholder="Поиск...">
                         <button type="submit" class="header__form-icon fas fa-search"></button>
                     </form>
                 </div>
@@ -146,6 +146,7 @@
     @stack('js')
     <script type="text/javascript" src="/js/popup.js"></script>
     <script src="/js/buttonAdd.js"></script>
+    <script src="/js/bootstrap3-typeahead.js"></script>
     <!-- Basket -->
     <script>
         //ADD PRODUCT
@@ -299,9 +300,8 @@
             }
         })
     </script>
-   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" integrity="sha512-HWlJyU4ut5HkEj0QsK/IxBCY55n5ZpskyjVlAoV9Z7XQwwkqXoYdCIC93/htL3Gu5H3R4an/S0h2NXfbZk3g7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
-   <script src="/js/bootstrap3-typeahead.js"></script>
+   
     <script type="text/javascript">
 
     const path = "{{ route('search.query') }}";
@@ -314,8 +314,6 @@
         }
 
     });
-
-
 
     </script>
 

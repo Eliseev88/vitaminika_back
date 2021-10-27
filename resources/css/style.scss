@@ -83,6 +83,7 @@ body {
 @import 'blocks/_number';
 @import 'blocks/_order';
 @import '_slick';
+@import 'blocks/typeahead';
 
 @media only screen and (max-width:768px) {
     .container {
