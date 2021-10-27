@@ -173,6 +173,23 @@ body.lock {
 }
 .header__search {
   margin-left: 2rem;
+  position: relative;
+}
+.header__search ul {
+  position: absolute;
+  width: 25rem;
+  background-color: #fffbfb;
+  z-index: 10;
+  border: 1px solid #ccc;
+}
+.header__search ul li {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.header__search ul li a {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #111;
 }
 .header__block-right {
   display: flex;
