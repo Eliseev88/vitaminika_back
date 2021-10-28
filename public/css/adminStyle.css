@@ -924,6 +924,22 @@
   font-size: 2rem;
 }
 
+.sort {
+  display: flex;
+  align-items: center;
+}
+.sort__icon {
+  display: inline-block;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.sort__up {
+  transform: translateY(9px);
+}
+.sort__down {
+  transform: translateY(-6px);
+}
+
 @media only screen and (max-width: 1200px) {
   .sidebar {
     width: 70px;

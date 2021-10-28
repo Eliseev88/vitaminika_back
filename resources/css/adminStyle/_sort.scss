@@ -1,0 +1,18 @@
+.sort {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        display: inline-block;
+        margin-left: .5rem;
+        cursor: pointer;
+    }
+
+    &__up {
+        transform: translateY(9px);
+    }
+
+    &__down {
+        transform: translateY(-6px);
+    }
+}

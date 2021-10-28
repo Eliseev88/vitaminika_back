@@ -22,7 +22,6 @@
                             <tr>
                                 <td>Название</td>
                                 <td>Страна</td>
-                                <td>Обновление</td>
                                 <td>Действия</td>
                             </tr>
                         </thead>
@@ -32,7 +31,6 @@
                             <tr id="item_{{ $brand->id }}">
                                 <td><a href="{{ route('admin.brand', ['brand' => $brand]) }}"> {{ $brand->name }}</a></td>
                                 <td>{{ $brand->country }}</td>
-                                <td>{{ $brand->updated_at }}</td>
 
                                 <td class="card__body-action">
                                     <a href="{{ route('admin.brand', ['brand' => $brand]) }}">Ред.</a>

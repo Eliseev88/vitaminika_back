@@ -198,3 +198,9 @@
  .menu .tt-suggestion p {
    margin: 0;
  }
+
+ .dropdown-menu li{
+    &.active {
+      background-color: rgb(231, 231, 229);
+    }
+ }

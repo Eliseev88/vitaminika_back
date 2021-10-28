@@ -92,6 +92,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             ->name('admin.products');
         Route::get('/createProduct', [\App\Http\Controllers\Admin\ProductController::class, 'create'])
             ->name('admin.createProduct');
+        Route::get('/fetch_data', [\App\Http\Controllers\Admin\SortController::class, 'fetch_data'])
+            ->name('fetch_data');
         Route::post('/productCreate', [\App\Http\Controllers\Admin\ProductController::class, 'store'])
             ->name('admin.productCreate');
         Route::post('/productUpdate', [\App\Http\Controllers\Admin\ProductController::class, 'update'])

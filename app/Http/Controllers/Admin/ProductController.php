@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('updated_at')->paginate(10);
+        $products = Product::orderBy('name')->paginate(10);
 
 
         return view('admin/products', [
@@ -81,13 +81,7 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(ProductAddRequest $request, Product $product, FileUploadService $uploadedService)
     {
         $fields = $request->only(
