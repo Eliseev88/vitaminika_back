@@ -25,10 +25,34 @@
         }
 
         & a {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 20px;
             color: #111;
+        }
+    }
+
+    
+    &__search {
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+        margin: 1rem;
+
+        & span {
+            display: inline-block;
+            padding: 0rem 1rem;
+            font-size: 1.5rem;
+        }
+
+        & input {
+            height: 100%;
+            padding: 0.5rem;
+            border: none;
+            outline: none;
         }
     }
 

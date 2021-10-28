@@ -15,6 +15,13 @@
                 <div class="card__header">
                     <h3>Заказы</h3>
                 </div>
+
+                <div class="card__search">
+                    <span class="las la-search"></span>
+                    <input type="search" placeholder="Поиск...">
+                </div>
+
+
                 <div class="card__body">
                     <table width="100%">
                         <thead>
