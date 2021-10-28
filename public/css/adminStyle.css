@@ -263,6 +263,9 @@
 .status.orange {
   background: #ff8a05;
 }
+.status.green {
+  background: green;
+}
 
 .order {
   font-size: 1rem;
@@ -587,6 +590,7 @@
   align-items: center;
   overflow-x: hidden;
   margin: 1rem;
+  max-width: 20rem;
 }
 .card__search span {
   display: inline-block;
@@ -598,6 +602,7 @@
   padding: 0.5rem;
   border: none;
   outline: none;
+  width: 100%;
 }
 .card__body {
   overflow-y: auto;

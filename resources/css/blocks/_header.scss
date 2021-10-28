@@ -5,6 +5,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 
     &__menu {
         display: flex;
@@ -136,6 +137,10 @@
         z-index: 999;
         background: #fff;
 
+        summary {
+            margin-bottom: 1rem;
+        }
+
         #burger-btn {
             display: block;
             position: relative;
@@ -159,7 +164,6 @@
                 position: fixed;
                 height: calc(100vh - 120px);
                 width: 100%;
-                margin-left: 1rem;
                 top: 11rem;
                 right: 0rem;
                 left: 0;
@@ -174,6 +178,7 @@
         &__search {
             width: 90%;
             margin-bottom: 2rem;
+            margin-left: 0;
         }
 
         &__form {
@@ -184,7 +189,7 @@
 
         &__block {
             &-left, &-right {
-                width: 90%;
+                width: 95%;
                 padding: 0.5rem;
 
                 & i {
@@ -205,12 +210,13 @@
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
+                width: 100%;
             }
 
             &-right {
                 display: block;
-                margin-left: 1.5rem;
                 margin-right: 0;
+                margin-bottom: 1rem;
             }
         }
 
@@ -238,6 +244,18 @@
             display: block;
             padding: 0.5rem;
 
+            &-subnav {
+                margin-left: 3rem !important;
+
+                & li {
+                    margin-bottom: .5rem;
+                }
+
+                & a {
+                    text-decoration: none;
+                    color: $mainFontColor;
+                }
+            }
             &-list {
                 display: flex;
                 flex-direction: column;
@@ -245,6 +263,7 @@
 
             & ul li {
                 font-size: 2.3rem;
+                margin-bottom: 1rem;
             }
         }
     }

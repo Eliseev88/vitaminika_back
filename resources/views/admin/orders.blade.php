@@ -26,53 +26,99 @@
                     <table width="100%">
                         <thead>
                             <tr>
-                                <td>Номер заказа</td>
-                                <td>Тип доставки</td>
-                                <td>Статус заказа</td>
-                                <td>Дата заказа</td>
-                                <td>Дата обновления</td>
+                                <td class="sorting" style="cursor: pointer"
+                                    data-sorting_type="asc"
+                                    data-column-name="id">
+                                    Номер заказа <span class="span_icon" id="id_icon"></span>
+                                </td>
+                                <td class="sorting" style="cursor: pointer"
+                                    data-sorting_type="asc"
+                                    data-column-name="delivery">
+                                    Тип доставки <span class="span_icon" id="delivery_icon"></span>
+                                </td>
+                                <td class="sorting" style="cursor: pointer"
+                                    data-sorting_type="asc"
+                                    data-column-name="status">
+                                    Статус заказа <span class="span_icon" id="status_icon"></span>
+                                </td>
+                                <td class="sorting" style="cursor: pointer"
+                                    data-sorting_type="asc"
+                                    data-column-name="created_at">
+                                    Дата заказа <span class="span_icon" id="created_at_icon"></span>
+                                </td>
+                                <td class="sorting" style="cursor: pointer"
+                                    data-sorting_type="asc"
+                                    data-column-name="updated_at">
+                                    Дата обновления <span class="span_icon" id="updated_at_icon"></span>
+                                </td>
                                 <td>Действия</td>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($orders as $order)
-                            <tr>
-                                <td><a href="{{ route('admin.order', ['order' => $order]) }}">{{ $order->id }}</a></td>
-                                <td>
-                                    @if ($order->delivery == 'yes') Доставка
-                                    @else Самовывоз
-                                    @endif
-                                </td>
-                                <td class="td-status">
-                                    @if($order->status == 0)
-                                        <span class="status purple"></span>
-                                        новый
-                                    @elseif($order->status == 2)
-                                        <span class="status orange"></span>
-                                        завершен
-                                    @elseif($order->status == 1)
-                                        <span class="status pink"></span>
-                                        в процессе
-                                    @else
-                                        <span class="status orange"></span>
-                                        отменен
-                                    @endif
-                                </td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>{{ $order->updated_at }}</td>
-
-                                <td class="card__body-action">
-                                    <a href="{{ route('admin.order', ['order' => $order]) }}">Ред.</a>
-                                    <!--<button>Уд.</button>-->
-                                </td>
-                            </tr>
-                        @endforeach
+                            @include('vendor.pagination.data-orders')
                         </tbody>
                     </table>
-                    {{ $orders->links('vendor.pagination.default') }}
+
+
+                    <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
+                    <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
+                    <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
+
                 </div>
             </div>
         </div>
     </div>
 </main>
 @endsection
+
+@push('js')
+    {{--    SORTING  --}}
+    <script>
+        $(document).ready(function () {
+            function fetch_data(page, sort_type, sort_by)
+            {
+                $.ajax({
+                    url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'&table=orders',
+                    method: "GET",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:function (data)
+                    {
+                        $('tbody').html('');
+                        $('tbody').html(data);
+                    }
+                })
+            }
+            $(document).on('click', '.sorting', function (){
+                let column_name = $(this).data('column-name');
+                let order_type = $(this).data('sorting_type');
+                let reverse_order = '';
+                if(order_type == 'asc') {
+                    $(this).data('sorting_type', 'desc');
+                    reverse_order = 'desc';
+                    $('.span_icon').html('')
+                    $('#'+column_name+'_icon').html('<i class="fas fa-sort-up"></i>')
+                } else {
+                    $(this).data('sorting_type', 'asc');
+                    reverse_order = 'asc';
+                    $('.span_icon').html('')
+                    $('#'+column_name+'_icon').html('<i class="fas fa-sort-down"></i>')
+                }
+                $('#hidden_column_name').val(column_name);
+                $('#hidden_sort_type').val(reverse_order);
+                let page = $('#hidden_page').val();
+                fetch_data(page, reverse_order, column_name);
+            })
+            $(document).on('click', '.pagination a', function (event){
+                event.preventDefault();
+                let page = $(this).attr('href').split('page=')[1];
+                $('#hidden_page').val(page);
+                let column_name = $('#hidden_column_name').val();
+                let sort_type = $('#hidden_sort_type').val();
+                fetch_data(page, sort_type, column_name);
+            })
+
+        });
+    </script>
+@endpush

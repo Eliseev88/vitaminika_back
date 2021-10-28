@@ -16,12 +16,6 @@
                     <h3>Товары</h3>
                     <a href="{{ route('admin.createProduct')}}">Добавить товар</a>
                 </div>
-                
-                <div class="card__search">
-                    <span class="las la-search"></span>
-                    <input type="search" placeholder="Поиск...">
-                </div>
-
                 <div class="card__body">
                     <table width="100%">
                         <thead>
@@ -117,7 +111,7 @@
        function fetch_data(page, sort_type, sort_by)
        {
            $.ajax({
-               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type,
+               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'table=products',
                method: "GET",
                headers: {
                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

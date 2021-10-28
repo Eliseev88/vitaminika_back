@@ -80,8 +80,6 @@ html {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   background-color: white;
   font-size: 1.8rem;
   font-family: "Montserrat", sans-serif;
@@ -92,7 +90,13 @@ body.lock {
 }
 
 .content {
-  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex: 1 1 auto;
 }
 
 .container {
@@ -113,6 +117,7 @@ body.lock {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 .header__menu {
   display: flex;
@@ -213,6 +218,9 @@ body.lock {
     z-index: 999;
     background: #fff;
   }
+  .header summary {
+    margin-bottom: 1rem;
+  }
   .header #burger-btn {
     display: block;
     position: relative;
@@ -235,7 +243,6 @@ body.lock {
     position: fixed;
     height: calc(100vh - 120px);
     width: 100%;
-    margin-left: 1rem;
     top: 11rem;
     right: 0rem;
     left: 0;
@@ -248,12 +255,13 @@ body.lock {
   .header__search {
     width: 90%;
     margin-bottom: 2rem;
+    margin-left: 0;
   }
   .header__form-input {
     width: 90%;
   }
   .header__block-left, .header__block-right {
-    width: 90%;
+    width: 95%;
     padding: 0.5rem;
   }
   .header__block-left i, .header__block-right i {
@@ -270,11 +278,12 @@ body.lock {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    width: 100%;
   }
   .header__block-right {
     display: block;
-    margin-left: 1.5rem;
     margin-right: 0;
+    margin-bottom: 1rem;
   }
   .header__cart {
     flex-direction: column;
@@ -296,12 +305,23 @@ body.lock {
     display: block;
     padding: 0.5rem;
   }
+  .header__nav-subnav {
+    margin-left: 3rem !important;
+  }
+  .header__nav-subnav li {
+    margin-bottom: 0.5rem;
+  }
+  .header__nav-subnav a {
+    text-decoration: none;
+    color: #372821;
+  }
   .header__nav-list {
     display: flex;
     flex-direction: column;
   }
   .header__nav ul li {
     font-size: 2.3rem;
+    margin-bottom: 1rem;
   }
 
   .header__input {
@@ -441,9 +461,16 @@ body.lock {
   }
   .nav__item {
     font-size: 1.5rem;
+    margin-left: -1.3rem;
+  }
+  .nav__item:last-child i {
+    margin-right: 0;
   }
   .nav__link {
     padding: 1rem;
+  }
+  .nav__link i {
+    margin-right: 1rem;
   }
 }
 .main {
@@ -551,7 +578,6 @@ body.lock {
 
 .common-cat {
   padding-bottom: 5rem;
-  border-bottom: 1px solid #ccc;
 }
 .common-cat__inner {
   display: flex;

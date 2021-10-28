@@ -45,7 +45,12 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $products = Product::where('availability', 1)->get();
+        $arr = [];
+        foreach ($order->products as $product){
+            $arr[] = $product->id;
+        }
+
+        $products = Product::all()->except($arr);
 
         return view('admin/orderDetails', [
             'order' => $order,

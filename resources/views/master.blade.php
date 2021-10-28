@@ -33,7 +33,7 @@
 
             <div id='burger-menu' class="header__menu">
 
-                <div action="" class="header__search">
+                <div class="header__search">
                     <form class="header__form form-group">
                         <input type="text" data-provide="typeahead" class="header__form-input form-control typeahead-input typeahead" placeholder="Поиск...">
                         <button type="submit" class="header__form-icon fas fa-search"></button>
@@ -57,11 +57,11 @@
 
 
                 <div class="header__block-right">
-                   
+
                         <i class="fas fa-phone"></i>
                         <span class="header__phone">+7-985-047-00-44</span>
-                    
-                    
+
+
                 </div>
 
 
@@ -69,8 +69,8 @@
                 <ul class="header__nav-list">
                     <li class="header__nav-item">
                         <details href="#" class="header__nav-details">
-                          <summary><span>Продукция</span></summary> 
-                        
+                          <summary><span>Продукция</span></summary>
+
                         <ul class="header__nav-subnav">
                             @foreach($allBrands as $brand)
                             <li>
@@ -99,9 +99,9 @@
                         <a href="" class="nav__link has-subnav">Продукция</a>
                         <ul class="nav__subnav">
                             @foreach($allBrands as $brand)
-                            <li class="nav__subitem">
-                                <a href="{{ route('brand', ['brand' => $brand]) }}" class="nav__sublink">{{ $brand->name }}</a>
-                            </li>
+                                <li class="nav__subitem">
+                                    <a href="{{ route('brand', ['brand' => $brand]) }}" class="nav__sublink">{{ $brand->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -115,59 +115,62 @@
             </div>
         </nav>
 
-        @yield('content')
+        <main>
+            @yield('content')
+        </main>
 
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__top">
+                    <div class="footer__left">
+                        <img src="/img/logoVitv2.png" alt="">
+                        <h3 class="footer__title">Витаминика</h3>
+                    </div>
+                    <div class="footer__right">
+                        <nav class="footer__contacts">
+                            <div class="footer__box">
+                                <div class="footer__contacts_title">Навигация по сайту</div>
+                                <div class="footer__nav">
+                                    <a href="{{ route('contacts') }}" class="footer__element">Контакты</a>
+                                    <a href="{{ route('delivery') }}" class="footer__element">Доставка</a>
+                                    <a href="{{ route('basket') }}" class="footer__element">Корзина</a>
+                                </div>
+                            </div>
+                            <div class="footer__box">
+                                <div class="footer__contacts_title">Наши контакты</div>
+                                <div class="footer__items">
+                                    <div class="footer__items-top">
+                                        <span class="footer__element fix">T: +7-985-047-00-44</span>
+                                        <span class="footer__element fix">T: +7-919-997-99-37</span>
+                                        <span class="footer__element fix">T: +7-905-709-85-22</span>
+                                    </div>
+                                    <div class="footer__social">
+                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
+                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
+                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
+                                    </div>
+
+                                </div>
+                                <div class="footer__items-bottom">
+                                    <div class="footer__contacts_title">Наш адрес</div>
+                                    <span class="footer__element fix">Россия, г. Москва, Ул. Фридриха Энгельса, 75, стр. 21, 6 этаж, офис 619</span>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <span class="footer__element">Авторские права &copy; <?php echo date("Y"); ?> Витаминика</span>
+                </div>
+            </div>
+        </footer>
+
+        <button class="scrollup">
+            <i class="fas fa-angle-up"></i>
+        </button>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__top">
-                <div class="footer__left">
-                    <img src="/img/logoVitv2.png" alt="">
-                    <h3 class="footer__title">Витаминика</h3>
-                </div>
-                <div class="footer__right">
-                    <nav class="footer__contacts">
-                        <div class="footer__box">
-                            <div class="footer__contacts_title">Навигация по сайту</div>
-                            <div class="footer__nav">
-                                <a href="{{ route('contacts') }}" class="footer__element">Контакты</a>
-                                <a href="{{ route('delivery') }}" class="footer__element">Доставка</a>
-                                <a href="{{ route('basket') }}" class="footer__element">Корзина</a>
-                            </div>
-                        </div>
-                        <div class="footer__box">
-                            <div class="footer__contacts_title">Наши контакты</div>
-                            <div class="footer__items">
-                                <div class="footer__items-top">
-                                    <span class="footer__element fix">T: +7-985-047-00-44</span>
-                                    <span class="footer__element fix">T: +7-919-997-99-37</span>
-                                    <span class="footer__element fix">T: +7-905-709-85-22</span>
-                                </div>
-                                <div class="footer__social">
-                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
-                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
-                                    <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
-                                </div>
 
-                            </div>
-                            <div class="footer__items-bottom">
-                                <div class="footer__contacts_title">Наш адрес</div>
-                                <span class="footer__element fix">Россия, г. Москва, Ул. Фридриха Энгельса, 75, стр. 21, 6 этаж, офис 619</span>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <span class="footer__element">Авторские права &copy; <?php echo date("Y"); ?> Витаминика</span>
-            </div>
-        </div>
-    </footer>
-
-    <button class="scrollup">
-        <i class="fas fa-angle-up"></i>
-    </button>
 
 
     @stack('js')

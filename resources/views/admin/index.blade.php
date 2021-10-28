@@ -77,7 +77,7 @@
                                             <span class="status purple"></span>
                                             новый
                                             @elseif($order->status == 2)
-                                                <span class="status orange"></span>
+                                                <span class="status green"></span>
                                                 завершен
                                             @elseif($order->status == 1)
                                                 <span class="status pink"></span>

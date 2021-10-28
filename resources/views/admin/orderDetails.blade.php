@@ -108,6 +108,9 @@
                     <div class="add-product__title">Выберите товар</div>
                     <p><select name="add-product">
                             @foreach($products as $product)
+                                @if($product->availability == 0)
+                                    @continue
+                                @endif
                                 <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->amount }}</option>
                             @endforeach
                         </select></p>
