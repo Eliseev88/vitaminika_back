@@ -1,6 +1,7 @@
 .nav {
     background-color: #F2EFEB;
     margin-bottom: 2rem;
+    display: block;
 
     &__list {
         display: flex;
@@ -81,14 +82,15 @@
 }
 
 
-@media only screen and (max-width:568px) {
+@media only screen and (max-width: 768px) {
     .nav {
+        display: none;
         &__item {
             font-size: 1.5rem;
         }
 
         &__link {
-                padding: 2rem 1rem;
+                padding:1rem;
             }
     }
 }

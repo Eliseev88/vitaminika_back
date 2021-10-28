@@ -201,10 +201,18 @@ body.lock {
 .header__block-right span, .header__block-right i {
   margin-bottom: 1rem;
 }
+.header__nav {
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   .header {
     justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #fff;
   }
   .header #burger-btn {
     display: block;
@@ -225,16 +233,38 @@ body.lock {
   .header__menu.open {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 8rem;
-    right: 1rem;
+    position: fixed;
+    height: calc(100vh - 120px);
+    width: 100%;
     margin-left: 1rem;
-    z-index: 5;
+    top: 11rem;
+    right: 0rem;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1000;
     padding: 1rem;
-    background-color: #ccc;
+    background-color: #fff;
+  }
+  .header__search {
+    width: 90%;
+    margin-bottom: 2rem;
   }
   .header__form-input {
     width: 90%;
+  }
+  .header__block-left, .header__block-right {
+    width: 90%;
+    padding: 0.5rem;
+  }
+  .header__block-left i, .header__block-right i {
+    width: 3rem;
+    font-size: 2.5rem;
+    margin-right: 1rem;
+  }
+  .header__block-left span, .header__block-right span {
+    display: inline-block;
+    font-size: 2.3rem;
   }
   .header__block-left {
     display: flex;
@@ -244,169 +274,78 @@ body.lock {
   }
   .header__block-right {
     display: block;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-  }
-  .header__block-right i {
-    width: 3rem;
-    font-size: 2.5rem;
-    margin-right: 0rem;
-  }
-  .header__block-right span {
-    display: inline-block;
-    font-size: 2.3rem;
-  }
-  .header__block-right span, .header__block-right i {
-    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 0;
   }
   .header__cart {
     flex-direction: column;
   }
   .header__cart-link {
-    padding: 0.5rem;
     display: flex;
-  }
-  .header__cart-link i {
-    width: 3rem;
-    font-size: 2.5rem;
-    margin-right: 1rem;
+    margin-left: 0;
   }
   .header__cart-link span {
     display: inline-block;
   }
-}
-/*
-
-.header {
-    padding: 2rem 5rem;
+  .header .quantity__box {
+    top: -0.2rem;
+    right: 0;
+    left: 2.2rem;
+  }
+  .header__nav {
+    width: 90%;
+    display: block;
+    padding: 0.5rem;
+  }
+  .header__nav-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__block {
-        width: 33.3%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &.left {
-            justify-content: flex-start;
-        }
-
-        &.right {
-            justify-content: flex-end;
-        }
-
-        .fa-phone {
-            margin-right: 2.5rem;
-        }
-
-        & a {
-            padding: 1rem;
-            & img {
-                &:last-child{
-                    display: none;
-                }
-            }
-        }
-    }
-
-    &__cart {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__link {
-        color: $mainFontColor;
-        opacity: 0.9;
-        font-size: 2rem;
-        transition: transform .2s linear, opacity .2s linear;
-
-        &:first-child {
-            margin-right: 3.6rem;
-        }
-
-        &:hover {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-    }
-
-    &__icon {
-        border: none;
-        background-color: inherit;
-        font-size: inherit;
-        color: $mainFontColor;
-        cursor: pointer;
-
-        &:focus-visible {
-            outline: none;
-        }
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: row-reverse;
-
-        .fa-search {
-            margin: 0 2rem 0 9.2rem;
-            opacity: .5;
-            color: $grey;
-            font-size: 2.5rem;
-            transition: transform .2s linear, opacity .2s linear;
-
-            &:hover {
-                transform: scale(1.1);
-                opacity: .7;
-            }
-        }
-    }
-
-    &__input {
-        width: 100%;
-        max-width: 13.6rem;
-        border: none;
-        border-bottom: 1px solid $grey;
-        padding-right: .5rem;
-
-        &:focus {
-            outline: none;
-        }
-
-    }
-
+    flex-direction: column;
+  }
+  .header__nav ul li {
+    font-size: 2.3rem;
+  }
+  .header__nav-item a i {
+    width: 3rem;
+    font-size: 2.5rem;
+    margin-right: 1rem;
+  }
+  .header__nav-details {
+    padding: 1rem;
+  }
+  .header__nav-details span {
+    margin-left: 1.5rem;
+  }
+  .header__nav-subnav {
+    width: 100%;
+    display: block;
+    padding: 4rem;
+  }
+  .header__nav-subnav li {
+    margin-left: 3rem;
+  }
+  .header__nav-subnav li a {
+    color: #111;
+    display: block;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    transition: text-shadow 0.2s linear, background-color 0.2s linear;
+  }
+  .header__nav__cart-link {
+    display: flex;
+  }
+  .header__nav__cart-link i {
+    width: 3rem;
+    font-size: 2.5rem;
+    margin-right: 1rem;
+  }
+  .header__nav__cart-link span {
+    display: inline-block;
+  }
 }
-
-
-@media only screen and (max-width: 768px) {
-    .header {
-        margin: 1.5rem auto;
-
-
-        &__block {
-
-        & a {
-            padding: 1rem;
-            & img {
-                max-width: 75%;
-                &:first-child{
-                    display: none;
-                }
-                &:last-child{
-                    display: block;
-                }
-
-            }
-        }
-        }
-
-    }
-}
-*/
 .nav {
   background-color: #F2EFEB;
   margin-bottom: 2rem;
+  display: block;
 }
 .nav__list {
   display: flex;
@@ -471,12 +410,15 @@ body.lock {
   background-color: #F2F2F2;
 }
 
-@media only screen and (max-width: 568px) {
+@media only screen and (max-width: 768px) {
+  .nav {
+    display: none;
+  }
   .nav__item {
     font-size: 1.5rem;
   }
   .nav__link {
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
 }
 .main {
@@ -3147,6 +3089,10 @@ fieldset[disabled] .twitter-typeahead .input {
 .dropdown-menu .suggestion p,
 .menu .tt-suggestion p {
   margin: 0;
+}
+
+.dropdown-menu li.active {
+  background-color: #e7e7e5;
 }
 
 @media only screen and (max-width: 768px) {

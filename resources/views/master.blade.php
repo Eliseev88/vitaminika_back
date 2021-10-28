@@ -10,11 +10,11 @@
 
     <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    
-    
+
+
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 
                 <div action="" class="header__search">
                     <form class="header__form form-group">
-                        <input type="text" data-provide="typeahead" class="header__form-input form-control typeahead-input typeahead"  placeholder="Поиск...">
+                        <input type="text" data-provide="typeahead" class="header__form-input form-control typeahead-input typeahead" placeholder="Поиск...">
                         <button type="submit" class="header__form-icon fas fa-search"></button>
                     </form>
                 </div>
@@ -57,8 +57,36 @@
 
 
                 <div class="header__block-right">
-                    <i class="fas fa-phone"></i>
-                    <span class="header__phone">+7-985-047-00-44</span>
+                   
+                        <i class="fas fa-phone"></i>
+                        <span class="header__phone">+7-985-047-00-44</span>
+                    
+                    
+                </div>
+
+
+                <div class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <details href="#" class="header__nav-details">
+                          <summary><span>Продукция</span></summary> 
+                        
+                        <ul class="header__nav-subnav">
+                            @foreach($allBrands as $brand)
+                            <li>
+                                <a href="{{ route('brand', ['brand' => $brand]) }}">{{ $brand->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        </details>
+                    </li>
+                    <li class="header__nav-item nav__item">
+                        <a href="/contacts" class="nav__link"><i class="fas fa-address-book"></i>Контакты</a>
+                    </li>
+                    <li class="header__nav-item nav__item">
+                        <a href="/delivery" class="nav__link"><i class="fas fa-truck"></i> Доставка</a>
+                    </li>
+                </ul>
                 </div>
             </div>
         </header>
@@ -78,7 +106,7 @@
                         </ul>
                     </li>
                     <li class="nav__item">
-                        <a href="/contacts" class="nav__link">Контакты</a>
+                        <a href="/contacts" class="nav__link"> Контакты</a>
                     </li>
                     <li class="nav__item">
                         <a href="/delivery" class="nav__link">Доставка</a>
@@ -140,7 +168,7 @@
     <button class="scrollup">
         <i class="fas fa-angle-up"></i>
     </button>
-   
+
 
     @stack('js')
     <script type="text/javascript" src="/js/popup.js"></script>
@@ -283,7 +311,7 @@
     </script>
 
     {{-- // BASKET BUTTON ANIMATION--}}
-    
+
 
     <script>
         const btnBurger = document.querySelector('#burger-btn')
@@ -300,20 +328,20 @@
         })
     </script>
 
-   
+
     <script type="text/javascript">
+        const path = "{{ route('search.query') }}";
 
-    const path = "{{ route('search.query') }}";
-    
-    $('input.typeahead').typeahead({
-        source: function (query, process) {
-            return $.get(path, {query: query}, function(data) {
-                return process(data);
-            });
-        }
+        $('input.typeahead').typeahead({
+            source: function(query, process) {
+                return $.get(path, {
+                    query: query
+                }, function(data) {
+                    return process(data);
+                });
+            }
 
-    });
-
+        });
     </script>
 
 </body>
