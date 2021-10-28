@@ -78,16 +78,6 @@
 
                 <span>Панель администратора</span>
             </h2>
-
-
-            <div class="search-wrapper">
-                <span class="las la-search">
-
-                </span>
-                <input type="search" placeholder="search here">
-
-            </div>
-
             <div class="user-wrapper">
 
                 <div>
