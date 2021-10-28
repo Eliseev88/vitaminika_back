@@ -38,6 +38,7 @@
         &-icon {
             border-radius: 0 5px 5px 0;
             color: rgb(160, 159, 159);
+            cursor: pointer;
         }
 
 
@@ -51,7 +52,7 @@
     }
 
 
-        
+
     &__cart {
         display: flex;
         text-align: center;
@@ -81,7 +82,7 @@
             padding: 0.5rem 1rem;
 
             & li {
-               
+
                 & a {
                     padding: 1rem;
                     text-decoration: none;
@@ -89,7 +90,7 @@
                     margin-bottom: 1rem !important;
                     border-bottom: 1px solid #ccc;
                     display: block;
-                
+
                 }
             }
         }
@@ -307,18 +308,18 @@
             }
         }
     }
-    
+
     &__input {
         width: 100%;
         max-width: 13.6rem;
         border: none;
         border-bottom: 1px solid $grey;
         padding-right: .5rem;
-        
+
         &:focus {
             outline: none;
         }
-        
+
     }
 
 }
@@ -330,7 +331,7 @@
 
 
         &__block {
-        
+
         & a {
             padding: 1rem;
             & img {

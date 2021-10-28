@@ -126,10 +126,10 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
-        $product = Product::find($request->productId)->first();
+        $productName = Product::find($request->productId)->name;;
 
-        if ($product) {
-            Storage::disk('public')->deleteDirectory('/products/' . $product->name);
+        if ($productName) {
+            Storage::disk('public')->deleteDirectory('/products/' . $productName);
             $product = Product::where('id', $request->productId)->delete();
             if ($product) {
                 return true;

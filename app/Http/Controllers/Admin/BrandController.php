@@ -136,7 +136,7 @@ class BrandController extends Controller
     public function destroy(Request $request)
     {
         $brandFile = Brand::find($request->brandId)->name;
-        Storage::disk('public')->deleteDirectory('/img/brands/' . $brandFile);
+        Storage::disk('public')->deleteDirectory('/brands/' . $brandFile);
 
         $brand = Brand::where('id', $request->brandId)->delete();;
 

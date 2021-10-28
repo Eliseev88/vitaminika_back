@@ -15,7 +15,7 @@ class MainController extends Controller
     {
         $collection = $cookieCartService->check();
         $brands = Brand::all();
-        $topBrand = Brand::find(rand(1, 3));
+        $topBrand = Brand::inRandomOrder()->first();
         $topBrandRandomProducts = Product::where('brand_id', $topBrand->id)
             ->where('availability', '1')->inRandomOrder()->get();
 

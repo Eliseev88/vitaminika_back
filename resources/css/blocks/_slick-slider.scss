@@ -132,9 +132,15 @@
     & .prod-card {
         height: 50rem;
         margin: 0 auto;
+        align-items: center;
+
+        span {
+            text-align: center;
+        }
 
         & .button.basket-add {
-            width: inherit;
+            width: 100%;
+            align-self: center;
         }
     }
 }

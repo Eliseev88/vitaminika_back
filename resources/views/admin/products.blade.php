@@ -70,26 +70,28 @@
 
 @push('js')
 <script>
+    // PRODUCT DELETE
     $(document).ready(function () {
             $('.card__body').on('click', '.product-delete', function (event) {
                 event.preventDefault();
-
+                let adminConfirm = confirm('Вы уверены, что хотите удалить позицию?');
                 let productId = $(this).data('product_id');
                 let itemId = $(this).data('item_id');
-
-                $.ajax({
-                    url: "{{ route('admin.productDelete') }}",
-                    method: "DELETE",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        productId: productId
-                    },
-                    success: (data) => {
-                        $('#item_' + itemId).remove();
-                    }
-                })
+                if (adminConfirm) {
+                    $.ajax({
+                        url: "{{ route('admin.productDelete') }}",
+                        method: "DELETE",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            productId: productId
+                        },
+                        success: (data) => {
+                            $('#item_' + itemId).remove();
+                        }
+                    })
+                }
             })
         })
 </script>

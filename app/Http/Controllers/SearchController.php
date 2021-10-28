@@ -27,6 +27,7 @@ class SearchController extends Controller
         $input = $request->all();
 
         $data = Product::where("name", "LIKE", "%{$input['query']}%")
+                        ->where('availability', 1)
                         ->get();
 
         return response()->json($data);

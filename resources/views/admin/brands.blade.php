@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card__header">
                     <h3>Бренды</h3>
-                    <a href="{{ route('admin.brand.new') }}">Добавить товар</a>
+                    <a href="{{ route('admin.brand.new') }}">Добавить бренд</a>
                 </div>
                 <div class="card__body">
                     <table width="100%">
@@ -30,7 +30,7 @@
 
                             @foreach($brands as $brand)
                             <tr id="item_{{ $brand->id }}">
-                                <td><a href="{{ route('admin.brand', ['brand' => $brand]) }}"> {{ $brand->name }}</a></td> 
+                                <td><a href="{{ route('admin.brand', ['brand' => $brand]) }}"> {{ $brand->name }}</a></td>
                                 <td>{{ $brand->country }}</td>
                                 <td>{{ $brand->updated_at }}</td>
 
@@ -55,26 +55,28 @@
 
 @push('js')
 <script>
+    // DELETE BRAND
     $(document).ready(function () {
-            $('.card__body').on('click', '.brand-delete', function (event) {               
+            $('.card__body').on('click', '.brand-delete', function (event) {
                 event.preventDefault();
-
+                let confirm = confirm('Вы уверены, что хотите удалить позицию?');
                 let brandId = $(this).data('brand_id');
                 let itemId = $(this).data('item_id');
-
-                $.ajax({
-                    url: "{{ route('admin.brand.delete') }}",
-                    method: "DELETE",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        brandId: brandId
-                    },
-                    success: (data) => {
-                        $('#item_' + itemId).remove();
-                    }
-                })
+                if (confirm) {
+                    $.ajax({
+                        url: "{{ route('admin.brand.delete') }}",
+                        method: "DELETE",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            brandId: brandId
+                        },
+                        success: (data) => {
+                            $('#item_' + itemId).remove();
+                        }
+                    })
+                }
             })
         })
 </script>

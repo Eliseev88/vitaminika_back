@@ -1,4 +1,4 @@
-const btns = document.querySelectorAll('.button')
+const btns = document.querySelectorAll('.basket-add')
 
 btns.forEach((btn) => {
     btn.addEventListener("click", () => {
