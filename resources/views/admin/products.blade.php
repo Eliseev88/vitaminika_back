@@ -16,6 +16,12 @@
                     <h3>Товары</h3>
                     <a href="{{ route('admin.createProduct')}}">Добавить товар</a>
                 </div>
+                
+                <div class="card__search">
+                    <span class="las la-search"></span>
+                    <input type="search" placeholder="Поиск...">
+                </div>
+
                 <div class="card__body">
                     <table width="100%">
                         <thead>
