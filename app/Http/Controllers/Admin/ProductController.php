@@ -117,6 +117,16 @@ class ProductController extends Controller
 
         return back()->withInput();
     }
+    public function searchProduct(Request $request) 
+    {
+        $input = $request->all();
+
+        $data = Product::where("name", "LIKE", "%{$input['query']}%")
+                 ->where('availability', 1)
+                 ->get();
+
+        return response()->json($data);
+    }
 
     public function destroy(Request $request)
     {

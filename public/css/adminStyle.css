@@ -589,8 +589,7 @@
   display: flex;
   align-items: center;
   overflow-x: hidden;
-  margin: 1rem;
-  max-width: 20rem;
+  margin: 1rem 2rem;
 }
 .card__search span {
   display: inline-block;
@@ -944,6 +943,27 @@
 }
 .sort__down {
   transform: translateY(-6px);
+}
+
+.dropdown__search-menu {
+  position: fixed;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.dropdown__search-menu li.active {
+  background-color: #ccc;
+}
+
+.dropdown__search-item {
+  display: block;
+  text-decoration: none;
+  color: #111;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.dropdown__search-item.active {
+  background-color: #ccc;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -1,0 +1,25 @@
+.dropdown__search-menu {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid #ccc;
+
+    & li.active {
+        background-color: #ccc;
+    }
+
+}
+
+
+.dropdown__search-item {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #ccc;
+
+
+    &.active {
+        background-color: #ccc;
+    }
+}

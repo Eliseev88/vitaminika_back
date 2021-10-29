@@ -44,10 +44,10 @@ Route::post('review', [\App\Http\Controllers\ReviewController::class, 'store'])
 
 
 Route::get('/search', [SearchController::class, 'index'])
-->name('search');
+    ->name('search');
 
 Route::get('/search/query', [SearchController::class, 'searchProduct'])
-->name('search.query');
+    ->name('search.query');
 
 
 // ADMIN
@@ -100,6 +100,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             ->name('admin.productUpdate');
         Route::delete('/productDelete', [\App\Http\Controllers\Admin\ProductController::class, 'destroy'])
             ->name('admin.productDelete');
+
+       Route::get('/productSearch/query', [\App\Http\Controllers\Admin\ProductController::class, 'searchProduct'])
+           ->name('productSearch.query');
+            
         Route::get('/{product}', [\App\Http\Controllers\Admin\ProductController::class, 'show'])
             ->name('admin.product');
     });
@@ -114,7 +118,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
 
     Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
-
 });
 
 // ORDER
@@ -128,4 +131,3 @@ Route::get('/{brand}', [\App\Http\Controllers\MainController::class, 'brand'])
     ->name('brand');
 Route::get('/{brand}/{product}', [\App\Http\Controllers\MainController::class, 'product'])
     ->name('product');
-
