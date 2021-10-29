@@ -93,6 +93,7 @@ class ProductController extends Controller
             'function',
             'form',
             'amount',
+            'using',
             'image',
             'availability'
         );
@@ -117,7 +118,7 @@ class ProductController extends Controller
 
         return back()->withInput();
     }
-    public function searchProduct(Request $request) 
+    public function searchProduct(Request $request)
     {
         $input = $request->all();
 

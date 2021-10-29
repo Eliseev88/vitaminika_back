@@ -46,7 +46,8 @@ class ProductAddRequest extends FormRequest
             'code' => 'код товара',
             'price' => 'цена',
             'name' => 'наименование товара',
-            'image' => 'изображение'
+            'image' => 'изображение',
+            'using' => 'дозировка',
         ];
     }
 }

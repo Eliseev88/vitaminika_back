@@ -19,6 +19,7 @@ class Product extends Model
         'function',
         'form',
         'amount',
+        'using',
         'image',
         'availability',
         'created_at',

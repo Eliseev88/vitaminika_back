@@ -43,6 +43,10 @@
                 <textarea type="text" name="details">{{ old('details') }}</textarea>
             </label>
             <label>
+                <span>Дозировка</span>
+                <input value="{{ old('using') }}" type="text" name="using">
+            </label>
+            <label>
                 <span>Назначение: </span>
                 <textarea type="text" name="function">{{ old('function') }}</textarea>
             </label>

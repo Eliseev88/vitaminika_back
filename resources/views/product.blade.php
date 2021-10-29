@@ -62,6 +62,12 @@
             </p>
             <div class="details__consist">
                 <div class="topic">
+                    <span class="topic__name">Дозировка</span>
+                </div>
+            </div>
+            <p class="details__text">{{ $currentProduct->using }}</p>
+            <div class="details__consist">
+                <div class="topic">
                     <span class="topic__name">Состав</span>
                 </div>
             </div>

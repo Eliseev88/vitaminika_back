@@ -46,6 +46,10 @@
                 <textarea name="description">{{ $product->description }}</textarea>
             </label>
             <label for="">
+                <span>Дозировка</span>
+                <textarea name="using">{{ $product->using }}</textarea>
+            </label>
+            <label for="">
                 <span>Форма выпуска: </span>
                 <textarea name="form"> {{ $product->form }} </textarea>
             </label>
