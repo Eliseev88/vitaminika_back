@@ -63,10 +63,10 @@
     $(document).ready(function () {
             $('.card__body').on('click', '.brand-delete', function (event) {
                 event.preventDefault();
-                let confirm = confirm('Вы уверены, что хотите удалить позицию?');
+                let brandConfirm = confirm('Вы уверены, что хотите удалить позицию?');
                 let brandId = $(this).data('brand_id');
                 let itemId = $(this).data('item_id');
-                if (confirm) {
+                if (brandConfirm) {
                     $.ajax({
                         url: "{{ route('admin.brand.delete') }}",
                         method: "DELETE",
