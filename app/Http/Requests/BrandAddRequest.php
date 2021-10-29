@@ -13,7 +13,7 @@ class BrandAddRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -26,10 +26,21 @@ class BrandAddRequest extends FormRequest
         return [
             'name' => ['required', 'string', ' min:1', 'max:200'],
             'title' => ['required', 'string', ' min:1', 'max:500'],
-            'description' => ['required', 'string', ' min:1', 'max:500'],
-            'image' => ['sometimes'],
+            'description' => ['required', 'string', ' min:1'],
+            'image' => ['sometimes', 'max:10000', 'mimes:png,jpeg,jpg,svg,bmp'],
             'presentation' => ['sometimes'],
             'country' => ['required', 'string',' min:1', 'max:50']
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'country' => 'страна',
+            'title' => 'слоган',
+            'description' => 'описание',
+            'name' => 'имя',
+            'image' => 'изображение'
         ];
     }
 }

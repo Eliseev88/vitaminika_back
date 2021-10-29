@@ -25,7 +25,7 @@ class ReviewController extends Controller
 
         if ($review) {
             return redirect()->route('contacts')
-                ->with('success');
+                ->with('success', 'Отзыв оставлен');
         }
 
         return back()->withInput();

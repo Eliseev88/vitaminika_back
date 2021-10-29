@@ -25,9 +25,9 @@ class ReviewAddRequest extends FormRequest
     {
         return [
             'name' => ['required', 'alpha', 'max:30'],
-            'surname' => ['alpha', 'max:30'],
+            'surname' => ['sometimes', 'string', 'nullable', 'max:30'],
             'email' => ['required', 'email'],
-            'phone' => ['string'],
+            'phone' => ['nullable', 'string'],
             'comment' => ['string', 'min:5', 'max:5000'],
             'file' => ['sometimes', 'max:100000'],
             'checkbox' => ['required'],
@@ -37,6 +37,7 @@ class ReviewAddRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'surname' => 'фамилия',
             'file' => 'файл',
             'comment' => 'комментарии'
         ];

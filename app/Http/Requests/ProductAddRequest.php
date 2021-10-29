@@ -13,7 +13,7 @@ class ProductAddRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductAddRequest extends FormRequest
 //            'function' => ['string'],
 //            'form' => ['string'],
 //            'amount' => ['string'],
-            'image' => ['sometimes', 'max:10000'],
+            'image' => ['sometimes', 'max:10000', 'mimes:png,jpeg,jpg,svg,bmp'],
 
             'price' => ['required', 'string', 'min:1', 'max:10'],
             'availability' => ['required', 'boolean'],
@@ -45,7 +45,8 @@ class ProductAddRequest extends FormRequest
         return [
             'code' => 'код товара',
             'price' => 'цена',
-            'name' => 'наименование товара'
+            'name' => 'наименование товара',
+            'image' => 'изображение'
         ];
     }
 }
