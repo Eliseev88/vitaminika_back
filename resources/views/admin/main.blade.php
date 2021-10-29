@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/adminStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -132,6 +133,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @stack('js')
+
+ 
+
+
 
 </body>
 

@@ -150,6 +150,18 @@ class OrderController extends Controller
         return false;
     }
 
+    public function searchOrder(Request $request) 
+    {
+      $input = $request->all();
+
+      $data = Order::where("id", "LIKE", "%{$input['query']}%")
+               ->get();
+
+               
+
+      return ($data);
+    }
+
     public function destroy(Request $request)
     {
         $order = Order::find($request->orderId);

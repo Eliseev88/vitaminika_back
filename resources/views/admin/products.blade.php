@@ -16,6 +16,16 @@
                     <h3>Товары</h3>
                     <a href="{{ route('admin.createProduct')}}">Добавить товар</a>
                 </div>
+
+                
+                   <form action="" class="card__search">
+                    <span class="las la-search"></span>
+                    <input name="text" autocomplete="off" type="text" class="typeahead" placeholder="Поиск...">
+                </form> 
+                
+                
+
+
                 <div class="card__body">
                     <table width="100%">
                         <thead>
@@ -154,5 +164,22 @@
 
     });
 </script>
+<script src="/js/admin-bootstrap3-typeahead.js"></script>
+
+<script type="text/javascript">
+        const path = "{{ route('productSearch.query') }}";
+
+        $('input.typeahead').typeahead({
+            source: function(query, process) {
+                return $.get(path, {
+                    query: query
+                }, function(data) {
+                    console.log((data))
+                    return process(data);
+                });
+            }
+
+        });
+    </script>
 @endpush
 @endsection
