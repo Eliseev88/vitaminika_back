@@ -111,7 +111,7 @@
        function fetch_data(page, sort_type, sort_by)
        {
            $.ajax({
-               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'table=products',
+               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'&table=products',
                method: "GET",
                headers: {
                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
