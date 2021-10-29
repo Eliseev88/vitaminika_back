@@ -1,0 +1,64 @@
+.delivery {
+    margin-top: 10rem;
+
+    &:last-child {
+        margin-bottom: 10rem;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__column {
+        margin-right: 10rem;
+        width: 20%;
+
+        &:first-child img {
+            border-radius: 50%;
+        }
+        &:last-child {
+            margin-right: 0;
+            width: 70%;
+        }
+    }
+
+    &__row-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    &__row-price {
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    &__icon {
+        font-size: 4rem;
+    }
+
+    &__text {
+        width: 25%;
+        text-align: justify;
+    }
+
+    .fixed {
+        width: 100%;
+    }
+
+    .wrap {
+        flex-wrap: wrap;
+    }
+
+    .margin {
+        margin-top: 2rem;
+    }
+}

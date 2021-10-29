@@ -106,10 +106,10 @@
                         </ul>
                     </li>
                     <li class="nav__item">
-                        <a href="/contacts" class="nav__link"> Контакты</a>
+                        <a href="/contacts" class="nav__link">Контакты</a>
                     </li>
                     <li class="nav__item">
-                        <a href="/delivery" class="nav__link">Доставка</a>
+                        <a href="/delivery" class="nav__link">Доставка и оплата</a>
                     </li>
                 </ul>
             </div>
@@ -132,7 +132,7 @@
                                 <div class="footer__contacts_title">Навигация по сайту</div>
                                 <div class="footer__nav">
                                     <a href="{{ route('contacts') }}" class="footer__element">Контакты</a>
-                                    <a href="{{ route('delivery') }}" class="footer__element">Доставка</a>
+                                    <a href="{{ route('delivery') }}" class="footer__element">Доставка и оплата</a>
                                     <a href="{{ route('basket') }}" class="footer__element">Корзина</a>
                                 </div>
                             </div>

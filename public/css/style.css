@@ -3151,6 +3151,59 @@ fieldset[disabled] .twitter-typeahead .input {
   background-color: #e7e7e5;
 }
 
+.delivery {
+  margin-top: 10rem;
+}
+.delivery:last-child {
+  margin-bottom: 10rem;
+}
+.delivery__wrapper {
+  display: flex;
+  align-items: center;
+}
+.delivery__column {
+  margin-right: 10rem;
+  width: 20%;
+}
+.delivery__column:first-child img {
+  border-radius: 50%;
+}
+.delivery__column:last-child {
+  margin-right: 0;
+  width: 70%;
+}
+.delivery__row-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.delivery__row-price {
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.delivery__row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.delivery__icon {
+  font-size: 4rem;
+}
+.delivery__text {
+  width: 25%;
+  text-align: justify;
+}
+.delivery .fixed {
+  width: 100%;
+}
+.delivery .wrap {
+  flex-wrap: wrap;
+}
+.delivery .margin {
+  margin-top: 2rem;
+}
+
 @media only screen and (max-width: 768px) {
   .container {
     max-width: 100%;
