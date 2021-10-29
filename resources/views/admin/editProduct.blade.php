@@ -34,7 +34,7 @@
             </label>
             <label for="">
                 <span>Код товара:</span>
-                <input type="number" name="code" value="{{ $product->code }}">
+                <input type="text" name="code" value="{{ $product->code }}">
             </label>
 
             <label for="">
