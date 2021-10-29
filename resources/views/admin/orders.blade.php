@@ -16,10 +16,10 @@
                     <h3>Заказы</h3>
                 </div>
 
-                <div class="card__search">
+                <form action="" class="card__search">
                     <span class="las la-search"></span>
-                    <input type="search" placeholder="Поиск...">
-                </div>
+                    <input name="text" autocomplete="off" type="text" class="typeahead" placeholder="Поиск...">
+                </form> 
 
 
                 <div class="card__body">
@@ -121,4 +121,5 @@
 
         });
     </script>
+    
 @endpush
