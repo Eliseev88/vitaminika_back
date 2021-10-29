@@ -31,7 +31,7 @@
             </label>
             <label>
                 <span>Код товара*:</span>
-                <input value="{{ old('code') }}" type="number" name="code">
+                <input value="{{ old('code') }}" type="text" name="code">
             </label>
 
             <label>

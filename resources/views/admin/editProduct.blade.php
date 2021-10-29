@@ -64,8 +64,8 @@
             <label>
                 <span>В наличие:</span>
                 <select type="text"  name="availability"  value="{{$product->availability}}">
-                    <option value="1">Да</option>
-                    <option value="0">Нет</option>
+                    <option @if($product->availability == 1) selected @endif value="1">Да</option>
+                    <option @if($product->availability == 0) selected @endif value="0">Нет</option>
                 </select>
             </label>
             <button type="submit">Подтвердить</button>
