@@ -956,6 +956,9 @@ main {
   .topcat__link {
     margin-top: 2rem;
   }
+  .topcat__cat-img {
+    height: auto;
+  }
 }
 .prod-card {
   max-width: 29.1rem;
@@ -1068,7 +1071,6 @@ main {
 @media only screen and (max-width: 568px) {
   .prod-card {
     max-width: 20rem;
-    height: 53rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

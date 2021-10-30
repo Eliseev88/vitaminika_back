@@ -16,7 +16,7 @@
         width: 100%;
         font-weight: 900;
         font-size: 4.5rem;
-        color: $mainFontColor; 
+        color: $mainFontColor;
     }
 
     &__subtitle {
@@ -150,6 +150,10 @@
 
         &__link {
             margin-top: 2rem;
+        }
+
+        &__cat-img {
+            height: auto;
         }
     }
 }
