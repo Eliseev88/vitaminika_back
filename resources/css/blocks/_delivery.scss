@@ -1,64 +1,64 @@
 .delivery {
-    margin-top: 10rem;
-
-    &:last-child {
-        margin-bottom: 10rem;
-    }
-
-    &__wrapper {
-        display: flex;
-        align-items: center;
-    }
-
-    &__column {
-        margin-right: 10rem;
-        width: 20%;
-
-        &:first-child img {
-            border-radius: 50%;
-        }
-        &:last-child {
-            margin-right: 0;
-            width: 70%;
+    &__header {
+        & h1 {
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
         }
     }
 
-    &__row-title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 2rem;
+    &__info {
+
+        & h4 {
+            font-size: 2.2rem;
+            margin: 1rem 0;
+        }
+
+        &-details {
+            padding: 0 1rem;
+
+            & ul {
+                padding-left: 2.5rem;
+                list-style: decimal;
+
+                & li {
+                    & ul {
+                        list-style: none;
+                    }
+                }
+            }
+        }
     }
 
-    &__row-price {
-        font-weight: 700;
-        margin-bottom: 2rem;
-    }
+    &__details {
+        &-header {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
 
-    &__row {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
+            & p {
+                display: block;
+                font-weight: bolder;
+            }
 
-    &__icon {
-        font-size: 4rem;
-    }
+            & span {
+                font-size: 1rem;
+                padding: 0.5rem;
+                color: #fff;
+                background: #67796b;
+                margin-left: 1rem;
+                display: inline-block;
+            }
+        }
 
-    &__text {
-        width: 25%;
-        text-align: justify;
-    }
+        &-text {
+            width: 100%;
 
-    .fixed {
-        width: 100%;
-    }
-
-    .wrap {
-        flex-wrap: wrap;
-    }
-
-    .margin {
-        margin-top: 2rem;
+            & p {
+                text-align: justify;
+                margin-bottom: 0.5rem;
+            }
+        }
     }
 }
