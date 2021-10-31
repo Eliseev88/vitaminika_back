@@ -1135,6 +1135,7 @@ main {
   padding-top: 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  text-decoration: none;
 }
 .footer__social_item::after {
   content: "";
@@ -1147,10 +1148,10 @@ main {
   left: 2rem;
   z-index: 2;
 }
-.footer__social_item i {
+.footer__social_item i, .footer__social_item div {
   transition: transform 0.2s linear;
 }
-.footer__social_item:hover i {
+.footer__social_item:hover i, .footer__social_item:hover div {
   transform: scale(1.2);
 }
 .footer__box {
@@ -3156,6 +3157,9 @@ fieldset[disabled] .twitter-typeahead .input {
   background-color: #e7e7e5;
 }
 
+.delivery {
+  margin-bottom: 5rem;
+}
 .delivery__header h1 {
   text-align: center;
   margin-top: 2rem;

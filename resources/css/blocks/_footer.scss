@@ -55,6 +55,7 @@
             padding-top: 1rem;
             margin-top: 1rem;
             margin-bottom: 2rem;
+            text-decoration: none;
 
             &::after {
                 content: '';
@@ -68,12 +69,12 @@
                 z-index: 2;
             }
 
-            i {
+            i,div {
                 transition: transform .2s linear;
             }
 
             &:hover {
-                i {
+                i,div {
                     transform: scale(1.2);
                 }
             }
@@ -143,7 +144,7 @@
 @media only screen and (max-width:960px) {
     .footer {
         &__left {
-            
+
             margin-right: 3rem;
 
             & .footer__title {

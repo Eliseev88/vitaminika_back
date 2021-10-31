@@ -145,9 +145,8 @@
                                         <span class="footer__element fix">T: +7-905-709-85-22</span>
                                     </div>
                                     <div class="footer__social">
-                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-instagram"></i></a>
-                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-twitter"></i></a>
-                                        <a href="" target="_blank" class="footer__social_item"><i class="fab fa-facebook"></i></a>
+                                        <a href="https://api.whatsapp.com/send/?phone=79057098522&text=Здравствуйте%2C+у+меня+есть+вопрос" target="_blank" class="footer__social_item"><i class="fab fa-whatsapp"></i></a>
+                                        <a href="https://vitaminika.tiu.ru" target="_blank" class="footer__social_item"><div>tiu</div></a>
                                     </div>
 
                                 </div>
