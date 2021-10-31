@@ -139,6 +139,10 @@
 
         summary {
             margin-bottom: 1rem;
+
+            &:focus, &:active {
+                outline: none;
+            }
         }
 
         #burger-btn {
@@ -244,9 +248,10 @@
             display: block;
             padding: 0.5rem;
 
-            &-details:focus {
+            &-details:focus, &-details:active {
                 outline: none;
             }
+
             &-subnav {
                 margin-left: 3rem !important;
 

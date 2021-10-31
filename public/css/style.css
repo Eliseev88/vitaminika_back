@@ -221,6 +221,9 @@ main {
   .header summary {
     margin-bottom: 1rem;
   }
+  .header summary:focus, .header summary:active {
+    outline: none;
+  }
   .header #burger-btn {
     display: block;
     position: relative;
@@ -305,7 +308,7 @@ main {
     display: block;
     padding: 0.5rem;
   }
-  .header__nav-details:focus {
+  .header__nav-details:focus, .header__nav-details:active {
     outline: none;
   }
   .header__nav-subnav {
@@ -1668,18 +1671,23 @@ main {
   outline: none;
   border-radius: 50%;
   display: none;
-  text-align: center;
 }
 .scrollup:hover {
   cursor: pointer;
 }
 .scrollup i {
   font-size: 3rem;
+  color: black;
 }
 .scrollup i:hover {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 568px) {
+  .scrollup i {
+    transform: translateX(-0.5rem);
+  }
+}
 /* PAGE CATEGORY */
 .breadcrumps {
   margin-top: 2rem;

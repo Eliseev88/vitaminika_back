@@ -9,7 +9,6 @@
     outline: none;
     border-radius: 50%;
     display:none;
-    text-align: center;
 
     &:hover {
         cursor: pointer;
@@ -17,9 +16,16 @@
 
     & i {
         font-size: 3rem;
+        color: black;
 
         &:hover {
             cursor: pointer;
         }
+    }
+}
+
+@media only screen and (max-width:568px) {
+    .scrollup i {
+        transform: translateX(-.5rem);
     }
 }
