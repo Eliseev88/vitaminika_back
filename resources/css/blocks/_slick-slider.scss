@@ -33,18 +33,17 @@
     transform: translateY(-60%);
 
     .next {
-        margin-left: 8rem;
+        margin-right: 2rem;
         position: relative;
 
         &::before {
-            content: url('../img/arrow-right.svg');
-            width: 2.4rem;
+            content: url(../img/arrow-right.svg);
             height: 3rem;
-            background-color: white;
             position: absolute;
             bottom: 1rem;
-            right: 5.8rem;
+            left: 2.5rem;
             z-index: 1;
+            background: url(/img/white.png) no-repeat right;
         }
 
         &::after {
@@ -55,7 +54,7 @@
             background-color: transparent;
             position: absolute;
             top: .7rem;
-            left: .7rem;
+            right: .7rem;
             z-index: -1;
             transition: background-color .2s linear;
         }
@@ -68,7 +67,7 @@
     }
 
     .prev {
-        margin-right: 8rem;
+        margin-left: 2rem;
         position: relative;
 
         &::before {
@@ -78,7 +77,7 @@
             background-color: white;
             position: absolute;
             bottom: 1rem;
-            right: 5.8rem;
+            right: 5.3rem;
             z-index: 1;
         }
 
@@ -152,14 +151,6 @@
             margin: 0 auto;
         }
     }
-
-    .slick-prev.slick-arrow {
-        & .pagination__button {
-            &::before {
-                right: 4.8rem;
-            }
-        }
-    }
 }
 
 @media only screen and (max-width:568px) {
@@ -187,7 +178,7 @@
 
             &::before {
                 bottom:1rem;
-                right: 4.8rem;
+                left: 1.3rem;
             }
         }
     }
@@ -203,11 +194,10 @@
             width: 5rem;
             height: 5rem;
 
-            &::before {
-                right: 4.8rem;
-                bottom: 1rem;
-            }
         }
     }
 
+    .slick-arrow .prev::before {
+        right: 4.3rem;
+    }
 }

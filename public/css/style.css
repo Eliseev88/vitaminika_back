@@ -1816,7 +1816,6 @@ main {
     margin-bottom: 5rem;
     grid-template-columns: auto auto;
     grid-column-gap: 2rem;
-    grid-row-gap: 2rem;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -2001,6 +2000,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    margin-top: 5rem;
   }
   .pagination .prev {
     margin-right: 3rem;
@@ -2310,18 +2310,17 @@ main {
   transform: translateY(-60%);
 }
 .slick-arrow .next {
-  margin-left: 8rem;
+  margin-right: 2rem;
   position: relative;
 }
 .slick-arrow .next::before {
-  content: url("../img/arrow-right.svg");
-  width: 2.4rem;
+  content: url(../img/arrow-right.svg);
   height: 3rem;
-  background-color: white;
   position: absolute;
   bottom: 1rem;
-  right: 5.8rem;
+  left: 2.5rem;
   z-index: 1;
+  background: url(/img/white.png) no-repeat right;
 }
 .slick-arrow .next::after {
   content: "";
@@ -2331,7 +2330,7 @@ main {
   background-color: transparent;
   position: absolute;
   top: 0.7rem;
-  left: 0.7rem;
+  right: 0.7rem;
   z-index: -1;
   transition: background-color 0.2s linear;
 }
@@ -2339,7 +2338,7 @@ main {
   background-color: #F2F2F2;
 }
 .slick-arrow .prev {
-  margin-right: 8rem;
+  margin-left: 2rem;
   position: relative;
 }
 .slick-arrow .prev::before {
@@ -2349,7 +2348,7 @@ main {
   background-color: white;
   position: absolute;
   bottom: 1rem;
-  right: 5.8rem;
+  right: 5.3rem;
   z-index: 1;
 }
 .slick-arrow .prev::after {
@@ -2401,10 +2400,6 @@ main {
   .slider__item.slick-slide .prod-card {
     margin: 0 auto;
   }
-
-  .slick-prev.slick-arrow .pagination__button::before {
-    right: 4.8rem;
-  }
 }
 @media only screen and (max-width: 568px) {
   .slider {
@@ -2429,7 +2424,7 @@ main {
   }
   .slick-next.slick-arrow .pagination__button::before {
     bottom: 1rem;
-    right: 4.8rem;
+    left: 1.3rem;
   }
 
   .slick-prev.slick-arrow {
@@ -2441,9 +2436,9 @@ main {
     width: 5rem;
     height: 5rem;
   }
-  .slick-prev.slick-arrow .pagination__button::before {
-    right: 4.8rem;
-    bottom: 1rem;
+
+  .slick-arrow .prev::before {
+    right: 4.3rem;
   }
 }
 .popup {
