@@ -244,6 +244,9 @@
             display: block;
             padding: 0.5rem;
 
+            &-details:focus {
+                outline: none;
+            }
             &-subnav {
                 margin-left: 3rem !important;
 

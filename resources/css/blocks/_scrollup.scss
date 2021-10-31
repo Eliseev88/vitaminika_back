@@ -9,6 +9,7 @@
     outline: none;
     border-radius: 50%;
     display:none;
+    text-align: center;
 
     &:hover {
         cursor: pointer;
@@ -16,8 +17,6 @@
 
     & i {
         font-size: 3rem;
-        border-radius: 50%;
-        color: black;
 
         &:hover {
             cursor: pointer;

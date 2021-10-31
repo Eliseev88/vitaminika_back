@@ -108,6 +108,7 @@
          &__bottom {
             display: flex;
             flex-direction: column;
+             align-items: self-start;
 
             & .price {
                 margin-bottom: 1.5rem;

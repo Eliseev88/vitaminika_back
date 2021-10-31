@@ -305,6 +305,9 @@ main {
     display: block;
     padding: 0.5rem;
   }
+  .header__nav-details:focus {
+    outline: none;
+  }
   .header__nav-subnav {
     margin-left: 3rem !important;
   }
@@ -1664,14 +1667,13 @@ main {
   outline: none;
   border-radius: 50%;
   display: none;
+  text-align: center;
 }
 .scrollup:hover {
   cursor: pointer;
 }
 .scrollup i {
   font-size: 3rem;
-  border-radius: 50%;
-  color: black;
 }
 .scrollup i:hover {
   cursor: pointer;
@@ -2103,6 +2105,7 @@ main {
   .product__bottom {
     display: flex;
     flex-direction: column;
+    align-items: self-start;
   }
   .product__bottom .price {
     margin-bottom: 1.5rem;
