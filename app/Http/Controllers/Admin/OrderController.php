@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Delivery;
 use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -14,11 +15,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::orderBy('updated_at')->paginate(10);
-
-        return view('admin/orders', [
-            'orders' => $orders,
-        ]);
+        return view('admin/orders');
     }
 
     /**
@@ -51,10 +48,12 @@ class OrderController extends Controller
         }
 
         $products = Product::all()->except($arr);
+        $deliveryTypes = Delivery::all();
 
         return view('admin/orderDetails', [
             'order' => $order,
             'products' => $products,
+            'deliveryTypes' => $deliveryTypes,
         ]);
     }
 
@@ -71,8 +70,25 @@ class OrderController extends Controller
 
     public function update(Request $request, Order $order)
     {
-        $fields = $request->only('address', 'comment', 'delivery', 'status',);
+        $fields = $request->only('address', 'comment', 'status', 'delivery_type',);
+
+        if ($fields['delivery_type'] == 'no') {
+            $fields['delivery'] = 'no';
+            $fields['delivery_type'] = null;
+            $fields['sum'] = 0;
+            foreach($order->products as $el) {
+                $fields['sum'] += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+            }
+        } else {
+            $fields['delivery'] = 'yes';
+            $fields['sum'] = 0;
+            foreach($order->products as $el) {
+                $fields['sum'] += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+            }
+            $fields['sum'] += Delivery::query()->find($fields['delivery_type'])->price;
+        }
         $fields['updated_at'] = Carbon::now();
+
         $order = $order->fill($fields)->save();
 
         if ($order) {
@@ -96,6 +112,10 @@ class OrderController extends Controller
 
             foreach($order->products as $el) {
                 $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+            }
+
+            if (!is_null($order->delivery_type)) {
+                $order->sum += Delivery::query()->find($order->delivery_type)->price;
             }
 
             $order->save();
@@ -135,6 +155,9 @@ class OrderController extends Controller
                 foreach($order->products as $el) {
                     $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
                 }
+                if (!is_null($order->delivery_type)) {
+                    $order->sum += Delivery::query()->find($order->delivery_type)->price;
+                }
 
                 $order->save();
 
@@ -150,18 +173,6 @@ class OrderController extends Controller
         return false;
     }
 
-    public function searchOrder(Request $request) 
-    {
-      $input = $request->all();
-
-      $data = Order::where("id", "LIKE", "%{$input['query']}%")
-               ->get();
-
-               
-
-      return ($data);
-    }
-
     public function destroy(Request $request)
     {
         $order = Order::find($request->orderId);
@@ -172,6 +183,5 @@ class OrderController extends Controller
         $order->save();
 
         return $order->sum;
-
     }
 }

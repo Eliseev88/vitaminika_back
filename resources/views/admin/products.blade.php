@@ -11,77 +11,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="card">
-                <div class="card__header">
-                    <h3>Товары</h3>
-                    <a href="{{ route('admin.createProduct')}}">Добавить товар</a>
-                </div>
-
-                
-                   <form action="" class="card__search">
-                    <span class="las la-search"></span>
-                    <input name="text" autocomplete="off" type="text" class="typeahead" placeholder="Поиск...">
-                </form> 
-                
-                
-
-
-                <div class="card__body">
-                    <table width="100%">
-                        <thead>
-                            <tr>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="name">
-                                    Наименование <span class="span_icon" id="name_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="code">
-                                    Артикул <span class="span_icon" id="code_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="form">
-                                    Форма <span class="span_icon" id="form_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="amount">
-                                    Количество <span class="span_icon" id="amount_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="price">
-                                    Цена <span class="span_icon" id="price_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="availability">
-                                    Наличие <span class="span_icon" id="availability_icon"></span>
-                                </td>
-                                <td class="sorting" style="cursor: pointer"
-                                    data-sorting_type="asc"
-                                    data-column-name="brand_id">
-                                    Бренд <span class="span_icon" id="brand_id_icon"></span>
-                                </td>
-                                <td>Действия</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @include('vendor.pagination.data-products')
-                        </tbody>
-                    </table>
-
-
-
-                    <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-                    <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
-                    <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
-
-                </div>
-
-            </div>
+            <livewire:search-products />
         </div>
     </div>
 </main>
@@ -116,70 +46,54 @@
 </script>
 
 {{--    SORTING  --}}
-<script>
-    $(document).ready(function () {
-       function fetch_data(page, sort_type, sort_by)
-       {
-           $.ajax({
-               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'&table=products',
-               method: "GET",
-               headers: {
-                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-               },
-               success:function (data)
-               {
-                   $('tbody').html('');
-                   $('tbody').html(data);
-               }
-           })
-       }
-       $(document).on('click', '.sorting', function (){
-           let column_name = $(this).data('column-name');
-           let order_type = $(this).data('sorting_type');
-           let reverse_order = '';
-           if(order_type == 'asc') {
-               $(this).data('sorting_type', 'desc');
-               reverse_order = 'desc';
-               $('.span_icon').html('')
-               $('#'+column_name+'_icon').html('<i class="fas fa-sort-up"></i>')
-           } else {
-               $(this).data('sorting_type', 'asc');
-               reverse_order = 'asc';
-               $('.span_icon').html('')
-               $('#'+column_name+'_icon').html('<i class="fas fa-sort-down"></i>')
-           }
-           $('#hidden_column_name').val(column_name);
-           $('#hidden_sort_type').val(reverse_order);
-           let page = $('#hidden_page').val();
-           fetch_data(page, reverse_order, column_name);
-       })
-        $(document).on('click', '.pagination a', function (event){
-            event.preventDefault();
-            let page = $(this).attr('href').split('page=')[1];
-            $('#hidden_page').val(page);
-            let column_name = $('#hidden_column_name').val();
-            let sort_type = $('#hidden_sort_type').val();
-            fetch_data(page, sort_type, column_name);
-        })
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--       function fetch_data(page, sort_type, sort_by)--}}
+{{--       {--}}
+{{--           $.ajax({--}}
+{{--               url: '{{ route('fetch_data') }}?page='+page+'&sortby='+sort_by+'&sorttype='+sort_type+'&table=products',--}}
+{{--               method: "GET",--}}
+{{--               headers: {--}}
+{{--                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--               },--}}
+{{--               success:function (data)--}}
+{{--               {--}}
+{{--                   $('tbody').html('');--}}
+{{--                   $('tbody').html(data);--}}
+{{--               }--}}
+{{--           })--}}
+{{--       }--}}
+{{--       $(document).on('click', '.sorting', function (){--}}
+{{--           let column_name = $(this).data('column-name');--}}
+{{--           let order_type = $(this).data('sorting_type');--}}
+{{--           let reverse_order = '';--}}
+{{--           if(order_type == 'asc') {--}}
+{{--               $(this).data('sorting_type', 'desc');--}}
+{{--               reverse_order = 'desc';--}}
+{{--               $('.span_icon').html('')--}}
+{{--               $('#'+column_name+'_icon').html('<i class="fas fa-sort-up"></i>')--}}
+{{--           } else {--}}
+{{--               $(this).data('sorting_type', 'asc');--}}
+{{--               reverse_order = 'asc';--}}
+{{--               $('.span_icon').html('')--}}
+{{--               $('#'+column_name+'_icon').html('<i class="fas fa-sort-down"></i>')--}}
+{{--           }--}}
+{{--           $('#hidden_column_name').val(column_name);--}}
+{{--           $('#hidden_sort_type').val(reverse_order);--}}
+{{--           let page = $('#hidden_page').val();--}}
+{{--           fetch_data(page, reverse_order, column_name);--}}
+{{--       })--}}
+{{--        $(document).on('click', '.pagination a', function (event){--}}
+{{--            event.preventDefault();--}}
+{{--            let page = $(this).attr('href').split('page=')[1];--}}
+{{--            $('#hidden_page').val(page);--}}
+{{--            let column_name = $('#hidden_column_name').val();--}}
+{{--            let sort_type = $('#hidden_sort_type').val();--}}
+{{--            fetch_data(page, sort_type, column_name);--}}
+{{--        })--}}
 
-    });
-</script>
-<script src="/js/admin-bootstrap3-typeahead.js"></script>
+{{--    });--}}
+{{--</script>--}}
 
-<script type="text/javascript">
-        const path = "{{ route('productSearch.query') }}";
-
-        $('input.typeahead').typeahead({
-            source: function(query, process) {
-                return $.get(path, {
-                    query: query
-                }, function(data) {
-                    console.log((data))
-                    return process(data);
-                });
-            }
-
-        });
-    </script>
 @endpush
 @endsection

@@ -9,11 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/adminStyle.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    @livewireStyles
     <script src="https://kit.fontawesome.com/8d73d6a795.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+
+
 
     <div class="sidebar">
         <div class="sidebar-brand">
@@ -111,6 +113,7 @@
 
     </div>
 
+{{--    SIDEBAR--}}
     <script>
         const btnSidebarOpen = document.querySelector('#sidebar-open')
         const sidebar = document.querySelector('.sidebar')
@@ -134,9 +137,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @stack('js')
 
- 
-
-
+    @livewireScripts
 
 </body>
 

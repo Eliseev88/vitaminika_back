@@ -29,7 +29,8 @@ class OrderAddRequest extends FormRequest
             'phone' => ['required'],
             'email' => ['required', 'email'],
             'address' => ['sometimes'],
-            'delivery' => ['required']
+            'delivery' => ['required'],
+            'delivery_type' => ['required']
         ];
     }
 }

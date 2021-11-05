@@ -16,6 +16,7 @@ class Order extends Model
         'phone',
         'email',
         'address',
+        'delivery_type',
         'created_at',
         'updated_at',
         'delivery',
@@ -26,5 +27,10 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('count');
+    }
+
+    public function delivery_type()
+    {
+        return $this->belongsTo(Delivery::class, 'delivery_type');
     }
 }

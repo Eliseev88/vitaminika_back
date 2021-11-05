@@ -26,15 +26,15 @@
                 <span>Сумма заказа: </span>
                 <span id="sum">{{ $order->sum }} руб.</span></div>
             <label for="">
-                <span>Тип доставки:</span>
-                <select name="delivery" id="select_delivery">
-                    @if($order->delivery == 'yes')
-                        <option value="no">Самовывоз</option>
-                        <option value="yes" selected>На дом</option>
-                    @else
-                        <option value="no" selected>Самовывоз</option>
-                        <option value="yes">На дом</option>
-                    @endif
+                <span>Доставка:</span>
+                <select name="delivery_type" id="select_delivery">
+                        <option value="no" @if($order->delivery == 'no')selected @endif>Самовывоз</option>
+                        @foreach($deliveryTypes as $deliveryType)
+                        <option value="{{ $deliveryType->id }}"
+                                @if($order->delivery == 'yes' && $order->delivery_type == $deliveryType->id)selected @endif>
+                                {{ $deliveryType->name }}
+                        </option>
+                    @endforeach
                 </select>
             </label>
             <div id="delivery_info" style="@if ($order->delivery == 'no') display: none; @else display: block; @endif">
@@ -133,11 +133,11 @@
     <script>
         // DISPLAY DELIVERY ADDRESS & COMMENT INPUT
         $(document).ready(function () {
-            $('#select_delivery').click(function () {
-                if ($(this).val() == 'yes') {
-                    $('#delivery_info').css('display', 'block')
-                } else {
+            $('#select_delivery').change(function () {
+                if ($(this).val() == 'no') {
                     $('#delivery_info').css('display', 'none')
+                } else {
+                    $('#delivery_info').css('display', 'block')
                 }
             })
         })

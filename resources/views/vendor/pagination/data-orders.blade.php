@@ -1,4 +1,10 @@
+@if($orders->isEmpty())
+    <tr>
+        <td colspan="6"><br><strong>Заказов с таким номером не найдено</strong><br><br></td>
+    </tr>
+@else
 @foreach($orders as $order)
+
     <tr>
         <td><a href="{{ route('admin.order', ['order' => $order]) }}">{{ $order->id }}</a></td>
         <td>
@@ -29,9 +35,9 @@
         </td>
     </tr>
 @endforeach
-
 <tr>
     <td colspan="6">
         {{ $orders->links('vendor.pagination.default') }}
     </td>
 </tr>
+@endif

@@ -2140,9 +2140,16 @@ main {
   background-color: #F2F2F2;
   padding: 2rem;
   display: none;
+  margin-bottom: 2rem;
 }
 .form__address:focus-visible {
   outline: 1px solid #888888;
+}
+.form__address--select {
+  padding: 1rem;
+}
+.form__address option {
+  color: #372821;
 }
 .form__radio {
   position: absolute;
@@ -2216,6 +2223,9 @@ main {
   .form__address {
     padding: 1rem;
     height: 10rem;
+  }
+  .form__address--select {
+    height: auto;
   }
 }
 .price {

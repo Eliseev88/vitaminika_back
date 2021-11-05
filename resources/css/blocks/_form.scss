@@ -22,9 +22,17 @@
         background-color: $greyBg;
         padding: 2rem;
         display: none;
+        margin-bottom: 2rem;
 
         &:focus-visible {
             outline: 1px solid $grey;
+        }
+
+        &--select {
+            padding: 1rem;
+        }
+        & option {
+            color: $mainFontColor;
         }
     }
     &__radio {
@@ -111,6 +119,10 @@
         &__address {
             padding: 1rem;
             height: 10rem;
+
+            &--select {
+                height: auto;
+            }
         }
     }
 

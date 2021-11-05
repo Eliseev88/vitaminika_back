@@ -1,3 +1,8 @@
+@if($products->isEmpty())
+    <tr>
+        <td colspan="6"><br><strong>Товаров с такими критериями поиска не найдено</strong><br><br></td>
+    </tr>
+@else
 @foreach($products as $product)
     <tr id="item_{{$product->id}}">
         <td><a href="{{ route('admin.product', ['product' => $product]) }}"> {{ $product->name }}</a></td>
@@ -25,9 +30,12 @@
         </td>
     </tr>
 @endforeach
-
 <tr>
     <td colspan="8">
         {{ $products->links('vendor.pagination.default') }}
     </td>
 </tr>
+@endif
+
+
+

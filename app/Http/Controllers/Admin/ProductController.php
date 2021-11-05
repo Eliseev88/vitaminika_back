@@ -14,19 +14,9 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $products = Product::orderBy('name')->paginate(10);
-
-
-        return view('admin/products', [
-            'products' => $products,
-        ]);
+        return view('admin/products');
     }
 
     public function create()
