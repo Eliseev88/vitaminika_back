@@ -38,7 +38,9 @@ class OrderController extends Controller
         $fields['sum'] = \Cart::getTotal();
         if ($fields['delivery'] == 'yes') {
             $fields['delivery_type'] = $request->input('delivery_type');
-            $fields['sum'] += Delivery::query()->find($fields['delivery_type'])->price;
+            if ($fields['sum'] < 10000) {
+                $fields['sum'] += Delivery::query()->find($fields['delivery_type'])->price;
+            }
         }
 
         $order = Order::create($fields);
@@ -49,7 +51,7 @@ class OrderController extends Controller
                 $order->products()->attach($product->id, ['count' => $product->quantity]);
             }
             Mail::to($order->email)->send(new OrderCreated($order, $cart));
-            Mail::to('sales@vitaminika.ru')->send(new ConfirmAdminAboutOrder($order, $cart));
+            //Mail::to('sales@vitaminika.ru')->send(new ConfirmAdminAboutOrder($order, $cart));
             \Cart::clear();
             return redirect()->route('order')->with([
                 'orderId' => $order->id,

@@ -81,11 +81,16 @@ class OrderController extends Controller
             }
         } else {
             $fields['delivery'] = 'yes';
-            $fields['sum'] = 0;
-            foreach($order->products as $el) {
-                $fields['sum'] += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+            if ($order->sum < 10000) {
+                $fields['sum'] = 0;
+                foreach($order->products as $el) {
+                    $fields['sum'] += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+                }
+                $fields['sum'] += Delivery::query()->find($fields['delivery_type'])->price;
+            } else {
+                $fields['sum'] = $order->sum;
             }
-            $fields['sum'] += Delivery::query()->find($fields['delivery_type'])->price;
+
         }
         $fields['updated_at'] = Carbon::now();
 
@@ -114,7 +119,7 @@ class OrderController extends Controller
                 $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
             }
 
-            if (!is_null($order->delivery_type)) {
+            if (!is_null($order->delivery_type) && $order->sum < 10000) {
                 $order->sum += Delivery::query()->find($order->delivery_type)->price;
             }
 
@@ -155,7 +160,7 @@ class OrderController extends Controller
                 foreach($order->products as $el) {
                     $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
                 }
-                if (!is_null($order->delivery_type)) {
+                if (!is_null($order->delivery_type) && $order->sum < 10000) {
                     $order->sum += Delivery::query()->find($order->delivery_type)->price;
                 }
 
@@ -177,11 +182,23 @@ class OrderController extends Controller
     {
         $order = Order::find($request->orderId);
         $product = Product::find($request->productId);
-        $order->sum = $order->sum - $product->price
-            * $order->products()->where('product_id', $request->productId)->first()->pivot->count;
+
         $order->products()->detach($request->productId);
+        
+        $order->sum = 0;
+
+        foreach($order->products as $el) {
+            $order->sum += $el->price * $order->products()->where('product_id', $el->id)->first()->pivot->count;
+        }
+        if (!is_null($order->delivery_type) && $order->sum < 10000) {
+            $order->sum += Delivery::query()->find($order->delivery_type)->price;
+        }
+
         $order->save();
 
-        return $order->sum;
+        return [
+            'sum' => $order->sum,
+            'product' => $product,
+        ];
     }
 }

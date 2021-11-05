@@ -53,7 +53,7 @@
                                     <option data-price="{{ $deliveryType->price }}" value="{{ $deliveryType->id }}">{{ $deliveryType->name }}</option>
                                     @endforeach
                                 </select>
-                                <textarea name="address" class="form__address" rows="1" placeholder="Укажите адресс доставки">{{ old('address') }}</textarea>
+                                <textarea name="address" class="form__address" rows="1" cols="45" placeholder="Укажите адресс доставки">{{ old('address') }}</textarea>
                                 <p id="delivery_price"></p>
                             </div>
                         </div>
@@ -106,12 +106,15 @@
 
         function checkDeliveryPrice() {
             let deliveryPrice = $('#delivery_type').find(':selected').data('price');
-            if (deliveryPrice == 0) {
+            if (deliveryPrice == 0 && {{ $sum }} < 10000) {
                 document.getElementById('delivery_price').textContent =
                     `Стоимость доставки будет рассчитана отдельно`;
+            } else if ({{ $sum }} >= 10000 ) {
+                document.getElementById('delivery_price').textContent =
+                    `Доставка за наш счет!`;
             } else {
                 document.getElementById('delivery_price').textContent =
-                    `${deliveryPrice} руб. за доставку будет включено в заказ`;
+                    `${deliveryPrice} руб. за доставку будет включено в сумму заказа`;
             }
         }
     </script>

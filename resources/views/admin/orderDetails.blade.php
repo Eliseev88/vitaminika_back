@@ -106,12 +106,12 @@
             <div class="add-product">
                 <div class="add-product__column">
                     <div class="add-product__title">Выберите товар</div>
-                    <p><select name="add-product">
+                    <p><select id="select_product" name="add-product">
                             @foreach($products as $product)
                                 @if($product->availability == 0)
                                     @continue
                                 @endif
-                                <option value="{{ $product->id }}">{{ $product->name }} - {{ $product->amount }}</option>
+                                <option id="option_{{ $product->id }}" value="{{ $product->id }}">{{ $product->name }} - {{ $product->amount }}</option>
                             @endforeach
                         </select></p>
                 </div>
@@ -160,7 +160,10 @@
                     },
                     success: (data) => {
                         $('#item_' + itemId).remove();
-                        $('#sum').text(data + ' руб.');
+                        $('#sum').text(data.sum + ' руб.');
+                        $('#select_product').append(`
+                            <option id="option_${data.product.id}" value="${data.product.id}">${data.product.name} - ${data.product.amount}</option>
+                        `)
                     }
                 })
             })
@@ -214,6 +217,7 @@
                         </td>
                     </tr>
                         `)
+                        $('#option_' + productId).remove();
                     }
                 })
             });
