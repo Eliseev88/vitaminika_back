@@ -48,9 +48,9 @@ class OrderController extends Controller
             foreach ($cart as $product) {
                 $order->products()->attach($product->id, ['count' => $product->quantity]);
             }
-            \Cart::clear();
             Mail::to($order->email)->send(new OrderCreated($order, $cart));
             Mail::to('sales@vitaminika.ru')->send(new ConfirmAdminAboutOrder($order, $cart));
+            \Cart::clear();
             return redirect()->route('order')->with([
                 'orderId' => $order->id,
                 'email' => $order->email,
