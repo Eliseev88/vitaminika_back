@@ -184,7 +184,7 @@ class OrderController extends Controller
         $product = Product::find($request->productId);
 
         $order->products()->detach($request->productId);
-        
+
         $order->sum = 0;
 
         foreach($order->products as $el) {

@@ -51,7 +51,7 @@ class OrderController extends Controller
                 $order->products()->attach($product->id, ['count' => $product->quantity]);
             }
             Mail::to($order->email)->send(new OrderCreated($order, $cart));
-            //Mail::to('sales@vitaminika.ru')->send(new ConfirmAdminAboutOrder($order, $cart));
+            Mail::to('sales@vitaminika.ru')->send(new ConfirmAdminAboutOrder($order, $cart));
             \Cart::clear();
             return redirect()->route('order')->with([
                 'orderId' => $order->id,
