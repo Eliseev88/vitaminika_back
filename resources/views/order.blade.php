@@ -53,7 +53,7 @@
                                     <option data-price="{{ $deliveryType->price }}" value="{{ $deliveryType->id }}">{{ $deliveryType->name }}</option>
                                     @endforeach
                                 </select>
-                                <textarea name="address" class="form__address" rows="1" cols="45" placeholder="Укажите адресс доставки">{{ old('address') }}</textarea>
+                                <textarea name="address" class="form__address" rows="1" placeholder="Укажите адресс доставки">{{ old('address') }}</textarea>
                                 <p id="delivery_price"></p>
                             </div>
                         </div>

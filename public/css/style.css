@@ -2141,12 +2141,14 @@ main {
   padding: 2rem;
   display: none;
   margin-bottom: 2rem;
+  width: 100%;
 }
 .form__address:focus-visible {
   outline: 1px solid #888888;
 }
 .form__address--select {
   padding: 1rem;
+  width: 90%;
 }
 .form__address option {
   color: #372821;

@@ -23,6 +23,7 @@
         padding: 2rem;
         display: none;
         margin-bottom: 2rem;
+        width: 100%;
 
         &:focus-visible {
             outline: 1px solid $grey;
@@ -30,6 +31,7 @@
 
         &--select {
             padding: 1rem;
+            width: 90%;
         }
         & option {
             color: $mainFontColor;
